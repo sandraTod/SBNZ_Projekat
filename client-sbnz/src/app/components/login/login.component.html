@@ -1,0 +1,20 @@
+<div class="login-form-container" id="login-form" >
+	<div class="login-form-content">
+		<div class="login-form-header form-group">
+			<h1>Login Into Your Account</h1>
+		</div>
+		<form method="post" action="" class="login-form" #loginForm ="ngForm">
+			<div class="input-container form-group">
+				<i class="fa fa-envelope"></i>
+				<input type="email" class="input form-control" name="email" placeholder="Email" [(ngModel)]="username" #email = "ngModel" required/>
+				<div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Name is requared</div>
+			</div>
+			<div class="input-container form-group">
+				<i class="fa fa-lock"></i>
+				<input type="password"  id="login-password" class="input form-control" name="password" [(ngModel)]="password" placeholder="Password"  #pass ="ngModel" required/>
+				<div [hidden]="pass.valid || pass.pristine" class="alert alert-danger"> Password is requared</div>
+			</div>
+			<button class="btn btn-dark btn-block "  [disabled]="!loginForm.form.valid" name="login"  type="submit" (click)="login()">Submit</button>
+		</form>
+	</div>
+</div>
