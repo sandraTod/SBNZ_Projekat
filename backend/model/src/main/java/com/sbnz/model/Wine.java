@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 
@@ -33,16 +34,16 @@ public class Wine {
 	private WineSugar wineSugar;
 	
 	@OneToMany
-	@JoinTable(name = "wine_id")
+	@JoinColumn(name = "wine_id")
 	private Set<Meat> meatList = new HashSet<>();
 	
 	@OneToMany
-	@JoinTable(name = "wine_id")
+	@JoinColumn(name = "wine_id")
 	private Set<Sauce> sauceList = new HashSet<>();
 	
 	
 	@OneToMany
-	@JoinTable(name = "wine_id")
+	@JoinColumn(name = "wine_id")
 	private Set<Ingredient> ingredientList = new HashSet<>();
 	
 	public Wine() {}
