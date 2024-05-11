@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -44,7 +43,7 @@ public class Wine {
 	
 	@OneToMany
 	@JoinColumn(name = "wine_id")
-	private Set<Ingredient> ingredientList = new HashSet<>();
+	private Set<Spice> spiceList = new HashSet<>();
 	
 	public Wine() {}
 
@@ -104,12 +103,12 @@ public class Wine {
 		this.sauceList = sauceList;
 	}
 
-	public Set<Ingredient> getIngredientList() {
-		return ingredientList;
+	public Set<Spice> getIngredientList() {
+		return spiceList;
 	}
 
-	public void setIngredientList(Set<Ingredient> ingredientList) {
-		this.ingredientList = ingredientList;
+	public void setIngredientList(Set<Spice> ingredientList) {
+		this.spiceList = ingredientList;
 	}
 	
 	

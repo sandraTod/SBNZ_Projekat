@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Ingredient {
+public class Spice {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Ingredient {
 	@Enumerated(EnumType.STRING)
 	private NationalCuisine nationalCuisine;
 	
-	public Ingredient() {}
+	public Spice() {}
 
 	public Long getId() {
 		return id;
