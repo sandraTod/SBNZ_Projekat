@@ -78,17 +78,11 @@ public class WebSecurityConfig {
                         "/favicon.ico",
                         "/img/*",
                         "/**/*.css",
-                        "/**/*.js",
-                        "/api/cottage/getAll",
-                        "/api/ship/getAll",
-                        "/api/adventure/getAll",
-                        "/api/registration/confirm"
+                        "/**/*.js"
                         
                 ).permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/socket/**").permitAll()
-                .requestMatchers("/api/user/newClient").permitAll()
-                .requestMatchers("/api/user/update").permitAll()
                 .anyRequest().authenticated());
         httpSecurity.cors(Customizer.withDefaults());
         httpSecurity

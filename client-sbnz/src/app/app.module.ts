@@ -8,12 +8,22 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { WineComponent } from './components/wine/wine.component';
+import { SauceComponent } from './components/sauce/sauce.component';
+import { MeatComponent } from './components/meat/meat.component';
+import { SpiceComponent } from './components/spice/spice.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    WineComponent,
+    SauceComponent,
+    MeatComponent,
+    SpiceComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

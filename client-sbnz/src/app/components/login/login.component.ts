@@ -1,7 +1,7 @@
+import { LoggedUtils } from './../../utils/loggedUtils';
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { LoggedUtils } from 'src/app/utils/loggedUtils';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +28,13 @@ export class LoginComponent implements OnInit {
       if(LoggedUtils.getRole() =='SYSTEM_ADMIN'){
         this.router.navigate(['/adminPage'])
       }
+      else
+      {
+        this.router.navigate(['userPage'])
+
+      }
+
+
       
 
      

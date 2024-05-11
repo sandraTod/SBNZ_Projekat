@@ -1,8 +1,18 @@
-<div *ngIf="isLoggedIn()== false">
+<div *ngIf="isLoggedIn()== true">
 
-  <app-login></app-login>
+  <nav class="navbar navbar-dark bg-dark  " *ngIf ="getRole() == 'SYSTEM_ADMIN'" style="width: 100%; ">
+    <a class="nav-item nav-link" href="#" style="margin-left: -100px; color: white; font-size: small;" [routerLink]="['/wines']" routerLinkActive="router-link-active" >Vrste Vina</a>   
+    <a class="nav-item nav-link " href="#" style="margin-left: -90px; color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Vrste Mesa </a>
+    <a class="nav-item nav-link " href="#" style="margin-left: -90px; color: white;font-size: small;" [routerLink]="['/sauces']" routerLinkActive="router-link-active" >Vrste soseva </a>
+    <a class="nav-item nav-link " href="#" style="margin-left: -90px; color: white;font-size: small;" [routerLink]="['/spices']" routerLinkActive="router-link-active" > Vrste zacina </a>
+
+    <button type ="button" class="btn btn-danger btn-m d-m-inline" style="margin-right: -150px;" (click) = "logout()" > Logout</button>
+  </nav>
+
+  
 
 </div>
+
 
 
 <router-outlet></router-outlet>
