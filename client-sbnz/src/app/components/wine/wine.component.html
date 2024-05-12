@@ -1,0 +1,24 @@
+<div style="height: 300px; width:600px; margin-left: 150px;">
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Naziv Vina</th>
+            <th scope="col">Godina</th>
+            <th scope="col">Boja</th>
+            <th scope="col">Suvo/Slatko</th>
+            <th scope = "col">Izmeni vino</th>
+            <th scope = "col"> Obrisi vino</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor= "let w of listOfWines">
+            <td>{{w.name}}</td>
+            <td>{{w.year}}</td>
+            <td>{{w.wineColor}}</td>
+            <td>{{w.wineSugar}}</td>
+            <td><button class="btn btn-warning btn-m-inline">Detalji</button></td>
+            <td><button class="btn btn-danger btn-m-inline">Obrisi</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
