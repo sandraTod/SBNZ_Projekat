@@ -7,5 +7,7 @@ import com.sbnz.model.Wine;
 public interface WineService {
 	
 	Collection<Wine> getAll();
+	
+	void deleteWine(Long id);
 
 }

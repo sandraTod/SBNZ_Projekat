@@ -21,4 +21,9 @@ public class WineServiceImpl implements WineService{
 		return wineRepository.findAll();
 	}
 
+	@Override
+	public void deleteWine(Long id) {
+		 wineRepository.deleteById(id);
+	}
+
 }
