@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getLocaleCurrencyCode } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,6 +13,16 @@ export class WineService {
 
   getAllWine():Observable<Wine[]> {
     return this.http.get<Wine[]>("http://localhost:8080/api/wine/getAll");
+  }
+
+  deleteWine(id:any){
+    console.log('Usla'+ id );
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.put("http://localhost:8080/api/wine/deleteWine/"+id,{
+
+        headers: headers
+    });
+
   }
 
 }

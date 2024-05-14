@@ -2,6 +2,7 @@
 import { UserService } from './services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatDialogModule} from '@angular/material/dialog'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,9 @@ import { MeatComponent } from './components/meat/meat.component';
 import { SpiceComponent } from './components/spice/spice.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { WineDetailsComponent } from './components/wine-details/wine-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +29,17 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     SauceComponent,
     MeatComponent,
     SpiceComponent,
-    UserPageComponent
+    UserPageComponent,
+    WineDetailsComponent,
+    DeleteEntityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
     UserService,
