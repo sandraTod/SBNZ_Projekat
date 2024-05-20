@@ -1,12 +1,12 @@
 <div *ngIf="isLoggedIn()== true">
 
-  <nav class="navbar navbar-dark bg-dark  " *ngIf ="getRole() == 'SYSTEM_ADMIN'" style="width: 100%; ">
-    <a class="nav-item nav-link" href="#" style="margin-left: -100px; color: white; font-size: small;" [routerLink]="['/wines']" routerLinkActive="router-link-active" >Vrste Vina</a>   
-    <a class="nav-item nav-link " href="#" style="margin-left: -90px; color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Vrste Mesa </a>
-    <a class="nav-item nav-link " href="#" style="margin-left: -90px; color: white;font-size: small;" [routerLink]="['/sauces']" routerLinkActive="router-link-active" >Vrste soseva </a>
-    <a class="nav-item nav-link " href="#" style="margin-left: -90px; color: white;font-size: small;" [routerLink]="['/spices']" routerLinkActive="router-link-active" > Vrste zacina </a>
+  <nav class="navbar navbar-dark bg-dark  " *ngIf ="getRole() == 'SYSTEM_ADMIN'" style="height: 50px;" >
+    <a class="nav-item nav-link" href="#" style=" margin-left: 150px; ;color: white; font-size: small;" [routerLink]="['/wines']" routerLinkActive="router-link-active" >Vrste Vina</a>   
+    <a class="nav-item nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Vrste Mesa </a>
+    <a class="nav-item nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/sauces']" routerLinkActive="router-link-active" >Vrste soseva </a>
+    <a class="nav-item nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/spices']" routerLinkActive="router-link-active" > Vrste zacina </a>
 
-    <button type ="button" class="btn btn-danger btn-m d-m-inline" style="margin-right: -150px;" (click) = "logout()" > Logout</button>
+    <a class="nav-item nav-link " href="#" style=" color: white;font-size: small ; margin-right: 50px;" (click)="logout()">LOGOUT</a>
   </nav>
 
   
