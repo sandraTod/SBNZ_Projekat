@@ -1,16 +1,18 @@
-<div class="container p-0 m-0"  >
-    <h3>Vina:</h3>
-    <table class="table table-dark table-hover vw-100 vh-50 mytable ">
-        
+
+<div class="container p-0 m-0" >
+    <div class = "col d-flex align-items-center" style="margin-top: 30px;">   
+        <h3 class= "d-inline">Vina:</h3>
+        <button class="btn btn-success btn-m d-inline " id="btn-add">  Dodaj  </button>
+    </div>    
+    <table class="table table-dark table-hover vw-100 vh-50 mytable ">   
         <tbody>
         <tr *ngFor= "let w of listOfWines">
             <td>{{w.name}}</td>
             <td>{{w.year}}</td>
-            <td>{{w.wineColor}}</td>
-            <td>{{w.wineSugar}}</td>
-            <td><button class="btn btn-warning btn-sm" (click) = "wineDetails(w)" >Detalji</button></td>
+            <td >{{w.wineColor}}</td>
+            <td class="text-end " ><button class="btn btn-warning btn-sm " (click) = "wineDetails(w)" >Detalji</button></td>
             <td><button class="btn btn-danger btn-sm" (click)=" deletePopup(w.id)">Obrisi</button></td>
         </tr>
         </tbody>
-    </table>
+    </table>  
 </div>

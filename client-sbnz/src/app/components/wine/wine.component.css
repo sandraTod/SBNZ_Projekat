@@ -1,5 +1,4 @@
 
-/* note the added class, if you use just 'table' as the selector bootstrap will override it and collapse your table */
 table.mytable {
     border-collapse: separate;
     border-spacing: 0 35px;
@@ -7,9 +6,9 @@ table.mytable {
   
   th,
   td {
-    text-align: center;
     vertical-align: middle;
     padding: 15px;
+    padding-left: 35px;
   }
   
   tr {
@@ -17,8 +16,11 @@ table.mytable {
     
   }  
   h3 {
-    margin-top: 30px;
     margin-left: 30px;
     color: white;
 
   }
+ #btn-add{
+    margin-left: 980px;
+ } 
+  
