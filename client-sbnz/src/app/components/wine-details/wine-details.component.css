@@ -1,0 +1,36 @@
+
+.form-inline {
+    display: inline-block;
+}
+.form-inline label,
+.form-inline input {
+    display: inline-block;
+    vertical-align: middle;
+}
+.form-inline input[type="submit"] {
+    display: inline-block;
+    margin-top: 10px;
+}
+.list-group{
+    width: 5cm ;
+    height: 3cm;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+.scrollable-list {
+    max-height: 300px; 
+    overflow-y: auto;
+}
+
+.btn-with-icon {
+    display: inline-block;
+    padding: 20px 20px; 
+
+    background-size: 20px; 
+    background-repeat: no-repeat;
+    background-position: 10px center; 
+    background-image: url('/assets/delete.png');
+    color: white;
+    font-size: 16px;  
+    cursor: pointer;
+  }
