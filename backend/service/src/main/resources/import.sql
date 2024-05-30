@@ -34,13 +34,16 @@ insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(9,"sos
 insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(10,"sos10","CHINESE",null,false)
 
 --Zacini
-insert into spice(id, name, national_cuisine, wine_id) values(1,"zacin1","ITALIAN",1)
-insert into spice(id, name, national_cuisine, wine_id) values(2,"zacin2","ITALIAN",1)
-insert into spice(id, name, national_cuisine, wine_id) values(3,"zacin3","ITALIAN",1)
-insert into spice(id, name, national_cuisine, wine_id) values(4,"zacin4","FRENCH",1)
-insert into spice(id, name, national_cuisine, wine_id) values(5,"zacin5","FRENCH",2)
-insert into spice(id, name, national_cuisine, wine_id) values(6,"zacin6","FRENCH",2)
-insert into spice(id, name, national_cuisine, wine_id) values(7,"zacin4","INDIAN",3)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(1,"zacin1","ITALIAN",1,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(2,"zacin2","ITALIAN",1,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(3,"zacin3","ITALIAN",1,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(4,"zacin4","FRENCH",1,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(5,"zacin5","FRENCH",2,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(6,"zacin6","FRENCH",2,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(7,"zacin7","INDIAN",3,true)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(8,"zacin8","MAXICAN",null,false)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(9,"zacin9","MAXICAN",null,false)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(10,"zacin10","CHINESE",null,false)
 
 
 
