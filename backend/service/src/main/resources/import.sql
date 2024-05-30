@@ -22,13 +22,16 @@ insert into meat(id,name,national_cuisine,wine_id,is_connected) values(10,"meso1
 
 
 --Sosevi
-insert into sauce(id,name, national_cuisine, wine_id) values(1,"sos1", "ITALIAN",1)
-insert into sauce(id,name, national_cuisine, wine_id) values(2,"sos2", "ITALIAN",1)
-insert into sauce(id,name, national_cuisine, wine_id) values(3,"sos3", "ITALIAN",1)
-insert into sauce(id,name, national_cuisine, wine_id) values(4,"sos4", "FRENCH",2)
-insert into sauce(id,name, national_cuisine, wine_id) values(5,"sos5", "FRENCH",2)
-insert into sauce(id,name, national_cuisine, wine_id) values(6,"sos6", "INDIAN",3)
-insert into sauce(id,name, national_cuisine, wine_id) values(7,"sos7", "INDIAN",3)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(1,"sos1", "ITALIAN",1,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(2,"sos2", "ITALIAN",1,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(3,"sos3", "ITALIAN",1,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(4,"sos4", "FRENCH",2,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(5,"sos5", "FRENCH",2,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(6,"sos6", "INDIAN",3,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(7,"sos7", "INDIAN",3,true)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(8,"sos8", "MAXICAN",null,false)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(9,"sos9", "MAXICAN",null,false)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(10,"sos10","CHINESE",null,false)
 
 --Zacini
 insert into spice(id, name, national_cuisine, wine_id) values(1,"zacin1","ITALIAN",1)
