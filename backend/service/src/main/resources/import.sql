@@ -9,14 +9,17 @@ insert into wine(id, name, year, wine_color, wine_sugar ) value (4,"Vino4","2020
 insert into wine(id, name, year, wine_color, wine_sugar ) value (5,"Vino5","2019","WHITE","SWEET")
 
 --Meso
-insert into meat(id,name,national_cuisine,wine_id) values(1,"meso1","ITALIAN",1)
-insert into meat(id,name,national_cuisine,wine_id) values(2,"meso2","ITALIAN",1)
-insert into meat(id,name,national_cuisine,wine_id) values(3,"meso3","ITALIAN",1)
-insert into meat(id,name,national_cuisine,wine_id) values(4,"meso4","FRENCH",1)
-insert into meat(id,name,national_cuisine,wine_id) values(5,"meso5","FRENCH",2)
-insert into meat(id,name,national_cuisine,wine_id) values(6,"meso6","FRENCH",2)
-insert into meat(id,name,national_cuisine,wine_id) values(7,"meso6","INDIAN",3)
-insert into meat(id,name,national_cuisine,wine_id) values(8,"meso6","MAXICAN",4)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(1,"meso1","ITALIAN",1,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(2,"meso2","ITALIAN",1,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(3,"meso3","ITALIAN",1,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(4,"meso4","FRENCH",1,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(5,"meso5","FRENCH",2,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(6,"meso6","FRENCH",2,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(7,"meso7","INDIAN",3,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(8,"meso8","MAXICAN",4,true)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(9,"meso9","MAXICAN",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(10,"meso10","CHINESE",null,false)
+
 
 --Sosevi
 insert into sauce(id,name, national_cuisine, wine_id) values(1,"sos1", "ITALIAN",1)
