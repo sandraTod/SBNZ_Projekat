@@ -32,11 +32,12 @@
 
             <label for="selectField" class="col-sm-1 col-form-label" style="margin-top: 30px;"><b>Meso:</b></label>
             <div class = "col-sm-4" style=" margin-top: 30px;">
-                <select class="form-select form-select "name ="meats" aria-label="Small select example">
-                    <option value="1">Option1</option>
-                    <option value="2">Option2</option>
+                <select class="form-select form-select "name ="meats" [(ngModel)]="selectedMeat" aria-label="Small select example">
+                    <option *ngFor=" let meat of notConnectedMeat" [value]=" meat.id">{{meat.name}}</option>
                 </select>
+                <button  class="btn btn-success btn-sm " style="margin-left: 130px; margin-top: 5px;" (click) = "addMeat()">Dodaj</button>
             </div>
+
             <div class="list-group scrollable-list">
                 <div *ngFor="let item of wineDetails.meatList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
@@ -44,13 +45,22 @@
                   </button>
                 </div>
             </div>
+
+            <label for="selectField" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Sosevi:</b></label>
+            <div class = "col-sm-4 selectSauce" style=" margin-top: 30px; margin-left: -70px;">
+                <select class="form-select form-select "name ="sauces" [(ngModel)]="selectedSauce" aria-label="Small select example">
+                    <option *ngFor=" let sauce of notConnectedSauce" [value]=" sauce.id">{{sauce.name}}</option>
+                </select>
+                <button  class="btn btn-success btn-sm " style="margin-left: 114px; margin-top: 5px;" (click) = "addSauce()">Dodaj</button>
+            </div>
+
+            <div class="list-group scrollable-list" style=" margin-left: 74px">
+                <div *ngFor="let item of wineDetails.sauceList; let i = index" class="list-group-item">
+                 <a> {{ item.name }} </a>
+                  <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSauce(i)">
+                  </button>
+                </div>
+            </div>
               
     </div>
-    
-    <div class="form-group row">
-        
-    </div>
-   <!--- <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Submit</button>
-    </div>-->
 </form>    
