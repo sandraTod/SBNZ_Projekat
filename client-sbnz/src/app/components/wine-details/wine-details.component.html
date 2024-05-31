@@ -42,7 +42,7 @@
             <div class="list-group scrollable-list">
                 <div *ngFor="let item of wineDetails.meatList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
-                  <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteMeat(i)">
+                  <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteMeat(i,item.id)">
                   </button>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             </div>
 
             <label for="spiceSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Zacini:</b></label>
-            <div class = "col-sm-4 selectSauce" style=" margin-top: 30px; margin-left: -70px;">
+            <div class = "col-sm-4 selectSpice" style=" margin-top: 30px; margin-left: -70px;">
                 <select class="form-select form-select "name ="spices" id = spiceSelect [(ngModel)]="selectedSpice" aria-label="Small select example">
                     <option *ngFor=" let spice of notConnectedSpice" [value]=" spice.id">{{spice.name}}</option>
                 </select>
@@ -74,11 +74,15 @@
             </div>
 
             <div class="list-group scrollable-list" style=" margin-left: 74px">
-                <div *ngFor="let item of wineDetails.ingredientList; let i = index" class="list-group-item">
+                <div *ngFor="let item of wineDetails.spiceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSpice(i)">
                   </button>
                 </div>
+            </div>
+
+            <div class="d-grid gap-3 col-6 mx-auto" style="margin-right: 160px; margin-top: 40px;">
+                <button  class="btn btn-warning btn-m " (click) = "updateWine()">Sacuvaj</button>
             </div>
               
     </div>

@@ -8,5 +8,5 @@ export interface Wine{
     wineSugar: string;
     meatList: Meat[];
     sauceList: any[];
-    ingredientList: any[];
+    spiceList: any[];
 }

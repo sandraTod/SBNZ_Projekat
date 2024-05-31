@@ -1,3 +1,4 @@
+import { WineService } from './../../services/wine.service';
 import { SpiceService } from './../../services/spice.service';
 import { SauceService } from './../../services/sauce.service';
 import { Meat } from './../../model/meat';
@@ -34,7 +35,9 @@ export class WineDetailsComponent implements OnInit {
   
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<WineDetailsComponent>,
-              private meatService: MeatService, private sauceService: SauceService, private spiceService: SpiceService) { }
+              private meatService: MeatService, 
+              private sauceService: SauceService, 
+              private spiceService: SpiceService, private wineService: WineService) { }
 
   ngOnInit(): void {
 
@@ -79,9 +82,12 @@ export class WineDetailsComponent implements OnInit {
     }
 
   }
-  deleteMeat(index: number){
+  deleteMeat(index: number,id:any){
+    this.notConnectedMeat.push(this.wineDetails.meatList[index]);
     this.wineDetails.meatList.splice(index,1);
+    this.meatService.deleteConnection(id).subscribe();
   }
+
   addMeat(){
     for(let i = 0; i<this.notConnectedMeat.length; i++){
         if(this.notConnectedMeat[i].id == this.selectedMeat){
@@ -106,7 +112,7 @@ export class WineDetailsComponent implements OnInit {
           break;
         }
     }
-    const index = this.notConnectedSauce.findIndex(i => i.id === this.selectedSauce);
+    const index = this.notConnectedSauce.findIndex(i => i.id == this.selectedSauce);
       this.notConnectedSauce.splice(index, 1);
       this.sauceService.updateIsConnected(this.selectedSauce).subscribe(()=>{console.log("Uspesan subscribe")});
       this.selectedSauce = this.notConnectedSauce[0].id;
@@ -115,21 +121,25 @@ export class WineDetailsComponent implements OnInit {
 
 
   deleteSpice(index: number){
-    this.wineDetails.ingredientList.splice(index,1);
+    this.wineDetails.spiceList.splice(index,1);
   }
   
   addSpice(){
     for(let i = 0; i<this.notConnectedSpice.length; i++){
         if(this.notConnectedSpice[i].id == this.selectedSpice){
-          this.wineDetails.ingredientList.push(this.notConnectedSpice[i]);
+          this.wineDetails.spiceList.push(this.notConnectedSpice[i]);
           break;
         }
     }
-    const index = this.notConnectedSpice.findIndex(i => i.id === this.selectedSpice);
+    const index = this.notConnectedSpice.findIndex(i => i.id == this.selectedSpice);
       this.notConnectedSpice.splice(index, 1);
       this.spiceService.updateIsConnected(this.selectedSpice).subscribe(()=>{console.log("Uspesan subscribe")});
       this.selectedSpice = this.notConnectedSpice[0].id;
     
+  }
+
+  updateWine(){
+      this.wineService.updateWine(this.wineDetails).subscribe(data=>{console.log(data)});
   }
 
 

@@ -22,4 +22,9 @@ export class MeatService {
     const body= {};
     return this.http.patch<any>("http://localhost:8080/api/meat/isConnected/"+ id, body);
   }
+
+  deleteConnection(id: number){
+    const body = {};
+    return this.http.patch<any>("http://localhost:8080/api/meat/deleteConnection/"+ id, body);
+  }
 }

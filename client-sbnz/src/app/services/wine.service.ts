@@ -25,5 +25,15 @@ export class WineService {
 
   }
 
+  updateWine(wineUpdate: any){
+    let wine  = JSON.stringify(wineUpdate); 
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.put("http://localhost:8080/api/wine/updateWine",wine,
+    {
+         headers: headers
+
+    });
+ }
+
 }
 
