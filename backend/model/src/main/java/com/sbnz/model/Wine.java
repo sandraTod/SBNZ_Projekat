@@ -16,6 +16,8 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Wine {
 	
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -103,12 +105,12 @@ public class Wine {
 		this.sauceList = sauceList;
 	}
 
-	public Set<Spice> getIngredientList() {
+	public Set<Spice> getSpiceList() {
 		return spiceList;
 	}
 
-	public void setIngredientList(Set<Spice> ingredientList) {
-		this.spiceList = ingredientList;
+	public void setSpiceList(Set<Spice> spiceList) {
+		this.spiceList = spiceList;
 	}
 	
 	

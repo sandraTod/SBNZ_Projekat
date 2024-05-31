@@ -26,4 +26,19 @@ public class WineServiceImpl implements WineService{
 		 wineRepository.deleteById(id);
 	}
 
+	@Override
+	public Wine updateWine(Wine toUpdate) {
+		Wine old = wineRepository.getReferenceById(toUpdate.getId());
+		old.setName(toUpdate.getName());
+		old.setYear(toUpdate.getYear());
+		old.setWineColor(toUpdate.getWineColor());
+		old.setWineSugar(toUpdate.getWineSugar());
+		old.setSpiceList(toUpdate.getSpiceList());
+		old.setSauceList(toUpdate.getSauceList());
+		old.setMeatList(toUpdate.getMeatList());
+		
+		Wine saved = wineRepository.save(old);
+		return saved;
+	}
+
 }
