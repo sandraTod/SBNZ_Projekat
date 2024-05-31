@@ -2,39 +2,40 @@
 <form class="row gx-3 align-items-center">
 
     <div class="form-group">
-        <label for="inputName" class="col-sm-2 col-form-label"><b>Naziv:</b></label>
+        <label for="wineName" class="col-sm-2 col-form-label"><b>Naziv:</b></label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name ="wineName" [(ngModel)]="wineDetails.name" >
+          <input type="text" class="form-control"  id = "wineName" name ="wineName" [(ngModel)]="wineDetails.name" >
         </div>
     </div>    
     <div class="form-group row" style="margin-top: 50px;">
-        <label for="inputName" class="col-sm-2 col-form-label" ><b>Godina:</b></label>
+        <label for="wineYear" class="col-sm-2 col-form-label" ><b>Godina:</b></label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" name = "wineYear" [(ngModel)]="wineDetails.year"  style="margin-left:-30px ;" >
+          <input type="text" class="form-control" name = "wineYear" id = "wineYear"[(ngModel)]="wineDetails.year"  style="margin-left:-30px ;" >
         </div> 
 
-            <label for="selectField" class="col-sm-2 col-form-label" ><b>Boja:</b></label>
+            <label for="wineColor" class="col-sm-2 col-form-label" ><b>Boja:</b></label>
             <div class = "col-sm-4" style="margin-left:-50px ;">
-                <select  class="form-select form-select " name = "wineColor" [(ngModel)]="wineDetails.wineColor" aria-label="Small select example">
+                <select  class="form-select form-select " name = "wineColor"  id = "wineColor" [(ngModel)]="wineDetails.wineColor" aria-label="Small select example">
                     <option  [value]="option1">{{option1}}</option>
                     <option [value]="option2" >{{option2}}</option>
                 </select>
             </div>
 
-            <label for="selectField" class="col-sm-2 col-form-label" style="margin-top: 30px; margin-left: 100px;"><b>Suvo/Slatko:</b></label>
-            <div class = "col-sm-5" style=" margin-top: 30px;">
-                <select class="form-select form-select "name ="wineSugar" [(ngModel)]=" wineDetails.wineSugar" aria-label="Small select example">
+            <label for="wineSugar" class="col-sm-2 col-form-label" style="margin-top: 30px; margin-left: 100px;"><b>Suvo/Slatko:</b></label>
+            <div class = "col-sm-5"  style=" margin-top: 30px;">
+                <select class="form-select form-select "name ="wineSugar"  id = "wineSugar" [(ngModel)]=" wineDetails.wineSugar" aria-label="Small select example">
                     <option [value]="optionSugar1">{{optionSugar1}}</option>
                     <option [value]="optionSugar2">{{optionSugar2}}</option>
                 </select>
             </div>
             <div class="w-100"></div>
 
-            <label for="selectField" class="col-sm-1 col-form-label" style="margin-top: 30px;"><b>Meso:</b></label>
-            <div class = "col-sm-4" style=" margin-top: 30px;">
-                <select class="form-select form-select "name ="meats" [(ngModel)]="selectedMeat" aria-label="Small select example">
+            <label for="meatSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;"><b>Meso:</b></label>
+            <div class = "col-sm-4"   style=" margin-top: 30px;">
+                <select class="form-select form-select "name ="meats" id = "meatSelect" [(ngModel)]="selectedMeat" aria-label="Small select example">
                     <option *ngFor=" let meat of notConnectedMeat" [value]=" meat.id">{{meat.name}}</option>
                 </select>
+                {{selectedMeat}}
                 <button  class="btn btn-success btn-sm " style="margin-left: 130px; margin-top: 5px;" (click) = "addMeat()">Dodaj</button>
             </div>
 
@@ -46,18 +47,36 @@
                 </div>
             </div>
 
-            <label for="selectField" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Sosevi:</b></label>
-            <div class = "col-sm-4 selectSauce" style=" margin-top: 30px; margin-left: -70px;">
-                <select class="form-select form-select "name ="sauces" [(ngModel)]="selectedSauce" aria-label="Small select example">
+            <label for="sauceSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Sosevi:</b></label>
+            <div class = "col-sm-4 selectSauce"  style=" margin-top: 30px; margin-left: -70px;">
+                <select class="form-select form-select "name ="sauces" id = "sauceSelect" [(ngModel)]="selectedSauce" aria-label="Small select example">
                     <option *ngFor=" let sauce of notConnectedSauce" [value]=" sauce.id">{{sauce.name}}</option>
                 </select>
-                <button  class="btn btn-success btn-sm " style="margin-left: 114px; margin-top: 5px;" (click) = "addSauce()">Dodaj</button>
+                {{selectedSauce}}
+                <button  class="btn btn-success btn-sm " style="margin-left: 125px; margin-top: 5px;" (click) = "addSauce()">Dodaj</button>
             </div>
 
             <div class="list-group scrollable-list" style=" margin-left: 74px">
                 <div *ngFor="let item of wineDetails.sauceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSauce(i)">
+                  </button>
+                </div>
+            </div>
+
+            <label for="spiceSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Zacini:</b></label>
+            <div class = "col-sm-4 selectSauce" style=" margin-top: 30px; margin-left: -70px;">
+                <select class="form-select form-select "name ="spices" id = spiceSelect [(ngModel)]="selectedSpice" aria-label="Small select example">
+                    <option *ngFor=" let spice of notConnectedSpice" [value]=" spice.id">{{spice.name}}</option>
+                </select>
+                {{selectedSpice}}
+                <button  class="btn btn-success btn-sm " style="margin-left: 125px; margin-top: 5px;" (click) = "addSpice()">Dodaj</button>
+            </div>
+
+            <div class="list-group scrollable-list" style=" margin-left: 74px">
+                <div *ngFor="let item of wineDetails.ingredientList; let i = index" class="list-group-item">
+                 <a> {{ item.name }} </a>
+                  <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSpice(i)">
                   </button>
                 </div>
             </div>

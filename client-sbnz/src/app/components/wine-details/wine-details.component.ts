@@ -1,3 +1,4 @@
+import { SpiceService } from './../../services/spice.service';
 import { SauceService } from './../../services/sauce.service';
 import { Meat } from './../../model/meat';
 import { MeatService } from './../../services/meat.service';
@@ -26,11 +27,14 @@ export class WineDetailsComponent implements OnInit {
   selectedSauce!: any;
   notConnectedSauce!: any[];
 
+  selectedSpice!: any;
+  notConnectedSpice!: any[];
+
 
   
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<WineDetailsComponent>,
-              private meatService: MeatService, private sauceService: SauceService) { }
+              private meatService: MeatService, private sauceService: SauceService, private spiceService: SpiceService) { }
 
   ngOnInit(): void {
 
@@ -43,11 +47,15 @@ export class WineDetailsComponent implements OnInit {
 
     this.meatService.getMeats().subscribe(data =>{ 
       this.notConnectedMeat = data;
-      this.selectedMeat = data[0].id }); 
+      this.selectedMeat = data[0].id;  console.log(data);}); 
 
     this.sauceService.getSauces().subscribe(data => {
       this.notConnectedSauce = data;
       this.selectedSauce = data[0].id }); 
+
+    this.spiceService.getSpices().subscribe(data =>{
+      this.notConnectedSpice = data;
+      this.selectedSpice = data[0].id});
   }
 
   selectOption(){
@@ -81,9 +89,10 @@ export class WineDetailsComponent implements OnInit {
           break;
         }
     }
-    const index = this.notConnectedMeat.findIndex(i => i.id === this.selectedMeat);
-      this.notConnectedMeat.splice(index, 1);
-      this.meatService.updateIsConnected(this.selectedMeat).subscribe(()=>{console.log("Uspesan subscribe")});
+    const index = this.notConnectedMeat.findIndex(i => i.id == this.selectedMeat);
+    this.notConnectedMeat.splice(index, 1);
+    this.meatService.updateIsConnected(this.selectedMeat).subscribe(()=>{console.log("Uspesan subscribe")});
+    this.selectedMeat = this.notConnectedMeat[0].id;
     
   }
 
@@ -100,6 +109,26 @@ export class WineDetailsComponent implements OnInit {
     const index = this.notConnectedSauce.findIndex(i => i.id === this.selectedSauce);
       this.notConnectedSauce.splice(index, 1);
       this.sauceService.updateIsConnected(this.selectedSauce).subscribe(()=>{console.log("Uspesan subscribe")});
+      this.selectedSauce = this.notConnectedSauce[0].id;
+    
+  }
+
+
+  deleteSpice(index: number){
+    this.wineDetails.ingredientList.splice(index,1);
+  }
+  
+  addSpice(){
+    for(let i = 0; i<this.notConnectedSpice.length; i++){
+        if(this.notConnectedSpice[i].id == this.selectedSpice){
+          this.wineDetails.ingredientList.push(this.notConnectedSpice[i]);
+          break;
+        }
+    }
+    const index = this.notConnectedSpice.findIndex(i => i.id === this.selectedSpice);
+      this.notConnectedSpice.splice(index, 1);
+      this.spiceService.updateIsConnected(this.selectedSpice).subscribe(()=>{console.log("Uspesan subscribe")});
+      this.selectedSpice = this.notConnectedSpice[0].id;
     
   }
 

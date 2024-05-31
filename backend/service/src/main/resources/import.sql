@@ -19,6 +19,12 @@ insert into meat(id,name,national_cuisine,wine_id,is_connected) values(7,"meso7"
 insert into meat(id,name,national_cuisine,wine_id,is_connected) values(8,"meso8","MAXICAN",4,true)
 insert into meat(id,name,national_cuisine,wine_id,is_connected) values(9,"meso9","MAXICAN",null,false)
 insert into meat(id,name,national_cuisine,wine_id,is_connected) values(10,"meso10","CHINESE",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(11,"meso11","MAXICAN",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(12,"meso12","CHINESE",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(13,"meso13","MAXICAN",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(14,"meso14","CHINESE",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(15,"meso15","MAXICAN",null,false)
+insert into meat(id,name,national_cuisine,wine_id,is_connected) values(16,"meso16","CHINESE",null,false)
 
 
 --Sosevi
@@ -32,6 +38,9 @@ insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(7,"sos
 insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(8,"sos8", "MAXICAN",null,false)
 insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(9,"sos9", "MAXICAN",null,false)
 insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(10,"sos10","CHINESE",null,false)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(11,"sos11", "MAXICAN",null,false)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(12,"sos12", "MAXICAN",null,false)
+insert into sauce(id,name, national_cuisine, wine_id,is_connected) values(13,"sos13","CHINESE",null,false)
 
 --Zacini
 insert into spice(id, name, national_cuisine, wine_id,is_connected) values(1,"zacin1","ITALIAN",1,true)
@@ -44,6 +53,9 @@ insert into spice(id, name, national_cuisine, wine_id,is_connected) values(7,"za
 insert into spice(id, name, national_cuisine, wine_id,is_connected) values(8,"zacin8","MAXICAN",null,false)
 insert into spice(id, name, national_cuisine, wine_id,is_connected) values(9,"zacin9","MAXICAN",null,false)
 insert into spice(id, name, national_cuisine, wine_id,is_connected) values(10,"zacin10","CHINESE",null,false)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(11,"zacin11","MAXICAN",null,false)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(12,"zacin12","MAXICAN",null,false)
+insert into spice(id, name, national_cuisine, wine_id,is_connected) values(13,"zacin13","CHINESE",null,false)
 
 
 
