@@ -36,4 +36,13 @@ public class SpiceServiceImpl implements SpiceService{
 		
 	}
 
+	@Override
+	public void deleteConnection(Long id) {
+		Spice spice  = spiceRepository.getReferenceById(id);
+		spice.setConnected(false);
+		spiceRepository.save(spice);
+		System.out.println(spice.isConnected());
+		
+	}
+
 }
