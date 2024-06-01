@@ -7,6 +7,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Wine } from 'src/app/model/wine';
 import { AnyForUntypedForms } from '@angular/forms';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-wine-details',
@@ -102,8 +103,11 @@ export class WineDetailsComponent implements OnInit {
     
   }
 
-  deleteSauce(index: number){
+  deleteSauce(index: number, id: any){
+    this.notConnectedSauce.push(this.wineDetails.sauceList[index]);
     this.wineDetails.sauceList.splice(index,1);
+    this.sauceService.deleteConnection(id).subscribe();
+    
   }
   addSauce(){
     for(let i = 0; i<this.notConnectedSauce.length; i++){

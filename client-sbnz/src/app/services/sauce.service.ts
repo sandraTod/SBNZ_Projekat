@@ -23,5 +23,10 @@ export class SauceService {
     return this.http.patch<any>("http://localhost:8080/api/sauce/isConnected/"+ id, body);
   }
 
+  deleteConnection(id: number){
+    const body = {};
+    return this.http.patch<any>("http://localhost:8080/api/sauce/deleteConnection/"+ id, body);
+  }
+
 
 }

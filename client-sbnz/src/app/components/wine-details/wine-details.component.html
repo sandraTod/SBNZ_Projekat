@@ -59,7 +59,7 @@
             <div class="list-group scrollable-list" style=" margin-left: 74px">
                 <div *ngFor="let item of wineDetails.sauceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
-                  <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSauce(i)">
+                  <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSauce(i,item.id)">
                   </button>
                 </div>
             </div>
