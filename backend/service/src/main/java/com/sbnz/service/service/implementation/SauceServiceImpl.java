@@ -36,4 +36,13 @@ public class SauceServiceImpl implements SauceService {
 		
 	}
 
+	@Override
+	public void deleteConnection(Long id) {
+		Sauce sauce = sauceRepository.getReferenceById(id);
+		sauce.setConnected(false);
+		sauceRepository.save(sauce);
+		System.out.println(sauce.isConnected());
+		
+	}
+
 }

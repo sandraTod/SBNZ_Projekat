@@ -11,5 +11,7 @@ public interface MeatService {
 	Collection<Meat> getMeats();
 	
 	void updateIsConnected(Long id);
+	
+	void deleteConnection(Long id);
 
 }

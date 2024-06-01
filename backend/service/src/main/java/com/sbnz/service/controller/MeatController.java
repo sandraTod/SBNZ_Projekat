@@ -56,6 +56,17 @@ public class MeatController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@RequestMapping(
+			value = "/deleteConnection/{id}",
+			method = RequestMethod.	PATCH,
+			produces = MediaType.APPLICATION_JSON_VALUE
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity <?> deleteConnection(@PathVariable Long id){
+		meatService.deleteConnection(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	
 
 }

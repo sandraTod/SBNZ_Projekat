@@ -34,4 +34,13 @@ public class MeatServiceImpl implements MeatService {
 		System.out.println(meat.isConnected());
 	}
 
+	@Override
+	public void deleteConnection(Long id) {
+		Meat meat = meatRepository.getReferenceById(id);
+		meat.setConnected(false);
+		meatRepository.save(meat);
+		System.out.println(meat.isConnected());
+		
+	}
+
 }
