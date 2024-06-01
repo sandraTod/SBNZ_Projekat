@@ -22,4 +22,9 @@ export class SpiceService {
     const body= {};
     return this.http.patch<any>("http://localhost:8080/api/spice/isConnected/"+ id, body);
   }
+
+  deleteConnection(id: number){
+    const body = {};
+    return this.http.patch<any>("http://localhost:8080/api/spice/deleteConnection/"+ id, body);
+  }
 }

@@ -124,8 +124,10 @@ export class WineDetailsComponent implements OnInit {
   }
 
 
-  deleteSpice(index: number){
+  deleteSpice(index: number, id:any){
+    this.notConnectedSpice.push(this.wineDetails.spiceList[index]);
     this.wineDetails.spiceList.splice(index,1);
+    this.spiceService.deleteConnection(id).subscribe();
   }
   
   addSpice(){
