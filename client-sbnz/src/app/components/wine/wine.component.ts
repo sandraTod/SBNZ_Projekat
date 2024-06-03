@@ -5,6 +5,7 @@ import { WineDetailsComponent } from '../wine-details/wine-details.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 import { stringify } from 'querystring';
+import { AddWineComponent } from '../add-wine/add-wine.component';
 
 @Component({
   selector: 'app-wine',
@@ -51,9 +52,18 @@ export class WineComponent implements OnInit {
 
       }
 
-});
+    });
 
-    
+  }
+
+  addWine(){
+
+    var popup = this.dialog.open(AddWineComponent,{
+
+      width: '50%',
+      height: '600px',
+
+    });
 
   }
 

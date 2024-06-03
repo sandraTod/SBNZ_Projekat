@@ -1,37 +1,36 @@
-
-<form class="row gx-3 align-items-center">
-
+<form class="row gx-3 align-items-center" method="post" action=""  #addWineForm ="ngForm">
     <div class="form-group">
         <label for="wineName" class="col-sm-2 col-form-label"><b>Naziv:</b></label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control"  id = "wineName" name ="wineName" [(ngModel)]="wineDetails.name" >
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "wineName" name ="wineName" #name = "ngModel" [(ngModel)]="newWine.name" required>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger" > Obavezno polje</div>
         </div>
-    </div>    
+    </div> 
+
     <div class="form-group row" style="margin-top: 50px;">
-            <label for="wineYear" class="col-sm-2 col-form-label" ><b>Godina:</b></label>
+        <label for="wineYear" class="col-sm-2 col-form-label" ><b>Godina:</b></label>
             <div class="col-sm-4">
-            <input type="text" class="form-control" name = "wineYear" id = "wineYear"[(ngModel)]="wineDetails.year"  style="margin-left:-30px ;" >
+            <input type="text" class="form-control" name = "year" id = "wineYear" #year = "ngModel" [(ngModel)]="newWine.year"  style="margin-left:-30px ;" required >
             </div> 
 
             <label for="wineColor" class="col-sm-2 col-form-label" ><b>Boja:</b></label>
             <div class = "col-sm-4" style="margin-left:-50px ;">
-                <select  class="form-select form-select " name = "wineColor"  id = "wineColor" [(ngModel)]="wineDetails.wineColor" aria-label="Small select example">
-                    <option  [value]="option1">{{option1}}</option>
-                    <option [value]="option2" >{{option2}}</option>
+                <select  class="form-select form-select " name = "wineColor"  id = "color" #wineColor = "ngModel" [(ngModel)]="newWine.wineColor" aria-label="Small select example" required>
+                    <option  value="WHITE">WHITE</option>
+                    <option value="RED" >RED</option>
                 </select>
             </div>
 
             <label for="wineSugar" class="col-sm-2 col-form-label" style="margin-top: 30px; margin-left: 100px;"><b>Suvo/Slatko:</b></label>
             <div class = "col-sm-5"  style=" margin-top: 30px;">
-                <select class="form-select form-select "name ="wineSugar"  id = "wineSugar" [(ngModel)]=" wineDetails.wineSugar" aria-label="Small select example">
-                    <option [value]="optionSugar1">{{optionSugar1}}</option>
-                    <option [value]="optionSugar2">{{optionSugar2}}</option>
+                <select class="form-select form-select "name ="wineSugar"  id = "wineSugar" [(ngModel)]=" newWine.wineSugar" aria-label="Small select example">
+                    <option value="DRY">DRY</option>
+                    <option value="SWEET">SWEET</option>
                 </select>
             </div>
-            <div class="w-100"></div>
 
-            <label for="meatSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;"><b>Meso:</b></label>
-            <div class = "col-sm-4"   style=" margin-top: 30px;">
+            <label for="meatSelect" class="col-sm-1 col-form-label" style="margin-top: 30px; margin-right: 5cm;"><b>Meso:</b></label>
+            <div class = "col-sm-4"   style=" margin-top: 30px; margin-left: -5cm;">
                 <select class="form-select form-select "name ="meats" id = "meatSelect" [(ngModel)]="selectedMeat" aria-label="Small select example">
                     <option *ngFor=" let meat of notConnectedMeat" [value]=" meat.id">{{meat.name}}</option>
                 </select>
@@ -40,7 +39,10 @@
             </div>
 
             <div class="list-group scrollable-list">
-                <div *ngFor="let item of wineDetails.meatList; let i = index" class="list-group-item">
+                <div *ngIf="newWine.meatList.length === 0" class="list-group-item">
+                    Dodato meso
+                </div>
+                <div *ngFor="let item of newWine.meatList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteMeat(i,item.id)">
                   </button>
@@ -57,7 +59,10 @@
             </div>
 
             <div class="list-group scrollable-list" style=" margin-left: 74px">
-                <div *ngFor="let item of wineDetails.sauceList; let i = index" class="list-group-item">
+                <div *ngIf="newWine.sauceList.length === 0" class="list-group-item">
+                    Dodati sosevi
+                </div>
+                <div *ngFor="let item of newWine.sauceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSauce(i,item.id)">
                   </button>
@@ -74,16 +79,16 @@
             </div>
 
             <div class="list-group scrollable-list" style=" margin-left: 74px">
-                <div *ngFor="let item of wineDetails.spiceList; let i = index" class="list-group-item">
+                <div *ngIf="newWine.spiceList.length === 0" class="list-group-item">
+                    Dodati zacini
+                </div>
+                <div *ngFor="let item of newWine.spiceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSpice(i,item.id)">
                   </button>
                 </div>
             </div>
-
-            <div class="d-grid gap-3 col-6 mx-auto" style="margin-right: 160px; margin-top: 40px;">
-                <button  class="btn btn-warning btn-m " (click) = "updateWine()">Sacuvaj</button>
-            </div>
-              
+    
     </div>
-</form>    
+    <button class="btn btn-dark btn-block " style="margin-top: 50px;"  [disabled]="!addWineForm.form.valid" name="addWine"  type="submit"  >Submit</button>
+</form>

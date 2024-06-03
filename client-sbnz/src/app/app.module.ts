@@ -19,6 +19,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { WineDetailsComponent } from './components/wine-details/wine-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
+import { AddWineComponent } from './components/add-wine/add-wine.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DeleteEntityComponent } from './components/delete-entity/delete-entity.
     SpiceComponent,
     UserPageComponent,
     WineDetailsComponent,
-    DeleteEntityComponent
+    DeleteEntityComponent,
+    AddWineComponent
   ],
   imports: [
     BrowserModule,
