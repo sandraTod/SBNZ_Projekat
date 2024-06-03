@@ -11,5 +11,7 @@ public interface WineService {
 	void deleteWine(Long id);
 	
 	Wine updateWine(Wine wine);
+	
+	void addWine(Wine wine);
 
 }

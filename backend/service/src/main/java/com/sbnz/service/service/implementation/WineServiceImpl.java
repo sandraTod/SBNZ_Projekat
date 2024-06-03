@@ -41,4 +41,9 @@ public class WineServiceImpl implements WineService{
 		return saved;
 	}
 
+	@Override
+	public void addWine(Wine wine) {
+		wineRepository.save(wine);
+	}
+
 }

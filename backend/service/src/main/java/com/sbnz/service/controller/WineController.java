@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sbnz.model.Wine;
 import com.sbnz.service.service.WineService;
 
-import jakarta.websocket.server.PathParam;
-
 @RestController
 @RequestMapping(value = "/api/wine")
 public class WineController {
@@ -59,6 +57,19 @@ public class WineController {
 	ResponseEntity<?> updateWine(@RequestBody Wine toUpdate){
 		Wine updated = wineService.updateWine(toUpdate);
 		return new ResponseEntity<>(updated,HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/addWine",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity<?> addWine(@RequestBody Wine newWine){
+	    wineService.addWine(newWine);
+		return new ResponseEntity<>(HttpStatus.OK);
 	} 
 	
 	
