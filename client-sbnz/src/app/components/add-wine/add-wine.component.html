@@ -90,5 +90,5 @@
             </div>
     
     </div>
-    <button class="btn btn-dark btn-block " style="margin-top: 50px;"  [disabled]="!addWineForm.form.valid" name="addWine"  type="submit"  >Submit</button>
+    <button class="btn btn-dark btn-block " style="margin-top: 50px;"  [disabled]="!addWineForm.form.valid" name="addWine" (click)= "addWine()" type="submit"  >Submit</button>
 </form>

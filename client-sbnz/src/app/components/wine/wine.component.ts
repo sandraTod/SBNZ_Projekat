@@ -64,6 +64,11 @@ export class WineComponent implements OnInit {
       height: '600px',
 
     });
+    popup.afterClosed().subscribe(newWine =>{
+     
+      this.wineService.getAllWine().subscribe(data => {this.listOfWines = data})
+
+    });
 
   }
 

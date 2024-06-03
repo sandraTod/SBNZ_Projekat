@@ -6,8 +6,7 @@ import { MeatService } from './../../services/meat.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Wine } from 'src/app/model/wine';
-import { AnyForUntypedForms } from '@angular/forms';
-import { runInThisContext } from 'vm';
+
 
 @Component({
   selector: 'app-wine-details',

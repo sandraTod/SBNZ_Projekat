@@ -116,6 +116,10 @@ export class AddWineComponent implements OnInit {
     this.spiceService.deleteConnection(id).subscribe();
   }
 
+  addWine(){
+    this.wineService.addWine(this.newWine).subscribe();
+  }
+
 
 }
 
