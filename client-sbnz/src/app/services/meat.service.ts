@@ -1,6 +1,6 @@
 import { Meat } from './../model/meat';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -16,6 +16,15 @@ export class MeatService {
 
   getMeats():Observable<Meat[]>{
     return this.http.get<Meat[]>("http://localhost:8080/api/meat/getMeats");
+  }
+
+  deleteMeat(id:any){
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.put("http://localhost:8080/api/meat/deleteMeat/"+id,{
+
+        headers: headers
+    });
+
   }
 
   updateIsConnected(id: number){

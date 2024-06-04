@@ -41,14 +41,16 @@ export class WineComponent implements OnInit {
   deletePopup(id:any){
 
     var deletePopup = this.dialog.open(DeleteEntityComponent,{
-      width: '30%',
-      height: '200px',
+      width: '28%',
+      height: '180px',
 
     });
     deletePopup.afterClosed().subscribe(item =>{ 
       if(item == true){
+        this.wineService.deleteWine(id).subscribe();
 
-        this.wineService.deleteWine(id).subscribe()
+        const index = this.listOfWines.findIndex(i => i.id == id);
+        this.listOfWines.splice(index, 1);
 
       }
 

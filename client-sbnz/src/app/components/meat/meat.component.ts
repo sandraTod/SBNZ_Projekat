@@ -27,14 +27,17 @@ export class MeatComponent implements OnInit {
   deletePopup(id:any){
 
     var deletePopup = this.dialog.open(DeleteEntityComponent,{
-      width: '30%',
-      height: '200px',
+      width: '28%',
+      height: '180px',
 
     });
     deletePopup.afterClosed().subscribe(item =>{ 
       if(item == true){
-
-        //this.wineService.deleteWine(id).subscribe()
+        this.meatService.deleteMeat(id).subscribe();
+        
+        const index = this.listOfMeat.findIndex(i => i.id == id);
+        this.listOfMeat.splice(index, 1);
+        
 
       }
 
