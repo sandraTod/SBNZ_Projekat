@@ -10,6 +10,8 @@ public interface MeatService {
 	
 	Collection<Meat> getMeats();
 	
+	void deleteMeat(Long id);
+	
 	void updateIsConnected(Long id);
 	
 	void deleteConnection(Long id);

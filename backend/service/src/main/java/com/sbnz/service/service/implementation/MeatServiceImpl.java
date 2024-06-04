@@ -43,4 +43,10 @@ public class MeatServiceImpl implements MeatService {
 		
 	}
 
+	@Override
+	public void deleteMeat(Long id) {
+		meatRepository.deleteById(id);
+		
+	}
+
 }

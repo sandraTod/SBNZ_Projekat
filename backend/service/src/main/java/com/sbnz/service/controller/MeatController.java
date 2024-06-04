@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sbnz.model.Meat;
+import com.sbnz.model.Wine;
+import com.sbnz.service.repository.MeatRepository;
 import com.sbnz.service.service.MeatService;
 
 @RestController
@@ -44,6 +46,18 @@ public class MeatController {
 		Collection<Meat> meatList = meatService.getMeats();
 		return new ResponseEntity<>(meatList, HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value = "/deleteMeat/{id}",
+			method = RequestMethod.PUT
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity <Collection<Wine>> deleteMeat(@PathVariable Long id){
+		meatService.deleteMeat(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(
 			value = "/isConnected/{id}",
