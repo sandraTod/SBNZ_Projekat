@@ -45,4 +45,9 @@ public class SpiceServiceImpl implements SpiceService{
 		
 	}
 
+	@Override
+	public void deleteSpice(Long id) {
+		spiceRepository.deleteById(id);
+	}
+
 }

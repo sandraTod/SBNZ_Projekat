@@ -66,5 +66,16 @@ public class SpiceController {
 		spiceService.deleteConnection(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value = "/deleteSpice/{id}",
+			method = RequestMethod.PUT
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity <?> deleteSpice(@PathVariable Long id){
+		spiceService.deleteSpice(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }
