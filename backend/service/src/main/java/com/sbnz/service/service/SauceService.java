@@ -11,6 +11,8 @@ public interface SauceService {
 	
 	void deleteSauce(Long id);
 	
+	void addSauce(Sauce sauce);
+	
 	void updateIsConnected(Long id);
 	
 	void deleteConnection(Long id);

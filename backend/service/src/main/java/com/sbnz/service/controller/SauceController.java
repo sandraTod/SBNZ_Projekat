@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,6 +77,19 @@ public class SauceController {
 	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
 	ResponseEntity <?> deleteSauce(@PathVariable Long id){
 		sauceService.deleteSauce(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/addSauce",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity<?> addSauce(@RequestBody Sauce sauce){
+	    sauceService.addSauce(sauce);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

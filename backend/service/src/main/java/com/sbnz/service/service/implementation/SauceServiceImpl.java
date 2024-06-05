@@ -51,4 +51,10 @@ public class SauceServiceImpl implements SauceService {
 		
 	}
 
+	@Override
+	public void addSauce(Sauce sauce) {
+		sauceRepository.save(sauce);
+		
+	}
+
 }

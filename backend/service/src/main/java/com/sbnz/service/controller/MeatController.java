@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sbnz.model.Meat;
 import com.sbnz.model.Wine;
-import com.sbnz.service.repository.MeatRepository;
 import com.sbnz.service.service.MeatService;
 
 @RestController
