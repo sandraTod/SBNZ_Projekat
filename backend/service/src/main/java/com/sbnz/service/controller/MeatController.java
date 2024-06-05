@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -78,6 +79,19 @@ public class MeatController {
 	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
 	ResponseEntity <?> deleteConnection(@PathVariable Long id){
 		meatService.deleteConnection(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/addMeat",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity<?> addMeat(@RequestBody Meat meat){
+	    meatService.addMeat(meat);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

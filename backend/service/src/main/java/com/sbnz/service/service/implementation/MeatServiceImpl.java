@@ -49,4 +49,10 @@ public class MeatServiceImpl implements MeatService {
 		
 	}
 
+	@Override
+	public void addMeat(Meat meat) {
+		meatRepository.save(meat);
+		
+	}
+
 }
