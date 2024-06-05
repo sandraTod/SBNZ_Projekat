@@ -21,6 +21,20 @@ export class SpiceComponent implements OnInit {
   }
 
   deletePopup(id: any){
+    var deletePopup = this.dialog.open(DeleteEntityComponent,{
+      width: '28%',
+      height: '180px',
+
+    });
+    deletePopup.afterClosed().subscribe(item =>{ 
+      if(item == true){
+        this.spiceService.deleteSpice(id).subscribe();
+
+        const index = this.listOfSpices.findIndex(i => i.id == id);
+        this.listOfSpices.splice(index, 1);
+      }
+
+    });
 
   }
 
