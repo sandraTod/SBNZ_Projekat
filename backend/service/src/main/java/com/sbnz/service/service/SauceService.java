@@ -9,6 +9,8 @@ public interface SauceService {
 	
 	Collection<Sauce> getSauces();
 	
+	void deleteSauce(Long id);
+	
 	void updateIsConnected(Long id);
 	
 	void deleteConnection(Long id);

@@ -67,4 +67,15 @@ public class SauceController {
 		sauceService.deleteConnection(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value = "/deleteSauce/{id}",
+			method = RequestMethod.PUT
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity <?> deleteSauce(@PathVariable Long id){
+		sauceService.deleteSauce(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }

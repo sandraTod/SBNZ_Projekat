@@ -45,4 +45,10 @@ public class SauceServiceImpl implements SauceService {
 		
 	}
 
+	@Override
+	public void deleteSauce(Long id) {
+		sauceRepository.deleteById(id);
+		
+	}
+
 }
