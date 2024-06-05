@@ -36,4 +36,14 @@ export class MeatService {
     const body = {};
     return this.http.patch<any>("http://localhost:8080/api/meat/deleteConnection/"+ id, body);
   }
+
+  addMeat(meat: Meat){
+    let  newMeat = JSON.stringify(meat);
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post("http://localhost:8080/api/meat/addMeat",newMeat,
+    {
+      headers: headers
+    });
+  
+   }
 }

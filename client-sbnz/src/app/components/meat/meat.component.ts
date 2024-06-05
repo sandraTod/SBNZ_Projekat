@@ -3,6 +3,7 @@ import { MeatService } from './../../services/meat.service';
 import { Component, OnInit } from '@angular/core';
 import { Meat } from 'src/app/model/meat';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
+import { AddMeatComponent } from '../add-meat/add-meat.component';
 
 @Component({
   selector: 'app-meat',
@@ -21,7 +22,6 @@ export class MeatComponent implements OnInit {
   }
 
 
-  addMeat(){}
 
 
   deletePopup(id:any){
@@ -34,7 +34,7 @@ export class MeatComponent implements OnInit {
     deletePopup.afterClosed().subscribe(item =>{ 
       if(item == true){
         this.meatService.deleteMeat(id).subscribe();
-        
+
         const index = this.listOfMeat.findIndex(i => i.id == id);
         this.listOfMeat.splice(index, 1);
         
@@ -45,4 +45,20 @@ export class MeatComponent implements OnInit {
 
   }
 
-}
+  addMeat(){
+    var popup = this.dialog.open(AddMeatComponent,{
+
+      width: '50%',
+      height: '325px',
+
+    });
+    popup.afterClosed().subscribe(newMeat =>{
+    
+      this.meatService.getAllMeat().subscribe(data => {this.listOfMeat = data});
+
+    });
+
+  }
+
+}  
+

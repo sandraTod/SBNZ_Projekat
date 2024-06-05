@@ -20,6 +20,7 @@ import { WineDetailsComponent } from './components/wine-details/wine-details.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
 import { AddWineComponent } from './components/add-wine/add-wine.component';
+import { AddMeatComponent } from './components/add-meat/add-meat.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddWineComponent } from './components/add-wine/add-wine.component';
     UserPageComponent,
     WineDetailsComponent,
     DeleteEntityComponent,
-    AddWineComponent
+    AddWineComponent,
+    AddMeatComponent
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,11 @@ import { Meat } from './../../model/meat';
 import { WineService } from './../../services/wine.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { WineDetailsComponent } from '../wine-details/wine-details.component';
 import { Wine } from 'src/app/model/wine';
 import { MeatService } from 'src/app/services/meat.service';
 import { SauceService } from 'src/app/services/sauce.service';
 import { SpiceService } from 'src/app/services/spice.service';
+import { WineComponent } from '../wine/wine.component';
 
 @Component({
   selector: 'app-add-wine',
@@ -15,7 +15,7 @@ import { SpiceService } from 'src/app/services/spice.service';
 })
 export class AddWineComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<WineDetailsComponent>,
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<WineComponent>,
               private wineService: WineService, private meatService: MeatService, private sauceService: SauceService, 
               private spiceService: SpiceService) { }
 
