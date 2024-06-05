@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Sauce } from 'src/app/model/sauce';
 import { SauceService } from 'src/app/services/sauce.service';
+import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 
 @Component({
   selector: 'app-sauce',
@@ -9,15 +11,31 @@ import { SauceService } from 'src/app/services/sauce.service';
 })
 export class SauceComponent implements OnInit {
 
-  listOfSauce!: Sauce[];
+  listOfSauces!: Sauce[];
 
-  constructor(private sauceService: SauceService) { }
+  constructor(private dialog: MatDialog ,private sauceService: SauceService) { }
 
   ngOnInit(): void {
-    this.sauceService.getAllSauce().subscribe(data => {this.listOfSauce = data});
+    this.sauceService.getAllSauce().subscribe(data => {this.listOfSauces = data});
   }
 
-  deletePopup(id: any){}
+  deletePopup(id: any){
+
+    var deletePopup = this.dialog.open(DeleteEntityComponent,{
+      width: '28%',
+      height: '180px',
+
+    });
+    deletePopup.afterClosed().subscribe(item =>{ 
+      if(item == true){
+        this.sauceService.deleteSauce(id).subscribe();
+
+        const index = this.listOfSauces.findIndex(i => i.id == id);
+        this.listOfSauces.splice(index, 1);
+      }
+
+    });
+  }
 
   addSauce(){}
 

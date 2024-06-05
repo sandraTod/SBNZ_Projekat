@@ -6,7 +6,7 @@
     </div>    
     <table class="table table-dark table-hover vw-100 vh-50 mytable ">   
         <tbody>
-        <tr *ngFor= "let s of listOfSauce">
+        <tr *ngFor= "let s of listOfSauces">
             <td>{{s.name}}</td>
             <td>{{s.nationalCuisine}}</td>
             <td><button class="btn btn-danger btn-sm" (click)=" deletePopup(s.id)">Obrisi</button></td>
