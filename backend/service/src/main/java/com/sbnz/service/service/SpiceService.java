@@ -12,6 +12,8 @@ public interface SpiceService {
 	Collection<Spice> getSpices();
 	
 	void deleteSpice(Long id);
+	 
+	void addSpice(Spice spice);
 	
 	void updateIsConnected(Long id);
 	

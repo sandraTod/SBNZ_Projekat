@@ -50,4 +50,10 @@ public class SpiceServiceImpl implements SpiceService{
 		spiceRepository.deleteById(id);
 	}
 
+	@Override
+	public void addSpice(Spice spice) {
+		spiceRepository.save(spice);
+		
+	}
+
 }
