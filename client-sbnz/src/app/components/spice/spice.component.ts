@@ -1,4 +1,8 @@
+import { MatDialog } from '@angular/material/dialog';
+import { SpiceService } from './../../services/spice.service';
 import { Component, OnInit } from '@angular/core';
+import { Spice } from 'src/app/model/spice';
+import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 
 @Component({
   selector: 'app-spice',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpiceComponent implements OnInit {
 
-  constructor() { }
+  listOfSpices!: Spice[];
+
+  constructor(private spiceService: SpiceService, private dialog: MatDialog, ) { }
 
   ngOnInit(): void {
+
+    this.spiceService.getAllSpices().subscribe(data => { this.listOfSpices = data});
+  }
+
+  deletePopup(id: any){
+
+  }
+
+  addSpice(){
+
   }
 
 }
