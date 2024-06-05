@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteEntityComponent } from './components/delete-entity/delete-entity.component';
 import { AddWineComponent } from './components/add-wine/add-wine.component';
 import { AddMeatComponent } from './components/add-meat/add-meat.component';
+import { AddSauceComponent } from './components/add-sauce/add-sauce.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddMeatComponent } from './components/add-meat/add-meat.component';
     WineDetailsComponent,
     DeleteEntityComponent,
     AddWineComponent,
-    AddMeatComponent
+    AddMeatComponent,
+    AddSauceComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ export class SauceService {
 
   constructor(private http: HttpClient) { }
 
-  getAllSauce():Observable<Sauce[]>{
+  getAllSauces():Observable<Sauce[]>{
     return this.http.get<Sauce[]>("http://localhost:8080/api/sauce/getAll");
   }
 
@@ -36,6 +36,16 @@ export class SauceService {
     const body = {};
     return this.http.patch<any>("http://localhost:8080/api/sauce/deleteConnection/"+ id, body);
   }
+
+  addSauce(sauce: Sauce){
+    let  newSauce = JSON.stringify(sauce);
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post("http://localhost:8080/api/sauce/addSauce",newSauce,
+    {
+      headers: headers
+    });
+  
+   }
 
 
 

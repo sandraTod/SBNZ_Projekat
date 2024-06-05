@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Sauce } from 'src/app/model/sauce';
 import { SauceService } from 'src/app/services/sauce.service';
+import { AddSauceComponent } from '../add-sauce/add-sauce.component';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 
 @Component({
@@ -16,7 +17,7 @@ export class SauceComponent implements OnInit {
   constructor(private dialog: MatDialog ,private sauceService: SauceService) { }
 
   ngOnInit(): void {
-    this.sauceService.getAllSauce().subscribe(data => {this.listOfSauces = data});
+    this.sauceService.getAllSauces().subscribe(data => {this.listOfSauces = data});
   }
 
   deletePopup(id: any){
@@ -37,6 +38,19 @@ export class SauceComponent implements OnInit {
     });
   }
 
-  addSauce(){}
+  addSauce(){
+    var popup = this.dialog.open(AddSauceComponent,{
+
+      width: '50%',
+      height: '325px',
+
+    });
+    popup.afterClosed().subscribe(newSauce =>{
+    
+      this.sauceService.getAllSauces().subscribe(data => {this.listOfSauces = data});
+
+    });
+
+  }
 
 }
