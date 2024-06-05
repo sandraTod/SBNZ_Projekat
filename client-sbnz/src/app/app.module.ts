@@ -22,6 +22,7 @@ import { DeleteEntityComponent } from './components/delete-entity/delete-entity.
 import { AddWineComponent } from './components/add-wine/add-wine.component';
 import { AddMeatComponent } from './components/add-meat/add-meat.component';
 import { AddSauceComponent } from './components/add-sauce/add-sauce.component';
+import { AddSpiceComponent } from './components/add-spice/add-spice.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddSauceComponent } from './components/add-sauce/add-sauce.component';
     DeleteEntityComponent,
     AddWineComponent,
     AddMeatComponent,
-    AddSauceComponent
+    AddSauceComponent,
+    AddSpiceComponent
   ],
   imports: [
     BrowserModule,

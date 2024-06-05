@@ -37,5 +37,15 @@ export class SpiceService {
 
   }
 
+  addSpice(spice: Spice){
+    let  newSpice = JSON.stringify(spice);
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post("http://localhost:8080/api/spice/addSpice",newSpice,
+    {
+      headers: headers
+    });
+  
+   }
+
 
 }
