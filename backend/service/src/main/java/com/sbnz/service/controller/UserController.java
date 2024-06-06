@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,17 @@ public class UserController {
 	ResponseEntity <Collection<User>> getAll(){
 		Collection<User> userList = userService.getAll();
 		return new ResponseEntity<>(userList,HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/deleteUser/{id}",
+			method = RequestMethod.PUT
+		
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity <?> deleteUser(@PathVariable Long id){
+		userService.deleteUser(id);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

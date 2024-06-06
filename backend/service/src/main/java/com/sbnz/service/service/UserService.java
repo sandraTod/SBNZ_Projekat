@@ -7,5 +7,7 @@ import com.sbnz.model.User;
 public interface UserService {
 	
 	Collection<User> getAll();
+	
+	void deleteUser(Long id);
 
 }
