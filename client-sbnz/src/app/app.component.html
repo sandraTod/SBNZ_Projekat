@@ -2,10 +2,11 @@
 
   <nav class="navbar  navbar-expand-sm navbar-dark bg-dark " *ngIf ="getRole() == 'SYSTEM_ADMIN'" style="height: 50px;" >
       <ul class="navbar-nav">
-        <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/wines']" routerLinkActive="router-link-active" >Vrste Vina</a> </li> 
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Vrste Mesa </a></li>
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/sauces']" routerLinkActive="router-link-active" >Vrste soseva </a></li>
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/spices']" routerLinkActive="router-link-active" > Vrste zacina </a></li>
+        <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/wines']" routerLinkActive="router-link-active" >Vina</a> </li> 
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Mesa </a></li>
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/sauces']" routerLinkActive="router-link-active" >Sosevi </a></li>
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/spices']" routerLinkActive="router-link-active" > Zacini </a></li>
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/users']" routerLinkActive="router-link-active" > Korisnici </a></li>
         <li calss = "nav-item"> <a class="nav-link " href="#" style=" color: white;font-size: small ; margin-left: 800px;" (click)="logout()">LOGOUT</a> </li>
       </ul>
        

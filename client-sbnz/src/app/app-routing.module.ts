@@ -1,3 +1,4 @@
+import { UserComponent } from './components/user/user.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { MeatComponent } from './components/meat/meat.component';
 import { SpiceComponent } from './components/spice/spice.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'meats', component: MeatComponent},
   {path: 'sauces', component: SauceComponent},
   {path: 'spices', component: SpiceComponent},
+  {path: 'users', component: UserComponent},
   {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent}
 ];

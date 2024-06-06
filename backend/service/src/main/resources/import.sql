@@ -1,8 +1,6 @@
 insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (1, "$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi", "admin@gmail.com", "admin","admin","adresa", "grad", "drzava","4125","SYSTEM_ADMIN")
 insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (2, "$2a$12$xk5MpChhW8jj0bWgoE2hkeYmlgvxPVcAzlJckE5js3c3G/VhwuFqe", "pera@gmail.com", "pera","peric","adresa123", "Sabac", "Srbija","52845","USER")
 insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (3, "$2a$12$xk5MpChhW8jj0bWgoE2hkeYmlgvxPVcAzlJckE5js3c3G/VhwuFqe", "pera@gmail.com", "pera","peric","adresa123", "Sabac", "Srbija","52845","USER")
-insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (4, "$2a$12$8OK45IGIILKTFKZmIHkMs.OlWcPH/HWr3bKlaIIDC6P/NItiw/ZRu", "zika123", "zika","zikic","adresa456", "Sabac", "Srbija","17842","USER")
-insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (5, "$2a$12$tpXWq5tETSdvOvyS4OI55.EItQzxIA/nFMf5dbCSsNJYtvoK9UhcO", "mika123", "mika","mikic","adresa789", "Beograd", "Srbija","0645476958","USER")
 
 --Vina
 insert into wine(id, name, year, wine_color, wine_sugar ) value (1,"Vino1","2023","WHITE","DRY")
