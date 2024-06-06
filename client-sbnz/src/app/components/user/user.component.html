@@ -1,0 +1,16 @@
+<div class="container p-0 m-0" >
+    <div class = "col d-flex align-items-center" style="margin-top: 30px;">   
+        <h3 class= "d-inline">Korisnici:</h3>
+        <button class="btn btn-success btn-m d-inline " id="btn-add" (click) = "addUser()">  Dodaj  </button>
+    </div>    
+    <table class="table table-dark table-hover vw-100 vh-50 mytable ">   
+        <tbody>
+        <tr *ngFor= "let u of listOfUsers">
+            <td>{{u.name}}</td>
+            <td>{{u.lastname}}</td>
+            <td>{{u.username}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)=" deletePopup(u.id)">Obrisi</button></td>
+        </tr>
+        </tbody>
+    </table>  
+</div>
