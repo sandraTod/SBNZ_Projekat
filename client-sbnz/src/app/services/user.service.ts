@@ -24,4 +24,13 @@ export class UserService {
   getAllUsers():Observable<User[]>{
     return this.http.get<User[]>("http://localhost:8080/api/user/getAll");
   }
+
+  deleteUser(id:any){
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.put("http://localhost:8080/api/user/deleteUser/"+id,{
+
+        headers: headers
+    });
+
+  }
 }
