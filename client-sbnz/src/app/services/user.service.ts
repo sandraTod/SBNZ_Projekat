@@ -33,4 +33,14 @@ export class UserService {
     });
 
   }
+
+  addUser(user: User){
+    let  newUser = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post("http://localhost:8080/api/user/addUser",newUser,
+    {
+      headers: headers
+    });
+  
+   }
 }

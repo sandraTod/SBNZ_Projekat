@@ -9,5 +9,6 @@ export interface User{
     city: string;
     state: string;
     phoneNum: string;
+    role: string;
 
 }
