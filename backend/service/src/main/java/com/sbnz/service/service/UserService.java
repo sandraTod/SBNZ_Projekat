@@ -9,5 +9,7 @@ public interface UserService {
 	Collection<User> getAll();
 	
 	void deleteUser(Long id);
+	
+	void addUser(User user);
 
 }

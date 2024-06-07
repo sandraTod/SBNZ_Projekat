@@ -3,6 +3,8 @@ package com.sbnz.service.service.implementation;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sbnz.model.User;
@@ -25,6 +27,15 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(Long id) {
 		// TODO Auto-generated method stub
 		userRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public void addUser(User user) {
+			PasswordEncoder enc = new BCryptPasswordEncoder();
+			String encoded = enc.encode(user.getPassword());
+			user.setPassword(encoded);
+			userRepository.save(user);
 		
 	}
 
