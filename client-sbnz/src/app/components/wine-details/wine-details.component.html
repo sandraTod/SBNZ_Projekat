@@ -35,11 +35,13 @@
                 <select class="form-select form-select "name ="meats" id = "meatSelect" [(ngModel)]="selectedMeat" aria-label="Small select example">
                     <option *ngFor=" let meat of notConnectedMeat" [value]=" meat.id">{{meat.name}}</option>
                 </select>
-                {{selectedMeat}}
                 <button  class="btn btn-success btn-sm " style="margin-left: 130px; margin-top: 5px;" (click) = "addMeat()">Dodaj</button>
             </div>
 
             <div class="list-group scrollable-list">
+                <div *ngIf="wineDetails.meatList.length === 0" class="list-group-item">
+                    Dodato meso
+                </div>
                 <div *ngFor="let item of wineDetails.meatList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteMeat(i,item.id)">
@@ -52,11 +54,13 @@
                 <select class="form-select form-select "name ="sauces" id = "sauceSelect" [(ngModel)]="selectedSauce" aria-label="Small select example">
                     <option *ngFor=" let sauce of notConnectedSauce" [value]=" sauce.id">{{sauce.name}}</option>
                 </select>
-                {{selectedSauce}}
                 <button  class="btn btn-success btn-sm " style="margin-left: 125px; margin-top: 5px;" (click) = "addSauce()">Dodaj</button>
             </div>
 
             <div class="list-group scrollable-list" style=" margin-left: 74px">
+                <div *ngIf="wineDetails.sauceList.length === 0" class="list-group-item">
+                    Dodati sosevi
+                </div>
                 <div *ngFor="let item of wineDetails.sauceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSauce(i,item.id)">
@@ -69,11 +73,13 @@
                 <select class="form-select form-select "name ="spices" id = spiceSelect [(ngModel)]="selectedSpice" aria-label="Small select example">
                     <option *ngFor=" let spice of notConnectedSpice" [value]=" spice.id">{{spice.name}}</option>
                 </select>
-                {{selectedSpice}}
                 <button  class="btn btn-success btn-sm " style="margin-left: 125px; margin-top: 5px;" (click) = "addSpice()">Dodaj</button>
             </div>
 
             <div class="list-group scrollable-list" style=" margin-left: 74px">
+                <div *ngIf="wineDetails.spiceList.length === 0" class="list-group-item">
+                    Dodati zacini
+                </div>
                 <div *ngFor="let item of wineDetails.spiceList; let i = index" class="list-group-item">
                  <a> {{ item.name }} </a>
                   <button  class="btn btn-light btn-sm float-end btn-with-icon" (click) = "deleteSpice(i,item.id)">
