@@ -21,27 +21,7 @@ public class MeatServiceImpl implements MeatService {
 		return meatRepository.findAll();
 	}
 
-	@Override
-	public Collection<Meat> getMeats() {
-		return meatRepository.findByIsConnectedFalse();
-	}
 
-	@Override
-	public void updateIsConnected(Long id) {
-		Meat meat = meatRepository.getReferenceById(id);
-		meat.setConnected(true);
-		meatRepository.save(meat);
-		System.out.println(meat.isConnected());
-	}
-
-	@Override
-	public void deleteConnection(Long id) {
-		Meat meat = meatRepository.getReferenceById(id);
-		meat.setConnected(false);
-		meatRepository.save(meat);
-		System.out.println(meat.isConnected());
-		
-	}
 
 	@Override
 	public void deleteMeat(Long id) {

@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -34,8 +36,10 @@ public class Wine {
 	@Enumerated(EnumType.STRING)
 	private WineSugar wineSugar;
 	
-	@OneToMany
-	@JoinColumn(name = "wine_id")
+	@ManyToMany
+	@JoinTable(name = "wine_meat",
+			   joinColumns = @JoinColumn(name = "wine_id"),
+			   inverseJoinColumns = @JoinColumn(name ="meat_id"))
 	private Set<Meat> meatList = new HashSet<>();
 	
 	@OneToMany

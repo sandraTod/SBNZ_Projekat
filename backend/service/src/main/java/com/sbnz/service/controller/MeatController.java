@@ -36,16 +36,7 @@ public class MeatController {
 		return new ResponseEntity<>(meatList, HttpStatus.OK);
 	}
 	
-	@RequestMapping(
-			value = "/getMeats",
-			method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <Collection<Meat>> getMeats(){
-		Collection<Meat> meatList = meatService.getMeats();
-		return new ResponseEntity<>(meatList, HttpStatus.OK);
-	}
+	
 	
 	@RequestMapping(
 			value = "/deleteMeat/{id}",
@@ -58,28 +49,6 @@ public class MeatController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	
-	@RequestMapping(
-			value = "/isConnected/{id}",
-			method = RequestMethod.	PATCH,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <?> updateIsConnected(@PathVariable Long id){
-		meatService.updateIsConnected(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	@RequestMapping(
-			value = "/deleteConnection/{id}",
-			method = RequestMethod.	PATCH,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <?> deleteConnection(@PathVariable Long id){
-		meatService.deleteConnection(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
 	
 	@RequestMapping(
 			value = "/addMeat",
