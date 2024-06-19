@@ -14,9 +14,6 @@ export class MeatService {
     return this.http.get<Meat[]>("http://localhost:8080/api/meat/getAll");
   }
 
-  getMeats():Observable<Meat[]>{
-    return this.http.get<Meat[]>("http://localhost:8080/api/meat/getMeats");
-  }
 
   deleteMeat(id:any){
     let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
@@ -27,15 +24,6 @@ export class MeatService {
 
   }
 
-  updateIsConnected(id: number){
-    const body= {};
-    return this.http.patch<any>("http://localhost:8080/api/meat/isConnected/"+ id, body);
-  }
-
-  deleteConnection(id: number){
-    const body = {};
-    return this.http.patch<any>("http://localhost:8080/api/meat/deleteConnection/"+ id, body);
-  }
 
   addMeat(meat: Meat){
     let  newMeat = JSON.stringify(meat);

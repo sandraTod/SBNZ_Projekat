@@ -6,6 +6,7 @@ import { MeatService } from './../../services/meat.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Wine } from 'src/app/model/wine';
+import { kMaxLength } from 'buffer';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class WineDetailsComponent implements OnInit {
   optionSugar1!: string;
   optionSugar2!: string;
 
-  notConnectedMeat!: any[];
+  notAddedMeats!: any[];
   selectedMeat!: any;
   
   selectedSauce!: any;
@@ -48,9 +49,7 @@ export class WineDetailsComponent implements OnInit {
     this.selectOption();
     this.selectOptionSugar();
 
-    this.meatService.getMeats().subscribe(data =>{ 
-      this.notConnectedMeat = data;
-      this.selectedMeat = data[0].id;  console.log(data);}); 
+    this.notAddedMeat();
 
     this.sauceService.getSauces().subscribe(data => {
       this.notConnectedSauce = data;
@@ -83,24 +82,40 @@ export class WineDetailsComponent implements OnInit {
 
   }
   deleteMeat(index: number,id:any){
-    this.notConnectedMeat.push(this.wineDetails.meatList[index]);
+    this.notAddedMeats.push(this.wineDetails.meatList[index]);
     this.wineDetails.meatList.splice(index,1);
-    this.meatService.deleteConnection(id).subscribe();
+  }
+
+
+  notAddedMeat(){
+    this.meatService.getAllMeat().subscribe(data =>{ 
+      this.notAddedMeats = data;
+      for(let i = 0; i<this.wineDetails.meatList.length; i++){
+        for(let j = 0; j< this.notAddedMeats.length; j++){
+          if(this.wineDetails.meatList[i].id == this.notAddedMeats[j].id){
+            this.notAddedMeats = this.notAddedMeats.filter(meat => meat.id !== this.wineDetails.meatList[i].id)
+            break;
+          }
+        }
+
+      }
+      this.selectedMeat = this.notAddedMeats[0].id;  console.log(data); console.log(this.notAddedMeats)}); 
+    
   }
 
   addMeat(){
-    for(let i = 0; i<this.notConnectedMeat.length; i++){
-        if(this.notConnectedMeat[i].id == this.selectedMeat){
-          this.wineDetails.meatList.push(this.notConnectedMeat[i]);
+    for(let i = 0; i<this.notAddedMeats.length; i++){
+        if(this.notAddedMeats[i].id == this.selectedMeat){
+          this.wineDetails.meatList.push(this.notAddedMeats[i]);
           break;
         }
     }
-    const index = this.notConnectedMeat.findIndex(i => i.id == this.selectedMeat);
-    this.notConnectedMeat.splice(index, 1);
-    this.meatService.updateIsConnected(this.selectedMeat).subscribe(()=>{console.log("Uspesan subscribe")});
-    this.selectedMeat = this.notConnectedMeat[0].id;
+    const index = this.notAddedMeats.findIndex(i => i.id == this.selectedMeat);
+    this.notAddedMeats.splice(index, 1);
+    this.selectedMeat = this.notAddedMeats[0].id;
     
   }
+
 
   deleteSauce(index: number, id: any){
     this.notConnectedSauce.push(this.wineDetails.sauceList[index]);

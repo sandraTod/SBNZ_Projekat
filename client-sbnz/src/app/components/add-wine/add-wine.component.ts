@@ -30,7 +30,7 @@ export class AddWineComponent implements OnInit {
 
   }
 
-  notConnectedMeat!: any[];
+  notAddedMeats!: any[];
   selectedMeat!: any;
   
   selectedSauce!: any;
@@ -43,8 +43,8 @@ export class AddWineComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.meatService.getMeats().subscribe(data =>{ 
-      this.notConnectedMeat = data;
+    this.meatService.getAllMeat().subscribe(data =>{ 
+      this.notAddedMeats = data;
       this.selectedMeat = data[0].id;  console.log(data);}); 
 
     this.sauceService.getSauces().subscribe(data => {
@@ -55,24 +55,23 @@ export class AddWineComponent implements OnInit {
       this.notConnectedSpice = data;
       this.selectedSpice = data[0].id});
   }
+  
 
   addMeat(){
-    for(let i = 0; i<this.notConnectedMeat.length; i++){
-        if(this.notConnectedMeat[i].id == this.selectedMeat){
-          this.newWine.meatList.push(this.notConnectedMeat[i]);
+    for(let i = 0; i<this.notAddedMeats.length; i++){
+        if(this.notAddedMeats[i].id == this.selectedMeat){
+          this.newWine.meatList.push(this.notAddedMeats[i]);
           break;
         }
     }
-    const index = this.notConnectedMeat.findIndex(i => i.id == this.selectedMeat);
-    this.notConnectedMeat.splice(index, 1);
-    this.meatService.updateIsConnected(this.selectedMeat).subscribe(()=>{console.log("Uspesan subscribe")});
-    this.selectedMeat = this.notConnectedMeat[0].id;
+    const index = this.notAddedMeats.findIndex(i => i.id == this.selectedMeat);
+    this.notAddedMeats.splice(index, 1);
+    this.selectedMeat = this.notAddedMeats[0].id;
     
   }
   deleteMeat(index: number,id:any){
-    this.notConnectedMeat.push(this.newWine.meatList[index]);
+    this.notAddedMeats.push(this.newWine.meatList[index]);
     this.newWine.meatList.splice(index,1);
-    this.meatService.deleteConnection(id).subscribe();
   }
 
   addSauce(){

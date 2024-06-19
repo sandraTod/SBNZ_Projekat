@@ -33,7 +33,7 @@
             <label for="meatSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;"><b>Meso:</b></label>
             <div class = "col-sm-4"   style=" margin-top: 30px;">
                 <select class="form-select form-select "name ="meats" id = "meatSelect" [(ngModel)]="selectedMeat" aria-label="Small select example">
-                    <option *ngFor=" let meat of notConnectedMeat" [value]=" meat.id">{{meat.name}}</option>
+                    <option *ngFor=" let meat of notAddedMeats" [value]=" meat.id">{{meat.name}}</option>
                 </select>
                 <button  class="btn btn-success btn-sm " style="margin-left: 130px; margin-top: 5px;" (click) = "addMeat()">Dodaj</button>
             </div>
