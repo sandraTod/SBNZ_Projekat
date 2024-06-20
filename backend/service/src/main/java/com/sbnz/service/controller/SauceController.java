@@ -35,40 +35,6 @@ public class SauceController {
 		return new ResponseEntity<>(sauceList,HttpStatus.OK);
 	}
 	
-	
-	@RequestMapping(
-			value = "/getSauces",
-			method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <Collection<Sauce>> getSauces(){
-		Collection<Sauce> sauceList = sauceService.getSauces();
-		return new ResponseEntity<>(sauceList, HttpStatus.OK);
-	}
-	
-	@RequestMapping(
-			value = "/isConnected/{id}",
-			method = RequestMethod.	PATCH,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <?> updateIsConnected(@PathVariable Long id){
-		sauceService.updateIsConnected(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	@RequestMapping(
-			value = "/deleteConnection/{id}",
-			method = RequestMethod.	PATCH,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <?> deleteConnection(@PathVariable Long id){
-		sauceService.deleteConnection(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
 	@RequestMapping(
 			value = "/deleteSauce/{id}",
 			method = RequestMethod.PUT

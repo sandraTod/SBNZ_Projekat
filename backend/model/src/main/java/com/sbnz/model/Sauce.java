@@ -20,9 +20,7 @@ public class Sauce {
 	
 	@Enumerated(EnumType.STRING)
 	private NationalCuisine nationalCuisine;
-	
-	@Column
-	private boolean isConnected = false;
+
 	
 	public Sauce() {}
 
@@ -48,14 +46,6 @@ public class Sauce {
 
 	public void setNationalCuisine(NationalCuisine nationalCuisine) {
 		this.nationalCuisine = nationalCuisine;
-	}
-
-	public boolean isConnected() {
-		return isConnected;
-	}
-
-	public void setConnected(boolean isConnected) {
-		this.isConnected = isConnected;
 	}
 	
 	

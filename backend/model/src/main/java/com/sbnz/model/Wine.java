@@ -42,8 +42,10 @@ public class Wine {
 			   inverseJoinColumns = @JoinColumn(name ="meat_id"))
 	private Set<Meat> meatList = new HashSet<>();
 	
-	@OneToMany
-	@JoinColumn(name = "wine_id")
+	@ManyToMany
+	@JoinTable(name = "wine_sauce",
+			   joinColumns = @JoinColumn(name = "wine_id"),
+			   inverseJoinColumns = @JoinColumn(name = "sauce_id"))
 	private Set<Sauce> sauceList = new HashSet<>();
 	
 	

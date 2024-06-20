@@ -22,30 +22,6 @@ public class SauceServiceImpl implements SauceService {
 	}
 
 	@Override
-	public Collection<Sauce> getSauces() {
-		// TODO Auto-generated method stub
-		return sauceRepository.findByIsConnectedFalse();
-	}
-
-	@Override
-	public void updateIsConnected(Long id) {
-		Sauce sauce = sauceRepository.getReferenceById(id);
-		sauce.setConnected(true);
-		sauceRepository.save(sauce);
-		System.out.println(sauce.isConnected());
-		
-	}
-
-	@Override
-	public void deleteConnection(Long id) {
-		Sauce sauce = sauceRepository.getReferenceById(id);
-		sauce.setConnected(false);
-		sauceRepository.save(sauce);
-		System.out.println(sauce.isConnected());
-		
-	}
-
-	@Override
 	public void deleteSauce(Long id) {
 		sauceRepository.deleteById(id);
 		

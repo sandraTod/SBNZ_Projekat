@@ -7,14 +7,8 @@ public interface SauceService {
 	
 	Collection<Sauce> getALL();
 	
-	Collection<Sauce> getSauces();
-	
 	void deleteSauce(Long id);
 	
 	void addSauce(Sauce sauce);
-	
-	void updateIsConnected(Long id);
-	
-	void deleteConnection(Long id);
 
 }
