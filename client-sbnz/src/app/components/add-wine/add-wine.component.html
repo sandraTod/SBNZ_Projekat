@@ -52,7 +52,7 @@
             <label for="sauceSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Sosevi:</b></label>
             <div class = "col-sm-4 selectSauce"  style=" margin-top: 30px; margin-left: -70px;">
                 <select class="form-select form-select "name ="sauces" id = "sauceSelect" [(ngModel)]="selectedSauce" aria-label="Small select example">
-                    <option *ngFor=" let sauce of notConnectedSauce" [value]=" sauce.id">{{sauce.name}}</option>
+                    <option *ngFor=" let sauce of notAddedSauces" [value]=" sauce.id">{{sauce.name}}</option>
                 </select>
                 {{selectedSauce}}
                 <button  class="btn btn-success btn-sm " style="margin-left: 125px; margin-top: 5px;" (click) = "addSauce()">Dodaj</button>

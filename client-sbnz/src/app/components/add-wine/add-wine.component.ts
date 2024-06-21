@@ -33,8 +33,8 @@ export class AddWineComponent implements OnInit {
   notAddedMeats!: any[];
   selectedMeat!: any;
   
+  notAddedSauces!: any[];
   selectedSauce!: any;
-  notConnectedSauce!: any[];
 
   selectedSpice!: any;
   notConnectedSpice!: any[];
@@ -47,8 +47,8 @@ export class AddWineComponent implements OnInit {
       this.notAddedMeats = data;
       this.selectedMeat = data[0].id;  console.log(data);}); 
 
-    this.sauceService.getSauces().subscribe(data => {
-      this.notConnectedSauce = data;
+    this.sauceService.getAllSauces().subscribe(data => {
+      this.notAddedSauces = data;
       this.selectedSauce = data[0].id }); 
 
     this.spiceService.getSpices().subscribe(data =>{
@@ -75,24 +75,21 @@ export class AddWineComponent implements OnInit {
   }
 
   addSauce(){
-    for(let i = 0; i<this.notConnectedSauce.length; i++){
-        if(this.notConnectedSauce[i].id == this.selectedSauce){
-          this.newWine.sauceList.push(this.notConnectedSauce[i]);
+    for(let i = 0; i<this.notAddedSauces.length; i++){
+        if(this.notAddedSauces[i].id == this.selectedSauce){
+          this.newWine.sauceList.push(this.notAddedSauces[i]);
           break;
         }
     }
-    const index = this.notConnectedSauce.findIndex(i => i.id == this.selectedSauce);
-      this.notConnectedSauce.splice(index, 1);
-      this.sauceService.updateIsConnected(this.selectedSauce).subscribe(()=>{console.log("Uspesan subscribe")});
-      this.selectedSauce = this.notConnectedSauce[0].id;
+    const index = this.notAddedSauces.findIndex(i => i.id == this.selectedSauce);
+      this.notAddedSauces.splice(index, 1);
+      this.selectedSauce = this.notAddedSauces[0].id;
     
   }
 
   deleteSauce(index: number, id: any){
-    this.notConnectedSauce.push(this.newWine.sauceList[index]);
+    this.notAddedSauces.push(this.newWine.sauceList[index]);
     this.newWine.sauceList.splice(index,1);
-    this.sauceService.deleteConnection(id).subscribe();
-    
   }
 
   addSpice(){

@@ -14,9 +14,6 @@ export class SauceService {
     return this.http.get<Sauce[]>("http://localhost:8080/api/sauce/getAll");
   }
 
-  getSauces():Observable<Sauce[]>{
-    return this.http.get<Sauce[]>("http://localhost:8080/api/sauce/getSauces");
-  }
 
   deleteSauce(id:any){
     let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
@@ -26,17 +23,6 @@ export class SauceService {
     });
 
   }
-
-  updateIsConnected(id: number){
-    const body= {};
-    return this.http.patch<any>("http://localhost:8080/api/sauce/isConnected/"+ id, body);
-  }
-
-  deleteConnection(id: number){
-    const body = {};
-    return this.http.patch<any>("http://localhost:8080/api/sauce/deleteConnection/"+ id, body);
-  }
-
   addSauce(sauce: Sauce){
     let  newSauce = JSON.stringify(sauce);
     let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
