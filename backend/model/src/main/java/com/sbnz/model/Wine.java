@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Wine {
@@ -48,9 +47,10 @@ public class Wine {
 			   inverseJoinColumns = @JoinColumn(name = "sauce_id"))
 	private Set<Sauce> sauceList = new HashSet<>();
 	
-	
-	@OneToMany
-	@JoinColumn(name = "wine_id")
+	@ManyToMany
+	@JoinTable(name = "wine_spice",
+			   joinColumns = @JoinColumn(name = "wine_id"),
+			   inverseJoinColumns = @JoinColumn(name = "spice_id"))
 	private Set<Spice> spiceList = new HashSet<>();
 	
 	public Wine() {}

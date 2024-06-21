@@ -20,30 +20,7 @@ public class SpiceServiceImpl implements SpiceService{
 		// TODO Auto-generated method stub
 		return spiceRepository.findAll();
 	}
-
-	@Override
-	public Collection<Spice> getSpices() {
-		// TODO Auto-generated method stub
-		return  spiceRepository.findByIsConnectedFalse();
-	}
-
-	@Override
-	public void updateIsConnected(Long id) {
-		Spice spice  = spiceRepository.getReferenceById(id);
-		spice.setConnected(true);
-		spiceRepository.save(spice);
-		System.out.println(spice.isConnected());
-		
-	}
-
-	@Override
-	public void deleteConnection(Long id) {
-		Spice spice  = spiceRepository.getReferenceById(id);
-		spice.setConnected(false);
-		spiceRepository.save(spice);
-		System.out.println(spice.isConnected());
-		
-	}
+	
 
 	@Override
 	public void deleteSpice(Long id) {

@@ -36,39 +36,6 @@ public class SpiceController {
 	
 	
 	@RequestMapping(
-			value = "/getSpices",
-			method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <Collection<Spice>> getSpices(){
-		Collection<Spice> spiceList = spiceService.getSpices();
-		return new ResponseEntity<>(spiceList, HttpStatus.OK);
-	}
-	
-	@RequestMapping(
-			value = "/isConnected/{id}",
-			method = RequestMethod.	PATCH,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <?> updateIsConnected(@PathVariable Long id){
-		spiceService.updateIsConnected(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	@RequestMapping(
-			value = "/deleteConnection/{id}",
-			method = RequestMethod.	PATCH,
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
-	ResponseEntity <?> deleteConnection(@PathVariable Long id){
-		spiceService.deleteConnection(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	@RequestMapping(
 			value = "/deleteSpice/{id}",
 			method = RequestMethod.PUT
 		
