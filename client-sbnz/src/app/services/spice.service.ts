@@ -13,20 +13,7 @@ export class SpiceService {
   getAllSpices():Observable<Spice[]>{
     return this.http.get<Spice[]>("http://localhost:8080/api/spice/getAll");
   }
-
-  getSpices():Observable<Spice[]>{
-    return this.http.get<Spice[]>("http://localhost:8080/api/spice/getSpices");
-  }
-
-  updateIsConnected(id: number){
-    const body= {};
-    return this.http.patch<any>("http://localhost:8080/api/spice/isConnected/"+ id, body);
-  }
-
-  deleteConnection(id: number){
-    const body = {};
-    return this.http.patch<any>("http://localhost:8080/api/spice/deleteConnection/"+ id, body);
-  }
+  
 
   deleteSpice(id:any){
     let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');

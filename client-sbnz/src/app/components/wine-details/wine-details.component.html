@@ -71,7 +71,7 @@
             <label for="spiceSelect" class="col-sm-1 col-form-label" style="margin-top: 30px;margin-right: 2cm;"><b>Zacini:</b></label>
             <div class = "col-sm-4 selectSpice" style=" margin-top: 30px; margin-left: -70px;">
                 <select class="form-select form-select "name ="spices" id = spiceSelect [(ngModel)]="selectedSpice" aria-label="Small select example">
-                    <option *ngFor=" let spice of notConnectedSpice" [value]=" spice.id">{{spice.name}}</option>
+                    <option *ngFor=" let spice of notAddedSpices" [value]=" spice.id">{{spice.name}}</option>
                 </select>
                 <button  class="btn btn-success btn-sm " style="margin-left: 125px; margin-top: 5px;" (click) = "addSpice()">Dodaj</button>
             </div>
