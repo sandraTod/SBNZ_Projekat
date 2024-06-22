@@ -16,16 +16,16 @@
             <label for="wineColor" class="col-sm-2 col-form-label" ><b>Boja:</b></label>
             <div class = "col-sm-4" style="margin-left:-50px ;">
                 <select  class="form-select form-select " name = "wineColor"  id = "color" #wineColor = "ngModel" [(ngModel)]="newWine.wineColor" aria-label="Small select example" required>
-                    <option  value="WHITE">WHITE</option>
-                    <option value="RED" >RED</option>
+                    <option  value="BELO">BELO</option>
+                    <option value="CRVENO" >CRVENO</option>
                 </select>
             </div>
 
             <label for="wineSugar" class="col-sm-2 col-form-label" style="margin-top: 30px; margin-left: 100px;"><b>Suvo/Slatko:</b></label>
             <div class = "col-sm-5"  style=" margin-top: 30px;">
                 <select class="form-select form-select "name ="wineSugar"  id = "wineSugar" [(ngModel)]=" newWine.wineSugar" aria-label="Small select example">
-                    <option value="DRY">DRY</option>
-                    <option value="SWEET">SWEET</option>
+                    <option value="SUVO">SUVO</option>
+                    <option value="SLATKO">SLATKO</option>
                 </select>
             </div>
 

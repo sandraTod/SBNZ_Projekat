@@ -2,6 +2,6 @@ package com.sbnz.model;
 
 public enum WineSugar {
 	
-	DRY, SWEET
+	SUVO, SLATKO
 
 }

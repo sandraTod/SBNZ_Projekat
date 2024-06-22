@@ -56,23 +56,23 @@ export class WineDetailsComponent implements OnInit {
   }
 
   selectOption(){
-    if(this.wineDetails.wineColor=="WHITE"){
+    if(this.wineDetails.wineColor=="BELO"){
 
-      this.option2 = "RED";
+      this.option2 = "CRVENO";
     }
     else{
-      this.option2 = "WHITE";
+      this.option2 = "BELO";
     }
     return this.option2;
   }
 
   selectOptionSugar(){
-    if(this.wineDetails.wineSugar == "SWEET"){
+    if(this.wineDetails.wineSugar == "SLATKO"){
         
-      this.optionSugar2 = "DRY"
+      this.optionSugar2 = "SUVO"
     }
     else{
-      this.optionSugar2 = "SWEET"
+      this.optionSugar2 = "SLATKO"
     }
 
   }

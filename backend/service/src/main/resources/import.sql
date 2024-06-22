@@ -3,11 +3,11 @@ insert into user(id, password,username, name, lastname,address,city,state,phone_
 insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (3, "$2a$12$xk5MpChhW8jj0bWgoE2hkeYmlgvxPVcAzlJckE5js3c3G/VhwuFqe", "jovan@gmail.com", "jovan","jovic","adresa123", "Sabac", "Srbija","52845","USER")
 
 --Vina
-insert into wine(id, name, year, wine_color, wine_sugar ) value (1,"Vino1","2023","WHITE","DRY")
-insert into wine(id, name, year, wine_color, wine_sugar ) value (2,"Vino2","2022","WHITE","DRY")
-insert into wine(id, name, year, wine_color, wine_sugar ) value (3,"Vino3","2021","RED","SWEET")
-insert into wine(id, name, year, wine_color, wine_sugar ) value (4,"Vino4","2020","RED","DRY")
-insert into wine(id, name, year, wine_color, wine_sugar ) value (5,"Vino5","2019","WHITE","SWEET")
+insert into wine(id, name, year, wine_color, wine_sugar ) value (1,"Vino1","2023","BELO","SUVO")
+insert into wine(id, name, year, wine_color, wine_sugar ) value (2,"Vino2","2022","BELO","SUVO")
+insert into wine(id, name, year, wine_color, wine_sugar ) value (3,"Vino3","2021","BELO","SUVO")
+insert into wine(id, name, year, wine_color, wine_sugar ) value (4,"Vino4","2020","CRVENO","SLATKO")
+insert into wine(id, name, year, wine_color, wine_sugar ) value (5,"Vino5","2019","CRVENO","SLATKO")
 
 --Meso
 insert into meat(id,name,national_cuisine) values(1,"meso1","ITALIAN")

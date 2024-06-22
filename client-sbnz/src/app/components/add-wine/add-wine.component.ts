@@ -22,8 +22,8 @@ export class AddWineComponent implements OnInit {
   newWine: Wine =  {
      name : '',
      year: 2024,
-     wineColor: "WHITE",
-     wineSugar: "DRY",
+     wineColor: "BELO",
+     wineSugar: "SUVO",
      meatList: [],
      sauceList: [],
      spiceList: []
