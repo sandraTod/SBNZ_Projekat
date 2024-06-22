@@ -13,7 +13,7 @@ export class AddSpiceComponent implements OnInit {
 
   newSpice: Spice = {
     name: '',
-    nationalCuisine: "ITALIAN"
+    nationalCuisine: "ITALIJANSKA"
   }
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<SpiceComponent>,
               private spiceService: SpiceService) { }

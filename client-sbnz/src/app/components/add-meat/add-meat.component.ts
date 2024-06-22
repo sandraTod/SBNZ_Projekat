@@ -14,7 +14,7 @@ export class AddMeatComponent implements OnInit {
   newMeat: Meat = {
 
       name: '',
-      nationalCuisine: "ITALIAN"
+      nationalCuisine: "ITALIJANSKA"
 
   }
 

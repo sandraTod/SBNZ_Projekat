@@ -15,7 +15,7 @@ export class AddSauceComponent implements OnInit {
   newSauce: Sauce = {
 
     name: '',
-    nationalCuisine: "ITALIAN"
+    nationalCuisine: "ITALIJANSKA"
 
 }
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<SauceComponent>,
