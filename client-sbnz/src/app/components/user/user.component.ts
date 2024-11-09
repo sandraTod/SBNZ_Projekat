@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-user',
@@ -29,10 +30,23 @@ export class UserComponent implements OnInit {
 
     });
     popup.afterClosed().subscribe(newUser =>{
-    
-      this.userService.getAllUsers().subscribe(data => {this.listOfUsers = data});
+
+       this.userService.getAllUsers().subscribe(data => {this.listOfUsers = data});
 
     });
+  }
+
+  userDetails(user:User){
+    var popup = this.dialog.open(UserDetailsComponent,{
+
+      width: '50%',
+      height: '500px',
+      data:{
+        user: user
+      } 
+
+    });
+
   }
 
   deletePopup(id:any){

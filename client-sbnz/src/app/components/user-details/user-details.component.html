@@ -1,0 +1,60 @@
+<form class="row gx-3 align-items-center" method="post" action=""  #detailsUserForm ="ngForm">
+    <div class="form-group">
+
+        <label for="username" class="col-sm-2 col-form-label"><b>Email:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="email" class="form-control"  id = "username" name ="username" #username = "ngModel" [(ngModel)]="user.username" readonly>
+        </div>
+
+
+        <label for="password" class="col-sm-3 col-form-label"><b>Promeni password:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="password" class="form-control"  id = "password" name ="password" #password = "ngModel"  [(ngModel)]="newPass"  >
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div>
+
+        <label for="password" class="col-sm-5 col-form-label"><b> Potvrdi Password:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="password" class="form-control"  id = "repeatPass" name ="repeatPass" #pass = "ngModel"  (input)="comparePass()" [(ngModel)]="repeatPass" >
+          <div [hidden]="isSame || pass.pristine" class="alert alert-danger"> Password and Confirm Password must match</div>
+        </div>
+
+        <label for="userName" class="col-sm-2 col-form-label"><b>Ime:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "userName" name ="userName" #name = "ngModel" [(ngModel)]="user.name" required>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div>
+        
+        <label for="userName" class="col-sm-2 col-form-label"><b>Prezime:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "lastname" name ="lastname" #lastname = "ngModel" [(ngModel)]="user.lastname" required>
+          <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div>  
+
+        <label for="userAddress" class="col-sm-2 col-form-label"><b>Adresa:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "address" name ="address" #address = "ngModel" [(ngModel)]="user.address" required>
+          <div [hidden]="address.valid || address.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div> 
+
+        <label for="userCity" class="col-sm-2 col-form-label"><b>Grad:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "city" name ="city" #city = "ngModel" [(ngModel)]="user.city" required>
+          <div [hidden]="city.valid || city.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div> 
+
+        <label for="userState" class="col-sm-2 col-form-label"><b>Drzava:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "state" name ="state" #state = "ngModel" [(ngModel)]="user.state" required>
+          <div [hidden]="state.valid || state.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div> 
+
+        <label for="userPhone" class="col-sm-2 col-form-label"><b>Broj telefona:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "phone" name ="phone" #phone = "ngModel" [(ngModel)]="user.phoneNum" required>
+          <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div> 
+
+    </div>
+    <button class="btn btn-dark btn-block " style="margin-top: 50px;"  [disabled]="!detailsUserForm.form.valid" name="updateUser" (click)= "updateUser()" type="submit"  >Submit</button>
+</form>

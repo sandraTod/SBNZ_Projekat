@@ -25,6 +25,7 @@ import { AddSauceComponent } from './components/add-sauce/add-sauce.component';
 import { AddSpiceComponent } from './components/add-spice/add-spice.component';
 import { UserComponent } from './components/user/user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     AddSauceComponent,
     AddSpiceComponent,
     UserComponent,
-    AddUserComponent
+    AddUserComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
