@@ -57,5 +57,17 @@ public class UserController {
 	    userService.addUser(user);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value = "/updateUser",
+			method = RequestMethod.PUT,
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+	)
+	ResponseEntity<User> updateUser(@RequestBody User toUpdate){
+		User updated = userService.updateUser(toUpdate);
+		return new ResponseEntity<>(updated, HttpStatus.OK);
+		
+	}
 
 }

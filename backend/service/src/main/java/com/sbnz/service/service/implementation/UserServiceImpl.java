@@ -39,4 +39,25 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User updateUser(User toUpdate){
+		User old = userRepository.getReferenceById(toUpdate.getId());
+		
+		old.setAddress(toUpdate.getAddress());
+		old.setCity(toUpdate.getCity());
+		old.setName(toUpdate.getName());
+		old.setLastname(toUpdate.getLastname());
+		if(!old.getPassword().equals(toUpdate.getPassword())) {
+			
+			PasswordEncoder enc = new BCryptPasswordEncoder();
+			String encoded = enc.encode(toUpdate.getPassword());
+			old.setPassword(encoded);
+		}
+		old.setPhoneNum(toUpdate.getPhoneNum());
+		old.setState(toUpdate.getState());
+		
+		User saved = userRepository.save(old);
+		return saved;
+	}
+
 }
