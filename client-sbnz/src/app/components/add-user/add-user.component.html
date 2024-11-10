@@ -3,7 +3,7 @@
 
         <label for="username" class="col-sm-2 col-form-label"><b>Email:</b></label>
         <div class=" input-container form-group col-sm-10 ">
-          <input type="email" class="form-control"  id = "username" name ="username" #username = "ngModel" [(ngModel)]="newUser.username" required>
+          <input type="email" class="form-control"   id = "username" name ="username" #username = "ngModel" [(ngModel)]="newUser.username" required>
           <div [hidden]="username.valid || username.pristine" class="alert alert-danger" > Obavezno polje</div>
         </div>
 

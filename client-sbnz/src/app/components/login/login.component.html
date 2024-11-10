@@ -6,8 +6,8 @@
 		<form method="post" action="" class="login-form" #loginForm ="ngForm">
 			<div class="input-container form-group">
 				<i class="fa fa-envelope"></i>
-				<input type="email" class="input form-control" name="email" placeholder="Email" [(ngModel)]="username" #email = "ngModel" required/>
-				<div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Name is requared</div>
+				<input type="email" class="input form-control"   name="email" placeholder="Email address"  [(ngModel)]="username" #email = "ngModel" required/>
+				<div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Email is requared</div>
 			</div>
 			<div class="input-container form-group">
 				<i class="fa fa-lock"></i>
