@@ -48,7 +48,7 @@ export class MeatComponent implements OnInit {
   addMeat(){
     var popup = this.dialog.open(AddMeatComponent,{
 
-      width: '50%',
+      width: '40%',
       height: '325px',
 
     });
@@ -57,6 +57,10 @@ export class MeatComponent implements OnInit {
       this.meatService.getAllMeat().subscribe(data => {this.listOfMeat = data});
 
     });
+
+  }
+
+  meatDetails(meat:Meat){
 
   }
 
