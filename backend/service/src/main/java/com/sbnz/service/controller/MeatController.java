@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sbnz.model.Meat;
+import com.sbnz.model.User;
 import com.sbnz.model.Wine;
 import com.sbnz.service.service.MeatService;
 
@@ -61,6 +62,18 @@ public class MeatController {
 	ResponseEntity<?> addMeat(@RequestBody Meat meat){
 	    meatService.addMeat(meat);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/updateMeat",
+			method = RequestMethod.PUT,
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+	)
+	ResponseEntity<Meat> updateMeat(@RequestBody Meat toUpdate){
+		Meat updated = meatService.updateMeat(toUpdate);
+		return new ResponseEntity<>(updated, HttpStatus.OK);
+		
 	}
 	
 	

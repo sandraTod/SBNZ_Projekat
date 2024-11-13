@@ -12,5 +12,7 @@ public interface MeatService {
 	
 	void deleteMeat(Long id);
 	
+	Meat updateMeat(Meat meat);
+	
 
 }

@@ -35,4 +35,12 @@ public class MeatServiceImpl implements MeatService {
 		
 	}
 
+	@Override
+	public Meat updateMeat(Meat toUpdate) {
+		Meat old = meatRepository.getReferenceById(toUpdate.getId());
+		old.setName(toUpdate.getName());
+		old.setNationalCuisine(toUpdate.getNationalCuisine());
+		return meatRepository.save(old);
+	}
+
 }
