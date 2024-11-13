@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Meat } from 'src/app/model/meat';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 import { AddMeatComponent } from '../add-meat/add-meat.component';
+import { MeatDetailsComponent } from '../meat-details/meat-details.component';
 
 @Component({
   selector: 'app-meat',
@@ -61,6 +62,20 @@ export class MeatComponent implements OnInit {
   }
 
   meatDetails(meat:Meat){
+    var popup = this.dialog.open(MeatDetailsComponent,{
+
+      width: '40%',
+      height: '325px',
+      data: {
+        meat: meat
+      }
+
+    });
+    popup.afterClosed().subscribe(newMeat =>{
+    
+     // this.meatService.getAllMeat().subscribe(data => {this.listOfMeat = data});
+
+    });
 
   }
 
