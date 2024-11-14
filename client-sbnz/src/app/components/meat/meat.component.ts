@@ -71,11 +71,6 @@ export class MeatComponent implements OnInit {
       }
 
     });
-    popup.afterClosed().subscribe(newMeat =>{
-    
-     // this.meatService.getAllMeat().subscribe(data => {this.listOfMeat = data});
-
-    });
 
   }
 

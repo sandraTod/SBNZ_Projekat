@@ -27,6 +27,7 @@ import { UserComponent } from './components/user/user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { MeatDetailsComponent } from './components/meat-details/meat-details.component';
+import { SauceDetailsComponent } from './components/sauce-details/sauce-details.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MeatDetailsComponent } from './components/meat-details/meat-details.com
     UserComponent,
     AddUserComponent,
     UserDetailsComponent,
-    MeatDetailsComponent
+    MeatDetailsComponent,
+    SauceDetailsComponent
   ],
   imports: [
     BrowserModule,

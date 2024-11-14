@@ -55,6 +55,17 @@ export class SauceComponent implements OnInit {
   }
 
   sauceDetails(sauce: Sauce){
+    var popup = this.dialog.open(SauceDetailsComponent,{
+
+      width: '40%',
+      height: '325px',
+      data: {
+        sauce: sauce
+      }
+
+    });
+
+  
   }
 
 }

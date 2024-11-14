@@ -1,0 +1,25 @@
+
+<form class="row gx-3 align-items-center" method="post" action=""  #updateSauceForm ="ngForm">
+
+    <div class="form-group">
+        <label for="sauceName" class="col-sm-2 col-form-label"><b>Naziv:</b></label>
+        <div class=" input-container form-group col-sm-10 ">
+          <input type="text" class="form-control"  id = "sauceName" name ="sauceName" #name = "ngModel" [(ngModel)]="sauce.name" required>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger" > Obavezno polje</div>
+        </div>
+
+        <label for="nationalCuisine" class="col-sm-4 col-form-label" style="margin-top: 30px;"><b>Nacionalna kuhinja:</b></label>
+            <div class = "col-sm-4" >
+                <select class="form-select form-select "name ="sauceCuisine"  id = "sauceCuisine" [(ngModel)]=" sauce.nationalCuisine" aria-label="Small select example">
+                    <option value="ITALIJANSKA">ITALIJANSKA</option>
+                    <option value="AMERICKA">AMERICKA</option>
+                    <option value="FRANCUSKA">FRANCUSKA</option>
+                    <option value="MEKSICKA">MEKSICKA</option>
+                    <option value="KINESKA">KINESKA</option>
+                    <option value="INDIJSKA"> INDIJSKA</option>
+                </select>
+            </div>
+    </div> 
+
+    <button class="btn btn-dark btn-block " style="margin-top: 50px;"  [disabled]="!updateSauceForm.form.valid" name="updateSauce" (click)= "updateSauce()" type="submit"  >Submit</button>
+</form>

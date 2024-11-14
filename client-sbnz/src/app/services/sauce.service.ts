@@ -31,7 +31,19 @@ export class SauceService {
       headers: headers
     });
   
-   }
+  }
+
+  updateSauce(updated: Sauce){
+    let sauce  = JSON.stringify(updated);
+
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.put("http://localhost:8080/api/sauce/updateSauce",sauce,
+    {
+         headers: headers
+
+    });
+
+  }
 
 
 
