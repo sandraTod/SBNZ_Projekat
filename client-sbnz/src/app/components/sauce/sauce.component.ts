@@ -4,6 +4,7 @@ import { Sauce } from 'src/app/model/sauce';
 import { SauceService } from 'src/app/services/sauce.service';
 import { AddSauceComponent } from '../add-sauce/add-sauce.component';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
+import { SauceDetailsComponent } from '../sauce-details/sauce-details.component';
 
 @Component({
   selector: 'app-sauce',
@@ -41,7 +42,7 @@ export class SauceComponent implements OnInit {
   addSauce(){
     var popup = this.dialog.open(AddSauceComponent,{
 
-      width: '50%',
+      width: '40%',
       height: '325px',
 
     });
@@ -51,6 +52,9 @@ export class SauceComponent implements OnInit {
 
     });
 
+  }
+
+  sauceDetails(sauce: Sauce){
   }
 
 }
