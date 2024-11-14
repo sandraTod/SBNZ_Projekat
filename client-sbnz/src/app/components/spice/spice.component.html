@@ -7,7 +7,7 @@
         <tbody>
         <tr *ngFor= "let s of listOfSpices">
             <td>{{s.name}}</td>
-            <td>{{s.nationalCuisine}}</td>
+            <td class="text-end " ><button class="btn btn-warning btn-sm " (click) = "spiceDetails(s)" >Detalji</button></td>
             <td><button class="btn btn-danger btn-sm" (click)=" deletePopup(s.id)">Obrisi</button></td>
         </tr>
         </tbody>

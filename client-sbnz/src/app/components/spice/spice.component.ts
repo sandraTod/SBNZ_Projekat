@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Spice } from 'src/app/model/spice';
 import { DeleteEntityComponent } from '../delete-entity/delete-entity.component';
 import { AddSpiceComponent } from '../add-spice/add-spice.component';
+import { SpiceDetailsComponent } from '../spice-details/spice-details.component';
 
 @Component({
   selector: 'app-spice',
@@ -43,13 +44,27 @@ export class SpiceComponent implements OnInit {
 
     var popup = this.dialog.open(AddSpiceComponent,{
 
-      width: '50%',
+      width: '40%',
       height: '325px',
 
     });
     popup.afterClosed().subscribe(newSauce =>{
     
       this.spiceService.getAllSpices().subscribe(data => {this.listOfSpices = data});
+
+    });
+
+  }
+
+  spiceDetails(spice: Spice){
+
+    var popup = this.dialog.open(SpiceDetailsComponent,{
+
+      width: '40%',
+      height: '325px',
+      data: {
+        spice: spice
+      }
 
     });
 

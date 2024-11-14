@@ -32,7 +32,19 @@ export class SpiceService {
       headers: headers
     });
   
-   }
+  }
+
+  updateSpice(updated: Spice){
+    let spice  = JSON.stringify(updated);
+
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.put("http://localhost:8080/api/spice/updateSpice",spice,
+    {
+         headers: headers
+
+    });
+
+  }
 
 
 }
