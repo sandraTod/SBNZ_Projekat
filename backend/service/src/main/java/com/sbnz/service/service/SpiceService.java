@@ -13,6 +13,8 @@ public interface SpiceService {
 	 
 	void addSpice(Spice spice);
 	
+	Spice updateSpice(Spice toUpdate);
+	
 
 
 }

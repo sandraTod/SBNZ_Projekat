@@ -33,4 +33,14 @@ public class SpiceServiceImpl implements SpiceService{
 		
 	}
 
+	@Override
+	public Spice updateSpice(Spice toUpdate) {
+		Spice old = spiceRepository.getReferenceById(toUpdate.getId());
+		old.setName(toUpdate.getName());
+		old.setNationalCuisine(toUpdate.getNationalCuisine());
+		
+		Spice saved = spiceRepository.save(old);
+		return saved;
+	}
+
 }

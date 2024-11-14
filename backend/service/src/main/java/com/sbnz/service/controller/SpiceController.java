@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sbnz.model.Sauce;
 import com.sbnz.model.Spice;
 import com.sbnz.service.service.SpiceService;
 
@@ -57,6 +58,20 @@ public class SpiceController {
 	ResponseEntity<?> addSpice(@RequestBody Spice spice){
 	    spiceService.addSpice(spice);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/updateSpice",
+			method = RequestMethod.PUT,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity<Spice> updateSpice(@RequestBody Spice toUpdate){
+		Spice updated = spiceService.updateSpice(toUpdate);
+		return new ResponseEntity<>(updated, HttpStatus.OK);
+		
 	}
 
 }
