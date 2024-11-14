@@ -58,4 +58,18 @@ public class SauceController {
 	    sauceService.addSauce(sauce);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value = "/updateSauce",
+			method = RequestMethod.PUT,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			
+	)
+	@PreAuthorize("hasAuthority('SYSTEM_ADMIN')")
+	ResponseEntity<Sauce> updateSauce(@RequestBody Sauce toUpdate){
+		Sauce updated = sauceService.updateSauce(toUpdate);
+		return new ResponseEntity<>(updated, HttpStatus.OK);
+		
+	}
 }

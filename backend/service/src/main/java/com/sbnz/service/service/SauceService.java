@@ -10,5 +10,7 @@ public interface SauceService {
 	void deleteSauce(Long id);
 	
 	void addSauce(Sauce sauce);
+	
+	Sauce updateSauce(Sauce toUpdate);
 
 }

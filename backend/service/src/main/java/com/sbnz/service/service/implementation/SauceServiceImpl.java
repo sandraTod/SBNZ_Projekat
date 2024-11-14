@@ -33,4 +33,13 @@ public class SauceServiceImpl implements SauceService {
 		
 	}
 
+	@Override
+	public Sauce updateSauce(Sauce toUpdate) {
+		Sauce old = sauceRepository.getReferenceById(toUpdate.getId());
+		old.setName(toUpdate.getName());
+		old.setNationalCuisine(toUpdate.getNationalCuisine());
+		Sauce saved = sauceRepository.save(old);
+		return saved;
+	}
+
 }
