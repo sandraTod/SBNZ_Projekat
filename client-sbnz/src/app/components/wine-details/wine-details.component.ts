@@ -185,6 +185,7 @@ export class WineDetailsComponent implements OnInit {
 
   updateWine(){
       this.wineService.updateWine(this.wineDetails).subscribe(data=>{console.log(data)});
+      this.ref.close();
   }
 
 

@@ -113,6 +113,7 @@ export class AddWineComponent implements OnInit {
 
   addWine(){
     this.wineService.addWine(this.newWine).subscribe();
+    this.ref.close();
   }
 
 
