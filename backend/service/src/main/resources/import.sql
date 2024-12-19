@@ -62,6 +62,8 @@ insert into wine_sauce(wine_id,sauce_id) values(1,3)
 insert into wine_sauce(wine_id,sauce_id) values(2,1)
 insert into wine_sauce(wine_id,sauce_id) values(2,2)
 insert into wine_sauce(wine_id,sauce_id) values(3,3)
+insert into wine_sauce(wine_id,sauce_id) values(3,2)
+
 
 --Zacini
 insert into spice(id, name, national_cuisine) values(1,"Bosiljak","ITALIJANSKA")
@@ -92,9 +94,10 @@ insert into wine_spice(wine_id,spice_id) values (1,1)
 insert into wine_spice(wine_id,spice_id) values (1,2)
 insert into wine_spice(wine_id,spice_id) values (1,3)
 insert into wine_spice(wine_id,spice_id) values (2,2)
+insert into wine_spice(wine_id,spice_id) values (2,1)
 insert into wine_spice(wine_id,spice_id) values (2,3)
 insert into wine_spice(wine_id,spice_id) values (3,1)
-insert into wine_spice(wine_id,spice_id) values (3,3)
+insert into wine_spice(wine_id,spice_id) values (3,2)
 insert into wine_spice(wine_id,spice_id) values (3,5)
 
 

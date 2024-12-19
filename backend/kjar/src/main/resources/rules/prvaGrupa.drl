@@ -1,0 +1,154 @@
+package rules;
+
+import com.sbnz.model.*;
+global Wine foundWine;
+
+
+rule "Korisnik je izabrao Italijansku kuhinju i narucuje desert"
+	when
+		$a:Answers(ethnicity == "Italijanska", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName() );
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+
+rule "Korisnik izabrao Italijansku kuhinju i ne trenira"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Italijanska", healthConscious == "Ne")
+		$m: Meat(name == "Junece meso")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+
+rule "Korisnik je izabarao Italijansku kuhinju, trenira i restoran kraj obale"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Italijanska", healthConscious == "Da", onTheCoast == "Da")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Skoljke");
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+rule "Korisnik je izabarao Italijansku kuhinju, trenira i restoran NIJE kraj obale"
+    salience 100
+	when
+		$a:Answers(ethnicity == "Italijanska", healthConscious == "Da", onTheCoast == "Ne")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Piletina");
+		insert(f);
+		System.out.println("Meso je: "+ f.getFoundMeat());
+		
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju, intolerantan na laktozu "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Da")
+		$f: Found(active == true)
+		
+	then
+		$f.setFoundSauce("Tomato Paradajz");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i leto je  "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Da" )
+		$f: Found(active == true)
+		
+	then
+		$f.setFoundSauce("Tomato Paradajz");
+		System.out.println("A sad je sosiiic : " +$f.getFoundSauce());
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i nije leto "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Ne" )
+		$f: Found(active == true)
+		
+	then
+		$f.setFoundSauce("Pavlaka");
+		System.out.println("Sosic je kad nije leto : "+ $f.getFoundSauce());
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju i voli zacinjenu hranu  "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", savoryFood =="Da" )
+		$f: Found(active == true)
+		
+	then
+		$f.getFoundSpices().add("Origano");
+		$f.getFoundSpices().add("Bosiljak");
+		System.out.println("Lista zacina iz pravila izmenjeno: " + $f.getFoundSpices());	
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju i ne ide na dejt "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", onDate =="Ne" )
+		$f: Found(active == true)
+		
+	then
+		$f.getFoundSpices().add("Beli luk");
+		System.out.println("Lista zacina kad ne ide na dejt: " + $f.getFoundSpices());	
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju i zasladjeni IceTea "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Da" )
+		$f: Found(active == true)
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je IZMENJENOO: " + $f.getFoundSugar());	
+end
+
+rule "Korisnik je izabrao Italijanksku kuhinju i nezasladjeni IceTea "
+
+	when
+		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Ne" )
+		$f: Found(active == true)
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Trazimo vino "
+	salience 0
+	when
+		$f: Found(active == true)
+		$w: Wine(wineSugar == $f.getFoundSugar())
+		eval($w.containsMeatWithName($f.getFoundMeat()))
+		eval($w.containsSauceWithName($f.getFoundSauce()))
+		eval($w.containsSpiceWithName($f.getFoundSpices()))
+		
+	then
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+		System.out.println("Ovo vino imaaaa: "+ $w.getName());
+end
+
+
+
+
+
+

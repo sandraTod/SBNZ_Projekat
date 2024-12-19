@@ -43,6 +43,8 @@ public class DroolsServiceImpl implements DroolsService{
     	KieSession kieSession = kieContainer.newKieSession("ksession-rules");
     	
 		Wine foundWine = new Wine();
+		
+		
     	
 		Collection<Wine> wineList = wineRepository.findAll();
 		Collection<Meat> meatList = meatRepository.findAll();
@@ -65,12 +67,19 @@ public class DroolsServiceImpl implements DroolsService{
 			kieSession.insert(sp);		
 		}	
 		kieSession.insert(answers);
+		
+		
 		kieSession.setGlobal("foundWine", foundWine);
+		
+		
 		
 		int fired = kieSession.fireAllRules();
 		System.out.println("Broj aktiviranih pravila "+ fired);
 		
-		return foundWine;
+	    Wine foundW = (Wine) kieSession.getGlobal("foundWine");
+	    
+		kieSession.dispose();
+		return foundW;
 		
 	}
 

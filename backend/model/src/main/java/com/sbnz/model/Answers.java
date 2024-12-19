@@ -15,6 +15,7 @@ public class Answers {
 	private String onDate = "unknown";
 	private String spicyFood = "unknown";
 	private String sweetenedIcedTea = "unknown";
+	private String haveDessert = "unknown";
 	
 	
 	public String getEthnicity() {
@@ -95,6 +96,14 @@ public class Answers {
 	public void setSweetenedIcedTea(String sweetenedIcedTea) {
 		this.sweetenedIcedTea = sweetenedIcedTea;
 	}
+	public String getHaveDessert() {
+		return haveDessert;
+	}
+	public void setHaveDessert(String haveDessert) {
+		this.haveDessert = haveDessert;
+	}
+	
+	
 	
 	
 }

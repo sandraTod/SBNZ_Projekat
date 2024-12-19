@@ -54,6 +54,43 @@ public class Wine {
 	private Set<Spice> spiceList = new HashSet<>();
 	
 	public Wine() {}
+	
+	public boolean containsMeatWithName(String name) {
+        for (Meat meat : meatList) {
+            if (meat.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+	
+	public boolean containsSauceWithName(String name) {
+        for (Sauce sauce : sauceList) {
+            if (sauce.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+	
+	public boolean containsSpiceWithName(Set<String> spices) {
+		int sum = 0;
+        for (Spice spice : spiceList) {
+        	for(String s: spices) {
+        		if (spice.getName().equals(s)) {
+                    sum += 1;
+                    break;
+                }
+        	}
+        	
+        }
+        System.out.println("Sum je: " + sum);
+        System.out.println("Duzina liste je: "+ spices.size());
+        if(sum == spices.size()) {
+        	return true;
+        }
+        return false;
+    }
 
 	public Long getId() {
 		return id;
