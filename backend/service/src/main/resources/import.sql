@@ -33,10 +33,13 @@ insert into meat(id,name,national_cuisine) values(17,"Pavo","MEKSICKA")
 insert into wine_meat(wine_id,meat_id) values(1,3)
 insert into wine_meat(wine_id,meat_id) values(1,2)
 insert into wine_meat(wine_id,meat_id) values(1,4)
-insert into wine_meat(wine_id,meat_id) values(2,1)
 insert into wine_meat(wine_id,meat_id) values(2,2)
+insert into wine_meat(wine_id,meat_id) values(3,1)
 insert into wine_meat(wine_id,meat_id) values(3,3)
 insert into wine_meat(wine_id,meat_id) values(3,4)
+insert into wine_meat(wine_id,meat_id) values(4,1)
+insert into wine_meat(wine_id,meat_id) values(5,3)
+insert into wine_meat(wine_id,meat_id) values(5,1)
 
 
 --Sosevi
@@ -67,6 +70,9 @@ insert into wine_sauce(wine_id,sauce_id) values(2,1)
 insert into wine_sauce(wine_id,sauce_id) values(2,2)
 insert into wine_sauce(wine_id,sauce_id) values(3,3)
 insert into wine_sauce(wine_id,sauce_id) values(3,2)
+insert into wine_sauce(wine_id,sauce_id) values(4,2)
+insert into wine_sauce(wine_id,sauce_id) values(5,1)
+insert into wine_sauce(wine_id,sauce_id) values(5,2)
 
 
 --Zacini
@@ -107,6 +113,11 @@ insert into wine_spice(wine_id,spice_id) values (2,3)
 insert into wine_spice(wine_id,spice_id) values (3,1)
 insert into wine_spice(wine_id,spice_id) values (3,2)
 insert into wine_spice(wine_id,spice_id) values (3,5)
+insert into wine_spice(wine_id,spice_id) values (4,3)
+insert into wine_spice(wine_id,spice_id) values (5,1)
+insert into wine_spice(wine_id,spice_id) values (5,2)
+insert into wine_spice(wine_id,spice_id) values (5,3)
+
 
 
 

@@ -9,7 +9,6 @@ public class Found {
 	private String foundSauce;
 	private Set<String> foundSpices = new HashSet<String>();
 	private WineSugar foundSugar;
-	private boolean active = true;
 	
 	
 	public Found() {}
@@ -39,15 +38,6 @@ public class Found {
 	}
 	public void setFoundSugar(WineSugar foundSugar) {
 		this.foundSugar = foundSugar;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-
-	public void setActive(boolean active) {
-		this.active = active;
 	}
 	
 	

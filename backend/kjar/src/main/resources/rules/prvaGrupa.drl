@@ -59,7 +59,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju, intolerantan na laktozu "
 
 	when
 		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Da")
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.setFoundSauce("Tomato Paradajz");
@@ -70,7 +70,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i leto je 
 
 	when
 		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Da" )
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.setFoundSauce("Tomato Paradajz");
@@ -81,7 +81,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i nije let
 
 	when
 		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Ne" )
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.setFoundSauce("Pavlaka");
@@ -92,7 +92,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju i voli zacinjenu hranu  "
 
 	when
 		$a: Answers(ethnicity == "Italijanska", savoryFood =="Da" )
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.getFoundSpices().add("Origano");
@@ -104,7 +104,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju i ne ide na dejt "
 
 	when
 		$a: Answers(ethnicity == "Italijanska", onDate =="Ne" )
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.getFoundSpices().add("Beli luk");
@@ -115,18 +115,18 @@ rule "Korisnik je izabrao Italijanksku kuhinju i zasladjeni IceTea "
 
 	when
 		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Da" )
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.setFoundSugar(WineSugar.SLATKO);
-		System.out.println("Vino je IZMENJENOO: " + $f.getFoundSugar());	
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju i nezasladjeni IceTea "
 
 	when
 		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Ne" )
-		$f: Found(active == true)
+		$f: Found()
 		
 	then
 		$f.setFoundSugar(WineSugar.SUVO);
@@ -136,7 +136,7 @@ end
 rule "Trazimo vino "
 	salience 0
 	when
-		$f: Found(active == true)
+		$f: Found()
 		$w: Wine(wineSugar == $f.getFoundSugar())
 		eval($w.containsMeatWithName($f.getFoundMeat()))
 		eval($w.containsSauceWithName($f.getFoundSauce()))
@@ -144,7 +144,7 @@ rule "Trazimo vino "
 		
 	then
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
-		System.out.println("Ovo vino imaaaa: "+ $w.getName());
+		System.out.println("Vinoo jee: "+ $w.getName());
 end
 
 

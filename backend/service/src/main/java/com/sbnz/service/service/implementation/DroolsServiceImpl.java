@@ -72,7 +72,6 @@ public class DroolsServiceImpl implements DroolsService{
 		kieSession.setGlobal("foundWine", foundWine);
 		
 		
-		
 		int fired = kieSession.fireAllRules();
 		System.out.println("Broj aktiviranih pravila "+ fired);
 		
