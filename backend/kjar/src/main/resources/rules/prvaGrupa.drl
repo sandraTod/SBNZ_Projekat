@@ -9,7 +9,7 @@ rule "Korisnik je izabrao Italijansku kuhinju i narucuje desert"
 		$a:Answers(ethnicity == "Italijanska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
-		System.out.println("Korisnik narucuje desert "+ $w.getName() );
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
@@ -133,6 +133,8 @@ rule "Korisnik je izabrao Italijanksku kuhinju i nezasladjeni IceTea "
 		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
 end
 
+//Pravilo gde trazimo vino koje sadrzi sve sastojke
+
 rule "Trazimo vino "
 	salience 0
 	when
@@ -144,8 +146,140 @@ rule "Trazimo vino "
 		
 	then
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
-		System.out.println("Vinoo jee: "+ $w.getName());
+		System.out.println("Nasli smo vinoo: "+ $w.getName());
 end
+
+
+//Pravila za Francusku kuhinju
+
+rule "Korisnik je izabrao Francusku kuhinju i narucuje desert"
+	when
+		$a:Answers(ethnicity == "Francuska", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+rule "Korisnik izabrao Francusku kuhinju i trenira"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Francuska", healthConscious == "Da")
+		$m: Meat(name == "Jastog")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Korisnik je izabarao Francusku  kuhinju,  NE trenira i jesen je ili zima"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Francuska", healthConscious == "Ne", autmnOrWinter == "Da")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Divljac");
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+rule "Korisnik je izabarao Francusku  kuhinju, trenira i NIJE jesen ili zima"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Francuska", healthConscious == "Ne", autmnOrWinter == "Ne")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Teletina");
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+rule "Korisnik je izabrao Francusku  kuhinju,alergican je na neku hranu i intolerantan na laktozu "
+
+	when
+		$a: Answers(ethnicity == "Francuska", foodAllergy == "Da",lactoseIntolerant == "Da")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Senf");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Korisnik je izabrao Francusku  kuhinju,alergican je na neku hranu i NIJE intolerantan na laktozu "
+
+	when
+		$a: Answers(ethnicity == "Francuska", foodAllergy == "Da",lactoseIntolerant == "Ne")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Sir");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Korisnik je izabrao Francusku  kuhinju, NIJE alergican  na neku hranu"
+
+	when
+		$a: Answers(ethnicity == "Francuska", foodAllergy == "Ne")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Pecurke");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Korisnik je izabrao Francusku kuhinju i voli zacinjenu hranu"
+
+	when
+		$a: Answers(ethnicity == "Francuska", savoryFood == "Da")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Biber u zrnu");
+		$f.getFoundSpices().add("Muskatni orascic");
+		System.out.println("Lista zacina iz pravila izmenjeno: " + $f.getFoundSpices());
+end
+
+
+rule "Korisnik je izabrao Francusku kuhinju i ne ide na dejt "
+
+	when
+		$a: Answers(ethnicity == "Francuska", onDate =="Ne" )
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Mladi luk");
+		System.out.println("Lista zacina kad ne ide na dejt: " + $f.getFoundSpices());	
+end
+
+rule "Korisnik je izabrao Francusku kuhinju i zasladjeni IceTea "
+
+	when
+		$a: Answers(ethnicity == "Francuska", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Korisnik je izabrao Francusku kuhinju i nezasladjeni IceTea "
+
+	when
+		$a: Answers(ethnicity == "Francuska", sweetenedIcedTea =="Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
 
 
 
