@@ -136,7 +136,7 @@ end
 //Pravilo gde trazimo vino koje sadrzi sve sastojke
 
 rule "Trazimo vino "
-	salience 0
+	salience -10
 	when
 		$f: Found()
 		$w: Wine(wineSugar == $f.getFoundSugar())
@@ -148,6 +148,8 @@ rule "Trazimo vino "
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 		System.out.println("Nasli smo vinoo: "+ $w.getName());
 end
+
+
 
 
 //Pravila za Francusku kuhinju
