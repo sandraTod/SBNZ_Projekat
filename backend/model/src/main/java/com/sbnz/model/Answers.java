@@ -7,6 +7,7 @@ public class Answers {
 	private String onTheCoast = "unknown";
 	private String autmnOrWinter = "unknown";
 	private String preferMeat = "unknown";
+	private String creamyFlavors = "unknown";
 	private String lactoseIntolerant = "unknown";
 	private String summer = "unknown";
 	private String foodAllergy = "unknown";
@@ -47,6 +48,13 @@ public class Answers {
 	}
 	public void setPreferMeat(String preferMeat) {
 		this.preferMeat = preferMeat;
+	}
+	
+	public String getCreamyFlavors() {
+		return creamyFlavors;
+	}
+	public void setCreamyFlavors(String creamyFlavors) {
+		this.creamyFlavors = creamyFlavors;
 	}
 	public String getLactoseIntolerant() {
 		return lactoseIntolerant;
