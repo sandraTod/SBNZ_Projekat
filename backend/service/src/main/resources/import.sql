@@ -2,7 +2,7 @@ insert into user(id, password,username, name, lastname,address,city,state,phone_
 insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (2, "$2a$12$xk5MpChhW8jj0bWgoE2hkeYmlgvxPVcAzlJckE5js3c3G/VhwuFqe", "pera@gmail.com", "pera","peric","adresa123", "Sabac", "Srbija","52845","USER")
 insert into user(id, password,username, name, lastname,address,city,state,phone_num,role) value (3, "$2a$12$xk5MpChhW8jj0bWgoE2hkeYmlgvxPVcAzlJckE5js3c3G/VhwuFqe", "jovan@gmail.com", "jovan","jovic","adresa123", "Sabac", "Srbija","52845","USER")
 
---Vina
+--VINA
 insert into wine(id, name, year, wine_color, wine_sugar ) value (1,"Merlot","2021","CRVENO","SLATKO")
 insert into wine(id, name, year, wine_color, wine_sugar ) value (2,"Pinot Bianco","2022","BELO","SUVO")
 insert into wine(id, name, year, wine_color, wine_sugar ) value (3,"Chardonnay","2021","BELO","SUVO")
@@ -11,7 +11,7 @@ insert into wine(id, name, year, wine_color, wine_sugar ) value (5,"Cabernet","2
 insert into wine(id, name, year, wine_color, wine_sugar ) value (6,"Zinfandel","2016","CRVENO","SLATKO")
 insert into wine(id, name, year, wine_color, wine_sugar ) value (7,"Riesling","2023","BELO","SLATKO")
 
---Meso
+--MESO
 insert into meat(id,name,national_cuisine) values(1,"Piletina","ITALIJANSKA")
 insert into meat(id,name,national_cuisine) values(2,"Skoljke","ITALIJANSKA")
 insert into meat(id,name,national_cuisine) values(3,"Junece meso","ITALIJANSKA")
@@ -48,8 +48,10 @@ insert into wine_meat(wine_id,meat_id) values(5,3)
 insert into wine_meat(wine_id,meat_id) values(5,1)
 insert into wine_meat(wine_id,meat_id) values(6,8)
 insert into wine_meat(wine_id,meat_id) values(6,11)
+insert into wine_meat(wine_id,meat_id) values(6,12)
 
---Sosevi
+
+--SOSEVI
 insert into sauce(id,name, national_cuisine) values(1,"Tomato Paradajz", "ITALIJANSKA")
 insert into sauce(id,name, national_cuisine) values(2,"Pavlaka", "ITALIJANSKA")
 insert into sauce(id,name, national_cuisine) values(3,"Pecurke", "FRANCUSKA")
@@ -87,9 +89,10 @@ insert into wine_sauce(wine_id,sauce_id) values(5,1)
 insert into wine_sauce(wine_id,sauce_id) values(5,2)
 insert into wine_sauce(wine_id,sauce_id) values(6,8)
 insert into wine_sauce(wine_id,sauce_id) values(6,9)
+insert into wine_sauce(wine_id,sauce_id) values(6,12)
 
 
---Zacini
+--ZACINI
 insert into spice(id, name, national_cuisine) values(1,"Bosiljak","ITALIJANSKA")
 insert into spice(id, name, national_cuisine) values(2,"Origano","ITALIJANSKA")
 insert into spice(id, name, national_cuisine) values(3,"Beli luk","ITALIJANSKA")
@@ -146,6 +149,8 @@ insert into wine_spice(wine_id,spice_id) values (6,11)
 insert into wine_spice(wine_id,spice_id) values (6,12)
 insert into wine_spice(wine_id,spice_id) values (6,14)
 insert into wine_spice(wine_id,spice_id) values (6,15)
+insert into wine_spice(wine_id,spice_id) values (6,16)
+insert into wine_spice(wine_id,spice_id) values (6,20)
 
 
 

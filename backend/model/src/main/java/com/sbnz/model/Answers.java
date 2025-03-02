@@ -8,6 +8,7 @@ public class Answers {
 	private String autmnOrWinter = "unknown";
 	private String preferMeat = "unknown";
 	private String juicyDishes = "unknown";
+	private String refreshingFlavors  = "unknown";
 	private String creamyFlavors = "unknown";
 	private String lactoseIntolerant = "unknown";
 	private String summer = "unknown";
@@ -17,6 +18,7 @@ public class Answers {
 	private String onDate = "unknown";
 	private String spicyFood = "unknown";
 	private String sweetenedIcedTea = "unknown";
+
 	private String haveDessert = "unknown";
 	
 	
@@ -62,6 +64,13 @@ public class Answers {
 	}
 	public void setJuicyDishes(String juicyDishes) {
 		this.juicyDishes = juicyDishes;
+	}
+
+	public String getRefreshingFlavors() {
+		return refreshingFlavors;
+	}
+	public void setRefreshingFlavors(String refreshingFlavors) {
+		this.refreshingFlavors = refreshingFlavors;
 	}
 	public String getLactoseIntolerant() {
 		return lactoseIntolerant;
