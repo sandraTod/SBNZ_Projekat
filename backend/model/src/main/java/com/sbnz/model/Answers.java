@@ -10,6 +10,7 @@ public class Answers {
 	private String juicyDishes = "unknown";
 	private String refreshingFlavors  = "unknown";
 	private String creamyFlavors = "unknown";
+	private String smokyFlavors = "unknown";
 	private String lactoseIntolerant = "unknown";
 	private String summer = "unknown";
 	private String foodAllergy = "unknown";
@@ -71,6 +72,13 @@ public class Answers {
 	}
 	public void setRefreshingFlavors(String refreshingFlavors) {
 		this.refreshingFlavors = refreshingFlavors;
+	}
+	
+	public String getSmokyFlavors() {
+		return smokyFlavors;
+	}
+	public void setSmokyFlavors(String smokyFlavors) {
+		this.smokyFlavors = smokyFlavors;
 	}
 	public String getLactoseIntolerant() {
 		return lactoseIntolerant;
