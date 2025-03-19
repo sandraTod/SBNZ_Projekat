@@ -25,3 +25,7 @@ h1{
     margin-left: 20px;
 
 }
+.error {
+    color: red;
+    font-weight: bold;
+  }

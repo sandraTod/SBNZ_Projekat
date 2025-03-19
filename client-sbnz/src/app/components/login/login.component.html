@@ -8,6 +8,7 @@
 				<i class="fa fa-envelope"></i>
 				<input type="email" class="input form-control"   name="email" placeholder="Email address"  [(ngModel)]="username" #email = "ngModel" required/>
 				<div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Email is requared</div>
+				
 			</div>
 			<div class="input-container form-group">
 				<i class="fa fa-lock"></i>
@@ -15,6 +16,8 @@
 				<div [hidden]="pass.valid || pass.pristine" class="alert alert-danger"> Password is requared</div>
 			</div>
 			<button class="btn btn-dark btn-block "  [disabled]="!loginForm.form.valid" name="login"  type="submit" (click)="login()">Submit</button>
+
+			<p *ngIf="loginError" class="error">{{loginError}}</p>
 		</form>
 	</div>
 </div>
