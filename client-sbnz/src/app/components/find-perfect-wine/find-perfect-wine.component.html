@@ -1,0 +1,77 @@
+<div class="form-container">    
+    <div class = "form-wrapper">
+        <form [formGroup]="answersForm" (ngSubmit)="submit()">
+
+            <!-- Primer pitanja: Vrsta nacionalne kuhinje? -->
+            <div class="question-block" >
+                <label>Vrsta nacionalne kuhinje?</label>
+                <label><input type="radio" name = "ethnicity" formControlName = "ethnicity" value="Italijanska"> Italijanska</label>
+                <label><input type="radio" name = "ethnicity" formControlName = "ethnicity" value="Francuska"> Francuska</label>
+                <label><input type="radio" name = "ethnicity" formControlName = "ethnicity" value="Americka"> Americka</label>
+                <label><input type="radio" name = "ethnicity" formControlName = "ethnicity" value="Indijska"> Indijska</label>
+                <label><input type="radio" name = "ethnicity" formControlName = "ethnicity" value= "Kineska"> Kineska</label>
+                <label><input type="radio" name = "ethnicity" formControlName = "ethnicity" value="Meksicka"> Meksicka</label>
+            </div>
+
+            <div class="question-block" *ngIf = "answersForm.value.ethnicity ==='Italijanska'" >
+                <label>Da li narucujete desert?</label>
+                <label><input type="radio"  name = "haveDessert" formControlName="haveDessert" value="Da"> Da</label>
+                <label><input type="radio"  name = "haveDessert" formControlName="haveDessert" value="Ne"> Ne</label>
+            </div>
+
+            <div class="question-block" *ngIf = "answersForm.value.haveDessert ==='Ne'">
+                <label>Da li treniras minimalno 3x nedeljno?</label>
+                <label><input type="radio"  name = "healthConscious" formControlName="healthConscious" value="Da"> Da</label>
+                <label><input type="radio"  name = "healthConscious" formControlName="healthConscious" value="Ne"> Ne</label>
+            </div>
+        
+            
+            <div class="question-block" *ngIf =  "answersForm.value.healthConscious ==='Da'">
+                <label>Da li je restoran na obali?</label>
+                <label><input type="radio" name = "onTheCoast" formControlName ="onTheCoast" value="Da"> Da</label>
+                <label><input type="radio" name = "onTheCoast"  formControlName= "onTheCoast" value="Ne"> Ne</label>
+            </div>
+
+            <div class="question-block" *ngIf =  "answersForm.value.onTheCoast ==='Da'|| answersForm.value.healthConscious=== 'Ne'">
+                <label>Da li ste intoleranti na laktozu?</label>
+                <label><input type="radio" name = "lactoseIntolerant"  formControlName ="lactoseIntolerant" value="Da"> Da</label>
+                <label><input type="radio" name = "lactoseIntolerant"  formControlName= "lactoseIntolerant" value="Ne"> Ne</label>
+            </div>
+            <div class="question-block" *ngIf =  "answersForm.value.lactoseIntolerant ==='Ne'">
+                <label>Da li je leto?</label>
+                <label><input type="radio" name = "summer"  formControlName ="summer" value="Da"> Da</label>
+                <label><input type="radio" name = "summer"  formControlName= "summer" value="Ne"> Ne</label>
+            </div>
+            <div class="question-block" *ngIf =  "answersForm.value.lactoseIntolerant ==='Da' || answersForm.value.summer==='Da' || answersForm.value.summer === 'Ne'">
+                <label>Da preferirate zacinjenu hranu?</label>
+                <label><input type="radio" name = "savoryFood"  formControlName ="savoryFood" value="Da"> Da</label>
+                <label><input type="radio" name = "savoryFood"  formControlName= "savoryFood" value="Ne"> Ne</label>
+            </div>
+
+            <div class="question-block" *ngIf =  "answersForm.value.savoryFood ==='Da' || answersForm.value.savoryFood==='Ne'">
+                <label>Da li idete na dejt?</label>
+                <label><input type="radio" name = "onDate"  formControlName ="onDate" value="Da"> Da</label>
+                <label><input type="radio" name = "onDate"  formControlName= "onDate" value="Ne"> Ne</label>
+            </div>
+
+            <div class="question-block" *ngIf =  "answersForm.value.onDate ==='Da' || answersForm.value.onDate==='Ne'">
+                <label>Da li preferirate zasladjeni ili nezasladjeni ledeni caj?</label>
+                <label><input type="radio" name = "sweetenedIcedTea"  formControlName ="sweetenedIcedTea" value="Slatko">Zasladjeni</label>
+                <label><input type="radio" name = "sweetenedIcedTea"  formControlName= "sweetenedIcedTea" value="Suvo"> Nezasladjeni</label>
+            </div>
+        
+            
+            
+            <button type="submit">Potvrdi</button>
+        
+        </form>
+    </div>  
+</div>      
+
+<!--<div *ngIf="result">
+    <h3>Preporučeno vino:</h3>
+    <p>{{ result.name }}</p>
+  </div>
+-->  
+
+

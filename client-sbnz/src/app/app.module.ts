@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WineComponent } from './components/wine/wine.component';
 import { SauceComponent } from './components/sauce/sauce.component';
@@ -29,6 +29,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { MeatDetailsComponent } from './components/meat-details/meat-details.component';
 import { SauceDetailsComponent } from './components/sauce-details/sauce-details.component';
 import { SpiceDetailsComponent } from './components/spice-details/spice-details.component';
+import { FindPerfectWineComponent } from './components/find-perfect-wine/find-perfect-wine.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +52,14 @@ import { SpiceDetailsComponent } from './components/spice-details/spice-details.
     UserDetailsComponent,
     MeatDetailsComponent,
     SauceDetailsComponent,
-    SpiceDetailsComponent
+    SpiceDetailsComponent,
+    FindPerfectWineComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
     BrowserAnimationsModule

@@ -1,0 +1,24 @@
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+.form-wrapper {
+    min-height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+    transition: all 0.3s ease;
+    
+ }
+  form {
+    background: rgba(255,255,255,0.8);
+    padding: 150px;
+    border-radius: 12px;
+    backdrop-filter: blur(2px);
+  }
