@@ -15,7 +15,7 @@ export class FindPerfectWineComponent implements OnInit {
 
   answers: any = {};
   currentQuestion: any = null;
-  selectedKitchen: string = ''; 
+  selectedKitchen: string = '';
 
   
   
@@ -67,6 +67,7 @@ export class FindPerfectWineComponent implements OnInit {
       Q6_dejt: null,
       Q7_caj: null,
     };
+    this.selectedKitchen = '';
 
     this.currentQuestion = this.getNextQuestion(this.selectedKitchen, this.answers);
 
@@ -75,11 +76,23 @@ export class FindPerfectWineComponent implements OnInit {
   chooseOption(option: string){
     const q = this.currentQuestion.id;
     this.answers[q] = option;
+
+    if(q === "Q1"){
+      this.selectedKitchen = option;
+    }
     this.currentQuestion = this.getNextQuestion(this.selectedKitchen,this.answers);
 
   }
 
   getNextQuestion(kitchen: string, answers:any){
+    if(!answers.Q1){
+      return{
+        id: "Q1",
+        text: "Izaberite vrstu nacionalne kuhinje?",
+        options:["Italijanska","Francuska","Americka","Indijska", "Kineska", "Meksicka"]
+
+      };
+    }
     if(kitchen === "Italijanska"){
       return this.getItalianQuestions(answers);
 
@@ -107,8 +120,11 @@ export class FindPerfectWineComponent implements OnInit {
 
   }
 
+  sendToBackend(){}
+
 
   getItalianQuestions(answers: any){
+    
 
     if(!answers.Q2){
       return {
@@ -121,10 +137,12 @@ export class FindPerfectWineComponent implements OnInit {
       return {done: true, reason: "desert"}
     }
 
+    
     if(!answers.Q3){
+      
         return {
           id: "Q3",
-          tekst: "Da li trenirate min 3x nedeljno?",
+          text: "Da li trenirate min 3x nedeljno?",
           options: ["Da", "Ne"]
         };
 
@@ -137,7 +155,7 @@ export class FindPerfectWineComponent implements OnInit {
 
           return {
             id: "Q4_lak",
-            tekst: "Da li ste intolerantni na laktozu ?",
+            text: "Da li ste intolerantni na laktozu ?",
             options: ["Da", "Ne"]
   
           };
@@ -147,7 +165,7 @@ export class FindPerfectWineComponent implements OnInit {
           if(!answers.Q5_zac){
             return{
               id:"Q5_zac",
-              tekst: "Da li volite zacinjenu hranu?",
+              text: "Da li volite zacinjenu hranu?",
               options: ["Da", "Ne"]
             }; 
 
@@ -157,7 +175,7 @@ export class FindPerfectWineComponent implements OnInit {
         if(!answers.Q4a_leto){
             return { 
               id: "Q4a_leto",
-              tekst: "Da li je leto ?",
+              text: "Da li je leto ?",
               options: ["Da", "Ne"]
 
             };
@@ -167,7 +185,7 @@ export class FindPerfectWineComponent implements OnInit {
 
             return {
               id: "Q5_zac",
-              tekst: "Da li volite zacinjenu hranu?",
+              text: "Da li volite zacinjenu hranu?",
               options: ["Da", "Ne"]
             };
 
@@ -176,10 +194,10 @@ export class FindPerfectWineComponent implements OnInit {
     }
     //Ako DA trenira -> ide Q3a (obala)
     if(answers.Q3 === "Da"){
-      if(!answers.Q3a){
+      if(!answers.Q3a_obala){
           return{
-            id: "Q3a",
-            tekst: "Da li je restoran na obali ?",
+            id: "Q3a_obala",
+            text: "Da li je restoran na obali ?",
             options: ["Da", "Ne"]
           };
 
@@ -188,7 +206,7 @@ export class FindPerfectWineComponent implements OnInit {
       if(!answers.Q4_lak){
           return {
             id: "Q4_lak",
-            tekst: "Da li ste intolerantni na laktozu?",
+            text: "Da li ste intolerantni na laktozu?",
             options: ["Da", "Ne"]
           };
 
@@ -198,7 +216,7 @@ export class FindPerfectWineComponent implements OnInit {
         if(!answers.Q5_zac){
           return{
             id: "Q5_zac",
-            tekst: "Da li volite zacinjenu hranu ?",
+            text: "Da li volite zacinjenu hranu ?",
             options: ["Da", "Ne"]
           };
 
@@ -207,7 +225,7 @@ export class FindPerfectWineComponent implements OnInit {
       if(!answers.Q4a_leto){
           return {
             id: "Q4a_leto",
-            tekst: "Da li je leto?",
+            text: "Da li je leto?",
             options: ["Da", "Ne"]
           };
 
@@ -215,7 +233,7 @@ export class FindPerfectWineComponent implements OnInit {
       if(!answers.Q5_zac){
           return {
             id: "Q5_zac",
-            tekst: "Da li volite zacinjenu hranu?",
+            text: "Da li volite zacinjenu hranu?",
             options: ["Da", "Ne"]
           };
 
@@ -226,7 +244,7 @@ export class FindPerfectWineComponent implements OnInit {
     if(!answers.Q6_dejt){
         return {
           id: "Q6_dejt",
-          tekst: "Da li imate dejt?",
+          text: "Da li imate dejt?",
           options: ["Da", "Ne"]
         };
 
@@ -235,7 +253,7 @@ export class FindPerfectWineComponent implements OnInit {
     if(!answers.Q7_caj){
         return {
           id: "Q7_caj",
-          tekst: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
+          text: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
           options: ["SLATKO", "SUVO"]
         };
 
