@@ -1,7 +1,9 @@
+import { Answers } from './../model/answers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { Wine } from '../model/wine';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +54,15 @@ export class UserService {
     {
          headers: headers
 
+    });
+
+  }
+  sendAnswers(answers:Answers){
+    let aswersBack = JSON.stringify(answers);
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post<Wine>("http://localhost:8080/api/drools/findWine",answers,
+    {
+      headers: headers
     });
 
   }

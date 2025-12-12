@@ -14,38 +14,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FindPerfectWineComponent implements OnInit {
 
   answers: any = {};
+  answersBack! : Answers
   currentQuestion: any = null;
   selectedKitchen: string = '';
 
   
   
 
- /* answersForm = this.fb.group({
 
-    ethnicity: [null ],
-    healthConscious: [null],
-    onTheCoast: [null],
-    autmnOrWinter: [null],
-    preferMeat: [null],
-    juicyDishes: [null],
-    refreshingFlavors: [null],
-    creamyFlavors: [null],
-    smokyFlavors: [null],
-    lactoseIntolerant: [null],
-    summer: [null],
-    foodAllergy: [null],
-    pizzaWithPineapple: [null],
-    savoryFood: [null],
-    onDate: [null],
-    spicyFood : [null],
-    sweetenedIcedTea: [null],
-    haveDessert: [null]
-
-  }); */
 
   
 
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor( private userService: UserService) { }
 
   ngOnInit(): void {
 
@@ -120,7 +100,45 @@ export class FindPerfectWineComponent implements OnInit {
 
   }
 
-  sendToBackend(){}
+  
+
+  sendToBackend(){
+
+   this.answersBack  = {
+
+      ethnicity: this.answers.Q1,
+      healthConscious: this.answers.Q3,
+      onTheCoast: this.answers.Q3a_obala,
+      autmnOrWinter: null,
+      preferMeat: null,
+      juicyDishes: null,
+      refreshingFlavors: null,
+      creamyFlavors: null,
+      smokyFlavors: null,
+      lactoseIntolerant: this.answers.Q4_lak,
+      summer: this.answers.Q4a_leto,
+      foodAllergy: null,
+      pizzaWithPineapple: null,
+      savoryFood: this.answers.Q5_zac,
+      onDate: this.answers.Q6_dejt,
+      spicyFood : null,
+      sweetenedIcedTea: this.answers.Q7_caj,
+      haveDessert: this.answers.Q2
+  
+    }  
+    if(this.answersBack.sweetenedIcedTea === "Zasladjeni"){
+        this.answersBack.sweetenedIcedTea = "Da";
+    }
+    if( this.answersBack.sweetenedIcedTea === "Nezasladjeni"){
+      this.answersBack.sweetenedIcedTea = "Ne";
+    }
+    
+
+    console.log(this.answersBack);
+
+    this.userService.sendAnswers(this.answersBack).subscribe(data => console.log(data));
+    
+  }
 
 
   getItalianQuestions(answers: any){
@@ -171,16 +189,18 @@ export class FindPerfectWineComponent implements OnInit {
 
           }
 
-        } 
-        if(!answers.Q4a_leto){
+        }
+        if(answers.Q4_lak === "Ne"){
+          if(!answers.Q4a_leto){
             return { 
               id: "Q4a_leto",
               text: "Da li je leto ?",
               options: ["Da", "Ne"]
-
             };
 
-        }
+          }
+        } 
+        
         if(!answers.Q5_zac){
 
             return {
@@ -222,14 +242,17 @@ export class FindPerfectWineComponent implements OnInit {
 
         }
       }
-      if(!answers.Q4a_leto){
+      if(answers.Q4_lak === "Ne"){
+        if(!answers.Q4a_leto){
           return {
             id: "Q4a_leto",
             text: "Da li je leto?",
             options: ["Da", "Ne"]
           };
+      }
 
       }
+      
       if(!answers.Q5_zac){
           return {
             id: "Q5_zac",
@@ -254,18 +277,14 @@ export class FindPerfectWineComponent implements OnInit {
         return {
           id: "Q7_caj",
           text: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
-          options: ["SLATKO", "SUVO"]
+          options: ["Zasladjeni", "Nezasladjeni"]
         };
 
     }
 
     ///Gotovooo 
     return {done: true, reason: "all_answers_collected"};
-
-    
-    
-
-    
+  
 
   }
 

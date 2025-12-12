@@ -1,23 +1,23 @@
 export interface Answers {
 
-    ethnicity: string ;
-    healthConscious: string  ;
-    onTheCoast: string;
-    autmnOrWinter: string;
-    preferMeat: string;
-    juicyDishes: string;
-    refreshingFlavors: string;
-    creamyFlavors: string;
-    smokyFlavors: string;
-    lactoseIntolerant: string;
-    summer: string;
-    foodAllergy: string;
-    pizzaWithPineapple: string;
-    savoryFood: string;
-    onDate: string;
-    spicyFood: string;
-    sweetenedIcedTea: string;
-    haveDessert: string;
+    ethnicity: any ;
+    healthConscious: any  ;
+    onTheCoast: any;
+    autmnOrWinter: any;
+    preferMeat: any;
+    juicyDishes: any;
+    refreshingFlavors: any;
+    creamyFlavors: any;
+    smokyFlavors: any;
+    lactoseIntolerant: any;
+    summer: any;
+    foodAllergy: any;
+    pizzaWithPineapple: any;
+    savoryFood: any;
+    onDate: any;
+    spicyFood: any;
+    sweetenedIcedTea: any;
+    haveDessert: any;
 
 
 }
