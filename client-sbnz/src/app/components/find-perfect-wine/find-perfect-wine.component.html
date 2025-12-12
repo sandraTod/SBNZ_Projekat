@@ -1,3 +1,25 @@
+<div class="form-container">
 
-
-
+    <!-- Trenutno pitanje -->
+    <div *ngIf="!currentQuestion?.done">
+      <h2 >{{ currentQuestion?.text }}</h2>
+  
+      <div class="options">
+        <button 
+          *ngFor="let opt of currentQuestion?.options"
+          (click)="chooseOption(opt)">
+          {{ opt }}
+        </button>
+      </div>
+    </div>
+  
+    <!-- Zavrsetak -->
+    <div *ngIf="currentQuestion?.done">
+      <h2>Hvala!:D </h2>
+      <p>Analiziram odgovore i pronalazim savrseno vino za vas…</p>
+  
+      <button (click)="sendToBackend()">Posalji podatke</button>
+      <button (click) = "resetAnswers()"> Nova porudzbina</button>
+    </div>
+  
+  </div>
