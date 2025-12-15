@@ -17,6 +17,7 @@ export class FindPerfectWineComponent implements OnInit {
   answersBack! : Answers
   currentQuestion: any = null;
   selectedKitchen: string = '';
+  perfectWine! : Wine;
 
   
   
@@ -136,7 +137,11 @@ export class FindPerfectWineComponent implements OnInit {
 
     console.log(this.answersBack);
 
-    this.userService.sendAnswers(this.answersBack).subscribe(data => console.log(data));
+    this.userService.sendAnswers(this.answersBack).subscribe(data => {
+      this.perfectWine = data;
+      console.log(this.perfectWine);
+
+    });
     
   }
 

@@ -14,12 +14,30 @@
     </div>
   
     <!-- Zavrsetak -->
-    <div *ngIf="currentQuestion?.done">
+    <div *ngIf="currentQuestion?.done && perfectWine == null">
       <h2>Hvala!:D </h2>
       <p>Analiziram odgovore i pronalazim savrseno vino za vas…</p>
   
       <button (click)="sendToBackend()">Posalji podatke</button>
       <button (click) = "resetAnswers()"> Nova porudzbina</button>
+    </div>
+
+    <div *ngIf = "perfectWine">
+        <p><b> Naziv: </b>{{perfectWine?.name}}</p>
+        <p><b> Godina:  </b>{{perfectWine?.year}}</p>
+        <p><b> Boja: </b>{{perfectWine?.wineColor}}</p>
+        <p><b> Slatko/Suvo:  </b>{{perfectWine?.wineSugar}}</p>
+
+        <h4> Meso sa kojim se savrseno slaze : </h4>
+        <ul>
+            <li *ngFor = "let meat of perfectWine.meatList">
+                {{meat?.name}}
+
+            </li>
+                
+
+        </ul>    
+
     </div>
   
   </div>
