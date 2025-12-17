@@ -45,6 +45,7 @@ export class FindPerfectWineComponent implements OnInit {
       Q3a_jesen_zima: null,
       Q3a_socno: null,
       Q3a_proteini: null,
+      Q3a_osvezavajuci_ukusi: null,
       Q4_lak: null,
       Q4_alergicni: null,
       Q4_pizza: null,
@@ -120,7 +121,7 @@ export class FindPerfectWineComponent implements OnInit {
       autmnOrWinter: this.answers.Q3a_jesen_zima,
       preferMeat: this.answers.Q3a_proteini,
       juicyDishes: this.answers.Q3a_socno,
-      refreshingFlavors: null,
+      refreshingFlavors: this.answers.Q3a_osvezavajuci_ukusi,
       creamyFlavors: this.answers.Q4a_kremasti_ukusi,
       smokyFlavors: null,
       lactoseIntolerant: this.answers.Q4_lak,
@@ -536,6 +537,65 @@ export class FindPerfectWineComponent implements OnInit {
   }
 
   getChineseQuestions(answers: any){
+
+    if(!answers.Q2){
+      return {
+        id: "Q2",
+        text: "Da li narucujete desert?",
+        options: ["Da", "Ne"]
+      };
+    }
+    // ako narucuje desert KRAJ!
+    if(answers.Q2 === "Da"){
+      return {done: true, reason: "desert"};
+    }
+    if(!answers.Q3){
+      return{
+        id: "Q3",
+        text: "Da li birate obroke koji vam pomazu da imate vise energije u toku dana?",
+        options: ["Da", "Ne"]
+      }
+
+    }
+    if(answers.Q3 === "Da"){
+      if(!answers.Q3a_osvezavajuci_ukusi){
+        return {
+          id: "Q3a_osvezavajuci_ukusi",
+          text: "Da li vise volite osvezavajuce ukuse koji podsecaju na more? ",
+          options: ["Da"," Ne"]
+
+        }
+
+      }
+
+    }
+    if(!answers.Q4_pizza){
+      return{
+        id: "Q4_pizza",
+        text: "Da li volite pizzu sa ananasom?",
+        options: ["Da","Ne"]
+      }
+
+    }
+    if(!answers.Q5_pikantno){
+      return {
+        id: "Q5_pikantno",
+        text: "Da li preferirate ljutu hranu?",
+        options: ["Da", "Ne"]
+      }
+
+    }
+    if(!answers.Q7_caj){
+      return {
+        id: "Q7_caj",
+        text: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
+        options: ["Zasladjeni", "Nezasladjeni"]
+      };
+
+    }
+
+    ///Gotovooo 
+    return {done: true, reason: "all_answers_collected"};  
 
   }
 
