@@ -43,10 +43,15 @@ export class FindPerfectWineComponent implements OnInit {
       Q3: null,
       Q3a_obala: null,
       Q3a_jesen_zima: null,
+      Q3a_socno: null,
+      Q3a_proteini: null,
       Q4_lak: null,
       Q4_alergicni: null,
+      Q4_pizza: null,
       Q4a_leto: null,
+      Q4a_kremasti_ukusi: null,
       Q5_zac: null,
+      Q5_pikantno: null,
       Q6_dejt: null,
       Q7_caj: null,
     };
@@ -113,18 +118,18 @@ export class FindPerfectWineComponent implements OnInit {
       healthConscious: this.answers.Q3,
       onTheCoast: this.answers.Q3a_obala,
       autmnOrWinter: this.answers.Q3a_jesen_zima,
-      preferMeat: null,
-      juicyDishes: null,
+      preferMeat: this.answers.Q3a_proteini,
+      juicyDishes: this.answers.Q3a_socno,
       refreshingFlavors: null,
-      creamyFlavors: null,
+      creamyFlavors: this.answers.Q4a_kremasti_ukusi,
       smokyFlavors: null,
       lactoseIntolerant: this.answers.Q4_lak,
       summer: this.answers.Q4a_leto,
       foodAllergy: this.answers.Q4_alergicni,
-      pizzaWithPineapple: null,
+      pizzaWithPineapple: this.answers.Q4_pizza,
       savoryFood: this.answers.Q5_zac,
       onDate: this.answers.Q6_dejt,
-      spicyFood : null,
+      spicyFood : this.answers.Q5_pikantno,
       sweetenedIcedTea: this.answers.Q7_caj,
       haveDessert: this.answers.Q2
   
@@ -379,11 +384,154 @@ export class FindPerfectWineComponent implements OnInit {
 
   }
 
-  getAmericanQuestions(answrs: any){
+  getAmericanQuestions(answers: any){
+    if(!answers.Q2){
+      return {
+        id: "Q2",
+        text: "Da li narucujete desert?",
+        options: ["Da", "Ne"]
+      };
+    }
+    // ako narucuje desert KRAJ!
+    if(answers.Q2 === "Da"){
+      return {done: true, reason: "desert"}
+    }
+    if(!answers.Q3){
+      return {
+        id: "Q3",
+        text: "Da li trenirate min 3x nedeljno?",
+        options: ["Da","Ne"]
+      }
+
+    }
+    if(answers.Q3 === "Ne"){
+      if(!answers.Q3a_socno){
+        return{
+          id: "Q3a_socno",
+          text: "Da li preferirate jela koja su poznata po bogatom ukusu i socnosti ? ",
+          options: ["Da", "Ne"]
+        }
+
+      }
+
+    }
+    if(!answers.Q4_pizza){
+      return{
+        id: "Q4_pizza",
+        text: "Da li volite pizzu sa ananasom?",
+        options: ["Da", "Ne"]
+      }
+
+    }
+    if(!answers.Q5_pikantno){
+      return {
+        id: "Q5_pikantno",
+        text: "Da li preferirate jela sa pikantnim ukusom?",
+        options: ["Da","Ne"]
+        
+      }
+
+    }
+    if(!answers.Q6_dejt){
+      return {
+        id: "Q6_dejt",
+        text: "Da li idete na dejt?",
+        options: ["Da", "Ne"]
+      }
+
+    }
+    
+    // izbor ledenog caja
+    if(!answers.Q7_caj){
+      return {
+        id: "Q7_caj",
+        text: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
+        options: ["Zasladjeni", "Nezasladjeni"]
+      };
+
+    }
+
+    ///Gotovooo 
+    return {done: true, reason: "all_answers_collected"};
 
   }
   
   getIndianQuestions(answers: any){
+    if(!answers.Q2){
+      return {
+        id: "Q2",
+        text: "Da li narucujete desert?",
+        options: ["Da", "Ne"]
+      };
+    }
+    // ako narucuje desert KRAJ!
+    if(answers.Q2 === "Da"){
+      return {done: true, reason: "desert"};
+    }
+    if(!answers.Q3){
+      return {
+        id: "Q3",
+        text: "Da li birate obroke koji vam pomazu da imate vise enrgije u toku dana?",
+        options: ["Da","Ne"]
+      };
+    } 
+    if(answers.Q3 === "Da"){
+      if(!answers.Q3a_proteini){
+        return {
+          id: "Q3a_proteini",
+          text: "Da li volite obroke bogate proteinima iz mesa?",
+          options: ["Da", "Ne"]
+        };
+
+      }
+
+    } 
+    if(!answers.Q4_alergicni){
+      return {
+        id: "Q4_alergicni",
+        text: "Da li ste alergicni na neku hranu? ",
+        options: ["Da", "Ne"]
+      };
+
+    }
+    if(answers.Q4_alergicni === "Da"){
+      if(!answers.Q4a_kremasti_ukusi){
+        return {
+          id: "Q4a_kremasti_ukusi",
+          text: "Da li volite kremaste ukuse?",
+          options: ["Da", "Ne"]
+        };
+
+      }
+
+    }
+    if(!answers.Q5_zac){
+      return {
+        id: "Q5_zac",
+        text: "Da li volite da vasa jela imaju izrazene ukuse i arome?",
+        options: ["Da", "Ne"]
+
+      };
+    }
+    if(!answers.Q6_dejt){
+      return {
+        id: "Q6_dejt",
+        text: "Da li idete na dejt?",
+        options: ["Da", "Ne"]
+      };
+    }
+    // izbor ledenog caja
+    if(!answers.Q7_caj){
+      return {
+        id: "Q7_caj",
+        text: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
+        options: ["Zasladjeni", "Nezasladjeni"]
+      };
+
+    }
+
+    ///Gotovooo 
+    return {done: true, reason: "all_answers_collected"};  
 
   }
 
