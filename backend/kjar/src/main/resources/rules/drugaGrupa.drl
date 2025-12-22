@@ -829,3 +829,43 @@ rule "Meksicka kuhinja -> nezasladjeni IceTea "
 end
 
 
+//PRAVILA ZA ODREDJIVANJE SCORE-A VINA
+
+
+rule "Dodajemo score 50 vinu ako sadrzi meso "
+	salience -10
+	when
+		$f: Found()
+		$w: Wine(wineSugar == $f.getFoundSugar())
+		eval($w.containsMeatWithName($f.getFoundMeat()))
+		
+	then
+		$w.addScore(50);
+		System.out.println("Dodali smo "+ $w.getName()+ " score 50");
+end
+
+
+rule "Dodajemo score 30 vinu ako sadrzi sos "
+	salience -10
+	when
+		$f: Found()
+		$w: Wine(wineSugar == $f.getFoundSugar())
+		eval($w.containsSauceWithName($f.getFoundSauce()))
+		
+	then
+		$w.addScore(30);
+		System.out.println("Dodali smo "+ $w.getName()+ " score 30");
+end
+
+
+rule "Dodajemo score 20 vinu ako sadrzi bar jednu vrstu zacina "
+	salience -10
+	when
+		$f: Found()
+		$w: Wine(wineSugar == $f.getFoundSugar())
+		eval($w.containsSpiceWithName($f.getFoundSpices()))
+		
+	then
+		$w.addScore(20);
+		System.out.println("Dodali smo "+ $w.getName()+ " score 20");
+end
