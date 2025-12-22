@@ -6,6 +6,7 @@ global Wine foundWine;
 
 
 rule "Korisnik je izabrao Italijansku kuhinju i narucuje desert"
+	agenda-group "prva_grupa_pravila"
 	when
 		$a:Answers(ethnicity == "Italijanska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
@@ -16,6 +17,7 @@ end
 
 
 rule "Korisnik izabrao Italijansku kuhinju i ne trenira"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Italijanska", healthConscious == "Ne")
@@ -31,6 +33,7 @@ end
 
 
 rule "Korisnik je izabarao Italijansku kuhinju, trenira i restoran kraj obale"
+	agenda-group "prva_grupa_pravila"
 	salience 100  
 	when
 		$a:Answers(ethnicity == "Italijanska", healthConscious == "Da", onTheCoast == "Da")
@@ -44,6 +47,7 @@ rule "Korisnik je izabarao Italijansku kuhinju, trenira i restoran kraj obale"
 end
 
 rule "Korisnik je izabarao Italijansku kuhinju, trenira i restoran NIJE kraj obale"
+	agenda-group "prva_grupa_pravila"
     salience 100
 	when
 		$a:Answers(ethnicity == "Italijanska", healthConscious == "Da", onTheCoast == "Ne")
@@ -57,6 +61,7 @@ rule "Korisnik je izabarao Italijansku kuhinju, trenira i restoran NIJE kraj oba
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju, intolerantan na laktozu "
+	agenda-group "prva_grupa_pravila"
 
 	when
 		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Da")
@@ -68,7 +73,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju, intolerantan na laktozu "
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i leto je  "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Da" )
 		$f: Found()
@@ -79,7 +84,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i leto je 
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i nije leto "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Ne" )
 		$f: Found()
@@ -90,7 +95,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju, tolerantan na laktozu i nije let
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju i voli zacinjenu hranu  "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Italijanska", savoryFood =="Da" )
 		$f: Found()
@@ -102,7 +107,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju i voli zacinjenu hranu  "
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju i ne ide na dejt "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Italijanska", onDate =="Ne" )
 		$f: Found()
@@ -113,7 +118,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju i ne ide na dejt "
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju i zasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Da" )
 		$f: Found()
@@ -124,7 +129,7 @@ rule "Korisnik je izabrao Italijanksku kuhinju i zasladjeni IceTea "
 end
 
 rule "Korisnik je izabrao Italijanksku kuhinju i nezasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Ne" )
 		$f: Found()
@@ -137,6 +142,7 @@ end
 //Pravilo gde trazimo vino koje sadrzi sve sastojke!!!!
 
 rule "Trazimo vino "
+	agenda-group "prva_grupa_pravila"	
 	salience -10
 	when
 		$f: Found()
@@ -156,6 +162,7 @@ end
 //Pravila za Francusku kuhinju
 
 rule "Korisnik je izabrao Francusku kuhinju i narucuje desert"
+	agenda-group "prva_grupa_pravila"
 	when
 		$a:Answers(ethnicity == "Francuska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
@@ -165,6 +172,7 @@ rule "Korisnik je izabrao Francusku kuhinju i narucuje desert"
 end
 
 rule "Korisnik izabrao Francusku kuhinju i trenira"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Francuska", healthConscious == "Da")
@@ -179,6 +187,7 @@ rule "Korisnik izabrao Francusku kuhinju i trenira"
 end	
 
 rule "Korisnik je izabarao Francusku  kuhinju,  NE trenira i jesen je ili zima"
+	agenda-group "prva_grupa_pravila"
 	salience 100  
 	when
 		$a:Answers(ethnicity == "Francuska", healthConscious == "Ne", autmnOrWinter == "Da")
@@ -192,6 +201,7 @@ rule "Korisnik je izabarao Francusku  kuhinju,  NE trenira i jesen je ili zima"
 end
 
 rule "Korisnik je izabarao Francusku  kuhinju, trenira i NIJE jesen ili zima"
+	agenda-group "prva_grupa_pravila"
 	salience 100  
 	when
 		$a:Answers(ethnicity == "Francuska", healthConscious == "Ne", autmnOrWinter == "Ne")
@@ -205,7 +215,7 @@ rule "Korisnik je izabarao Francusku  kuhinju, trenira i NIJE jesen ili zima"
 end
 
 rule "Korisnik je izabrao Francusku  kuhinju,alergican je na neku hranu i intolerantan na laktozu "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", foodAllergy == "Da",lactoseIntolerant == "Da")
 		$f: Found()
@@ -216,7 +226,7 @@ rule "Korisnik je izabrao Francusku  kuhinju,alergican je na neku hranu i intole
 end
 
 rule "Korisnik je izabrao Francusku  kuhinju,alergican je na neku hranu i NIJE intolerantan na laktozu "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", foodAllergy == "Da",lactoseIntolerant == "Ne")
 		$f: Found()
@@ -227,7 +237,7 @@ rule "Korisnik je izabrao Francusku  kuhinju,alergican je na neku hranu i NIJE i
 end
 
 rule "Korisnik je izabrao Francusku  kuhinju, NIJE alergican  na neku hranu"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", foodAllergy == "Ne")
 		$f: Found()
@@ -238,7 +248,7 @@ rule "Korisnik je izabrao Francusku  kuhinju, NIJE alergican  na neku hranu"
 end
 
 rule "Korisnik je izabrao Francusku kuhinju i voli zacinjenu hranu"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", savoryFood == "Da")
 		$f: Found()
@@ -251,7 +261,7 @@ end
 
 
 rule "Korisnik je izabrao Francusku kuhinju i ne ide na dejt "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", onDate =="Ne" )
 		$f: Found()
@@ -262,7 +272,7 @@ rule "Korisnik je izabrao Francusku kuhinju i ne ide na dejt "
 end
 
 rule "Korisnik je izabrao Francusku kuhinju i zasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", sweetenedIcedTea =="Da" )
 		$f: Found()
@@ -273,7 +283,7 @@ rule "Korisnik je izabrao Francusku kuhinju i zasladjeni IceTea "
 end
 
 rule "Korisnik je izabrao Francusku kuhinju i nezasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Francuska", sweetenedIcedTea =="Ne" )
 		$f: Found()
@@ -289,6 +299,7 @@ end
 //Pravila za Indijsku  kuhinju
 
 rule "Korisnik je izabrao Indijsku kuhinju i narucuje desert"
+	agenda-group "prva_grupa_pravila"
 	when
 		$a:Answers(ethnicity == "Indijska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
@@ -298,6 +309,7 @@ rule "Korisnik je izabrao Indijsku kuhinju i narucuje desert"
 end
 
 rule "Korisnik izabrao Indijsku kuhinju,trenira i preferira obroke bogate proteinima iz mesa"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Indijska", healthConscious == "Da", preferMeat == "Da")
@@ -312,6 +324,7 @@ rule "Korisnik izabrao Indijsku kuhinju,trenira i preferira obroke bogate protei
 end	
 
 rule "Korisnik je izabarao Indijsku  kuhinju,  NE trenira"
+	agenda-group "prva_grupa_pravila"
 	salience 100  
 	when
 		$a:Answers(ethnicity == "Indijska", healthConscious == "Ne")
@@ -327,7 +340,7 @@ end
 
 
 rule "Korisnik je izabrao Indijsku  kuhinju,alergican je na neku hranu i voli kremaste ukuse "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", foodAllergy == "Da", creamyFlavors == "Da")
 		$s: Sauce(name == "Jogurt")
@@ -339,7 +352,7 @@ rule "Korisnik je izabrao Indijsku  kuhinju,alergican je na neku hranu i voli kr
 end
 
 rule "Korisnik je izabrao Indijsku  kuhinju,alergican je na neku hranu i NE VOLI kreamaste ukuse "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", foodAllergy == "Da", creamyFlavors == "Ne")
 		$s: Sauce(name == "Paradajz")
@@ -351,7 +364,7 @@ rule "Korisnik je izabrao Indijsku  kuhinju,alergican je na neku hranu i NE VOLI
 end
 
 rule "Korisnik je izabrao Indijsku kuhinju, NIJE alergican  na neku hranu"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", foodAllergy == "Ne")
 		$s: Sauce(name == "Indijski orah")
@@ -364,7 +377,7 @@ end
 
 
 rule "Korisnik je izabrao Indijsku kuhinju i voli da jela imaju izrazene ukuse i arome"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", savoryFood == "Da")
 		$f: Found()
@@ -377,7 +390,7 @@ rule "Korisnik je izabrao Indijsku kuhinju i voli da jela imaju izrazene ukuse i
 end
 
 rule "Korisnik je izabrao Indijsku kuhinju i NE VOLI da jela imaju izrazene ukuse i arome"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", savoryFood == "Ne")
 		$f: Found()
@@ -389,7 +402,7 @@ rule "Korisnik je izabrao Indijsku kuhinju i NE VOLI da jela imaju izrazene ukus
 end
 
 rule "Korisnik je izabrao Indijsku kuhinju i NE ide na dejt "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", onDate =="Ne" )
 		$f: Found()
@@ -401,7 +414,7 @@ end
 
 
 rule "Korisnik je izabrao Indijsku kuhinju i zasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", sweetenedIcedTea =="Da" )
 		$f: Found()
@@ -412,7 +425,7 @@ rule "Korisnik je izabrao Indijsku kuhinju i zasladjeni IceTea "
 end
 
 rule "Korisnik je izabrao Indijsku kuhinju i nezasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Indijska", sweetenedIcedTea =="Ne" )
 		$f: Found()
@@ -427,6 +440,7 @@ end
 //Pravila za Americku kuhinju
 
 rule "Korisnik je izabrao Americku kuhinju i narucuje desert"
+	agenda-group "prva_grupa_pravila"
 	when
 		$a:Answers(ethnicity == "Americka", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
@@ -436,6 +450,7 @@ rule "Korisnik je izabrao Americku kuhinju i narucuje desert"
 end
 
 rule "Korisnik izabrao Americku kuhinju, trenira"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Americka", healthConscious == "Da")
@@ -450,6 +465,7 @@ rule "Korisnik izabrao Americku kuhinju, trenira"
 end	
 
 rule "Korisnik izabrao Americku kuhinju, NE trenira i preferira jela poznata po bokatom ukusu i socnosti"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Americka", healthConscious == "Ne", juicyDishes == "Da")
@@ -464,6 +480,7 @@ rule "Korisnik izabrao Americku kuhinju, NE trenira i preferira jela poznata po 
 end	
 
 rule "Korisnik izabrao Americku kuhinju, NE trenira i NE preferira jela poznata po bokatom ukusu i socnosti"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Americka", healthConscious == "Ne", juicyDishes == "Ne")
@@ -478,7 +495,7 @@ rule "Korisnik izabrao Americku kuhinju, NE trenira i NE preferira jela poznata 
 end	
 
 rule "Korisnik je izabrao Americku kuhinju i voli pizzu sa ananasom "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", pizzaWithPineapple == "Da")
 		$s: Sauce(name == "Med")
@@ -490,7 +507,7 @@ rule "Korisnik je izabrao Americku kuhinju i voli pizzu sa ananasom "
 end
 
 rule "Korisnik je izabrao Americku kuhinju i NE voli pizzu sa ananasom "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", pizzaWithPineapple == "Ne")
 		$s: Sauce(name == "BBQ sos")
@@ -502,7 +519,7 @@ rule "Korisnik je izabrao Americku kuhinju i NE voli pizzu sa ananasom "
 end
 
 rule "Korisnik je izabrao Americku kuhinju i voli da jela koja imaju pikantan ukus"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", spicyFood == "Da")
 		$f: Found()
@@ -513,7 +530,7 @@ rule "Korisnik je izabrao Americku kuhinju i voli da jela koja imaju pikantan uk
 end
 
 rule "Korisnik je izabrao Americku kuhinju i NE VOLI da jela koja imaju pikantan ukus"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", spicyFood== "Ne")
 		$f: Found()
@@ -524,7 +541,7 @@ rule "Korisnik je izabrao Americku kuhinju i NE VOLI da jela koja imaju pikantan
 end
 
 rule "Korisnik je izabrao Americku kuhinju i NE ide na dejt "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", onDate =="Ne" )
 		$f: Found()
@@ -535,7 +552,7 @@ rule "Korisnik je izabrao Americku kuhinju i NE ide na dejt "
 end
 
 rule "Korisnik je izabrao Americku kuhinju i zasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", sweetenedIcedTea =="Da" )
 		$f: Found()
@@ -546,7 +563,7 @@ rule "Korisnik je izabrao Americku kuhinju i zasladjeni IceTea "
 end
 
 rule "Korisnik je izabrao Americku kuhinju i nezasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Americka", sweetenedIcedTea == "Ne" )
 		$f: Found()
@@ -562,6 +579,7 @@ end
 //Pravila za Kinesku kuhinju
 
 rule "Korisnik je izabrao Kinesku kuhinju i narucuje desert"
+	agenda-group "prva_grupa_pravila"
 	when
 		$a:Answers(ethnicity == "Kineska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
@@ -571,6 +589,7 @@ rule "Korisnik je izabrao Kinesku kuhinju i narucuje desert"
 end
 
 rule "Korisnik izabrao Kinesku kuhinju, trenira i preferira osveavajuce ukuse koji podsecaju na more"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Kineska", healthConscious == "Da", refreshingFlavors == "Da")
@@ -585,6 +604,7 @@ rule "Korisnik izabrao Kinesku kuhinju, trenira i preferira osveavajuce ukuse ko
 end	
 
 rule "Korisnik izabrao Kinesku kuhinju, trenira i NE preferira osvezavajuce ukuse koji podsecaju na more"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Kineska", healthConscious == "Da", refreshingFlavors == "Ne")
@@ -599,6 +619,7 @@ rule "Korisnik izabrao Kinesku kuhinju, trenira i NE preferira osvezavajuce ukus
 end
 
 rule "Korisnik izabrao Kinesku kuhinju i NE trenira"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Kineska", healthConscious == "Ne")
@@ -612,7 +633,7 @@ rule "Korisnik izabrao Kinesku kuhinju i NE trenira"
 end		
 
 rule "Korisnik je izabrao Kinesku kuhinju i voli pizzu sa ananasom "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Kineska", pizzaWithPineapple == "Da")
 		$s: Sauce(name == "Slatko-kiseli sos")
@@ -624,7 +645,7 @@ rule "Korisnik je izabrao Kinesku kuhinju i voli pizzu sa ananasom "
 end
 
 rule "Korisnik je izabrao Kinesku kuhinju i NE voli pizzu sa ananasom "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Kineska", pizzaWithPineapple == "Ne")
 		$s: Sauce(name == "Terijaki sos")
@@ -637,7 +658,7 @@ end
 
 
 rule "Korisnik je izabrao Kinesku kuhinju i voli da jela koja imaju pikantan ukus"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Kineska", spicyFood == "Da")
 		$f: Found()
@@ -649,7 +670,7 @@ rule "Korisnik je izabrao Kinesku kuhinju i voli da jela koja imaju pikantan uku
 end
 
 rule "Korisnik je izabrao Kinesku kuhinju i NE VOLI da jela koja imaju pikantan ukus"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Kineska", spicyFood== "Ne")
 		$f: Found()
@@ -663,7 +684,7 @@ end
 
 
 rule "Korisnik je izabrao Kinesku kuhinju i zasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Kineska", sweetenedIcedTea =="Da" )
 		$f: Found()
@@ -674,7 +695,7 @@ rule "Korisnik je izabrao Kinesku kuhinju i zasladjeni IceTea "
 end
 
 rule "Korisnik je izabrao Kinesku kuhinju i nezasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Kineska", sweetenedIcedTea == "Ne" )
 		$f: Found()
@@ -690,6 +711,7 @@ end
 //Pravila za Meksicku kuhinju
 
 rule "Korisnik je izabrao Meksicku kuhinju i narucuje desert"
+	agenda-group "prva_grupa_pravila"
 	when
 		$a:Answers(ethnicity == "Meksicka", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
@@ -699,6 +721,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i narucuje desert"
 end
 
 rule "Korisnik izabrao Meksicku kuhinju, NE trenira i preferira bogate, dimljene ukuse"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Meksicka", healthConscious == "Ne", smokyFlavors == "Da")
@@ -713,6 +736,7 @@ rule "Korisnik izabrao Meksicku kuhinju, NE trenira i preferira bogate, dimljene
 end	
 
 rule "Korisnik izabrao Meksicku kuhinju, NE trenira i NE preferira bogate dimljene ukuse"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Meksicka", healthConscious == "Ne", smokyFlavors == "Ne")
@@ -727,6 +751,7 @@ rule "Korisnik izabrao Meksicku kuhinju, NE trenira i NE preferira bogate dimlje
 end
 
 rule "Korisnik izabrao Meksicku kuhinju i trenira"
+	agenda-group "prva_grupa_pravila"
 	salience 100
 	when
 		$a:Answers(ethnicity == "Meksicka", healthConscious == "Da")
@@ -740,7 +765,7 @@ rule "Korisnik izabrao Meksicku kuhinju i trenira"
 end		
 
 rule "Korisnik je izabrao Meksicku kuhinju i kremaste ukuse i intolerantan je na laktozu "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", creamyFlavors == "Da", lactoseIntolerant == "Da")
 		$s: Sauce(name == "Avokado")
@@ -752,7 +777,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i kremaste ukuse i intolerantan je na
 end
 
 rule "Korisnik je izabrao Meksicku kuhinju i kremaste ukuse i NIJE intolerantan je na laktozu "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", creamyFlavors == "Da", lactoseIntolerant == "Ne")
 		$s: Sauce(name == "Crema Mexicana")
@@ -764,7 +789,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i kremaste ukuse i NIJE intolerantan 
 end
 
 rule "Korisnik je izabrao Meksicku kuhinju i NE preferira kremaste ukuse  "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", creamyFlavors == "Ne")
 		$s: Sauce(name == "Tomatillo")
@@ -776,7 +801,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i NE preferira kremaste ukuse  "
 end
 
 rule "Korisnik je izabrao Meksicku kuhinju i preferira ljutu hranu"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", spicyFood == "Da")
 		$f: Found()
@@ -789,7 +814,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i preferira ljutu hranu"
 end
 
 rule "Korisnik je izabrao Meksicku  kuhinju i NE preferira ljutu hranu"
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", spicyFood== "Ne")
 		$f: Found()
@@ -802,7 +827,7 @@ end
 
 
 rule "Korisnik je izabrao Meksicku kuhinju i zasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", sweetenedIcedTea =="Da" )
 		$f: Found()
@@ -813,7 +838,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i zasladjeni IceTea "
 end
 
 rule "Korisnik je izabrao Meksicku kuhinju i nezasladjeni IceTea "
-
+	agenda-group "prva_grupa_pravila"
 	when
 		$a: Answers(ethnicity == "Meksicka", sweetenedIcedTea == "Ne" )
 		$f: Found()
@@ -822,26 +847,3 @@ rule "Korisnik je izabrao Meksicku kuhinju i nezasladjeni IceTea "
 		$f.setFoundSugar(WineSugar.SUVO);
 		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
