@@ -1,5 +1,7 @@
 package com.sbnz.service.controller;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,6 +36,21 @@ public class DroolsController {
 		
 		Wine found = droolsService.findWine(answers);
 		return new ResponseEntity<>(found,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(
+			path = "/findWineList",
+			method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			
+	)
+	@PreAuthorize("hasAuthority('USER')")
+	ResponseEntity<Collection<Wine>> findWineLiest(@RequestBody Answers answers ){
+		
+		Collection<Wine> result = droolsService.findWineList(answers);
+		return new ResponseEntity<>(result,HttpStatus.OK);
 		
 	}
 
