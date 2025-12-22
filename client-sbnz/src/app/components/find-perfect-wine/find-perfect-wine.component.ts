@@ -46,6 +46,7 @@ export class FindPerfectWineComponent implements OnInit {
       Q3a_socno: null,
       Q3a_proteini: null,
       Q3a_osvezavajuci_ukusi: null,
+      Q3a_dimljeni_ukusi: null,
       Q4_lak: null,
       Q4_alergicni: null,
       Q4_pizza: null,
@@ -123,7 +124,7 @@ export class FindPerfectWineComponent implements OnInit {
       juicyDishes: this.answers.Q3a_socno,
       refreshingFlavors: this.answers.Q3a_osvezavajuci_ukusi,
       creamyFlavors: this.answers.Q4a_kremasti_ukusi,
-      smokyFlavors: null,
+      smokyFlavors: this.answers.Q3a_dimljeni_ukusi,
       lactoseIntolerant: this.answers.Q4_lak,
       summer: this.answers.Q4a_leto,
       foodAllergy: this.answers.Q4_alergicni,
@@ -600,6 +601,76 @@ export class FindPerfectWineComponent implements OnInit {
   }
 
   getMexicanQuestions(answers: any){
+
+    if(!answers.Q2){
+      return {
+        id: "Q2",
+        text: "Da li narucujete desert?",
+        options: ["Da", "Ne"]
+      };
+    }
+    // ako narucuje desert KRAJ!
+    if(answers.Q2 === "Da"){
+      return {done: true, reason: "desert"};
+    }
+
+    if(!answers.Q3){
+      return{
+        id: "Q3",
+        text: "Da li trenirate min 3x nedeljno?",
+        options: ["Da", "Ne"]
+
+      }
+
+    }
+    if(answers.Q3 === "Ne"){
+      if(!answers.Q3a_dimljeni_ukusi){
+        return{
+          id: "Q3a_dimljeni_ukusi",
+          text: "Da li preferirate bogate, dimljene ukuse?",
+          options:["Da", "Ne"]
+        }
+
+      }
+    }
+    if(!answers.Q4a_kremasti_ukusi){
+      return {
+        id: "Q4a_kremasti_ukusi",
+        text: "Da li preferirate kremaste ukuse?",
+        options: ["Da", "Ne"]
+      }
+
+    }
+    if(answers.Q4a_kremasti_ukusi === "Da"){
+      if(!answers.Q4_lak){
+        return {
+          id: "Q4_lak",
+          text: "Da li ste intolerantni na laktozu? ",
+          options: ["Da", "Ne"]
+        }
+
+      }
+
+    }
+    if(!answers.Q5_pikantno){
+      return {
+        id: "Q5_pikantno",
+        text: "Da li preferirate ljutu hranu?",
+        options: ["Da", "Ne"]
+      }
+
+    }
+    if(!answers.Q7_caj){
+      return {
+        id: "Q7_caj",
+        text: "Da li preferirate zasladjeni ili nezasladjeni ledeni caj? ",
+        options: ["Zasladjeni", "Nezasladjeni"]
+      };
+
+    }
+
+    ///Gotovooo 
+    return {done: true, reason: "all_answers_collected"}; 
 
   }
 
