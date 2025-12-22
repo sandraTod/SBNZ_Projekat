@@ -1,0 +1,831 @@
+package rules;
+
+import com.sbnz.model.*;
+
+
+
+rule "Italijanska kuhinja -> narucuje desert"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a:Answers(ethnicity == "Italijanska", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+
+rule "Italijanska kuhinja -> ne treninra"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Italijanska", healthConscious == "Ne")
+		$m: Meat(name == "Junece meso")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+
+rule "Italijanska kuhinja -> trenira -> restoran kraj obale"
+	agenda-group "druga_grupa_pravila"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Italijanska", healthConscious == "Da", onTheCoast == "Da")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Skoljke");
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+rule "Italijanska kuhinja -> trenira -> restoran NIJE kraj obale"
+	agenda-group "druga_grupa_pravila"
+    salience 100
+	when
+		$a:Answers(ethnicity == "Italijanska", healthConscious == "Da", onTheCoast == "Ne")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Piletina");
+		insert(f);
+		System.out.println("Meso je: "+ f.getFoundMeat());
+		
+end
+
+rule "Italijankska kuhinja -> intolerantan na laktozu "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Da")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Tomato Paradajz");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Italijankska kuhinja -> tolerantan na laktozu -> leto je  "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Tomato Paradajz");
+		System.out.println("A sad je sosiiic : " +$f.getFoundSauce());
+end
+
+rule "Italijankska kuhinja -> tolerantan na laktozu -> NIJE leto "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", lactoseIntolerant == "Ne", summer == "Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Pavlaka");
+		System.out.println("Sosic je kad nije leto : "+ $f.getFoundSauce());
+end
+
+rule "Italijankska kuhinja -> voli zacinjenu hranu  "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", savoryFood =="Da" )
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Origano");
+		$f.getFoundSpices().add("Bosiljak");
+		System.out.println("Lista zacina iz pravila izmenjeno: " + $f.getFoundSpices());	
+end
+
+rule "Italijankska kuhinja -> NE ide na dejt "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", onDate =="Ne" )
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Beli luk");
+		System.out.println("Lista zacina kad ne ide na dejt: " + $f.getFoundSpices());	
+end
+
+rule "Italijankska kuhinja -> zasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Italijankska kuhinja -> nezasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Italijanska", sweetenedIcedTea =="Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+
+
+//Pravila za Francusku kuhinju
+
+rule "Francuska kuhinja -> narucuje desert"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a:Answers(ethnicity == "Francuska", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+rule "Francuska kuhinja -> trenira"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Francuska", healthConscious == "Da")
+		$m: Meat(name == "Jastog")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Francuska  kuhinja ->  NE trenira -> jesen je ili zima"
+	agenda-group "druga_grupa_pravila"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Francuska", healthConscious == "Ne", autmnOrWinter == "Da")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Divljac");
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+rule "Francuska  kuhinja -> trenira -> NIJE jesen ili zima"
+	agenda-group "druga_grupa_pravila"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Francuska", healthConscious == "Ne", autmnOrWinter == "Ne")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat("Teletina");
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+rule "Francuska  kuhinja -> alergican je na neku hranu -> intolerantan na laktozu "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", foodAllergy == "Da",lactoseIntolerant == "Da")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Senf");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Francuska  kuhinja -> alergican je na neku hranu ->  NIJE intolerantan na laktozu "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", foodAllergy == "Da",lactoseIntolerant == "Ne")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Sir");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Francuska  kuhinja ->  NIJE alergican na neku hranu"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", foodAllergy == "Ne")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce("Pecurke");
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Francuska kuhinja -> voli zacinjenu hranu"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", savoryFood == "Da")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Biber u zrnu");
+		$f.getFoundSpices().add("Muskatni orascic");
+		System.out.println("Lista zacina iz pravila izmenjeno: " + $f.getFoundSpices());
+end
+
+
+rule "Francuska kuhinja -> ne ide na dejt "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", onDate =="Ne" )
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Mladi luk");
+		System.out.println("Lista zacina kad ne ide na dejt: " + $f.getFoundSpices());	
+end
+
+rule "Francuska kuhinja -> zasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Francuska kuhinja -> nezasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Francuska", sweetenedIcedTea =="Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+
+
+
+//Pravila za Indijsku  kuhinju
+
+rule "Indijska kuhinja -> narucuje desert"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a:Answers(ethnicity == "Indijska", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+rule "Indijska kuhinja -> trenira ->  preferira obroke bogate proteinima iz mesa"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Indijska", healthConscious == "Da", preferMeat == "Da")
+		$m: Meat(name == "Kozije meso")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Indijska  kuhinja -> NE trenira"
+	agenda-group "druga_grupa_pravila"
+	salience 100  
+	when
+		$a:Answers(ethnicity == "Indijska", healthConscious == "Ne")
+		$m: Meat(name == "Jagnjetina mlevena")
+		
+	then
+		Found f = new Found();
+		f.setFoundMeat($m.getName());
+		insert(f);
+		System.out.println("Meso je: " + f.getFoundMeat());
+		
+end
+
+
+rule "Indijska  kuhinja -> alergican je na neku hranu -> voli kremaste ukuse "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", foodAllergy == "Da", creamyFlavors == "Da")
+		$s: Sauce(name == "Jogurt")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Indijska  kuhinja -> alergican je na neku hranu ->  NE VOLI kreamaste ukuse "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", foodAllergy == "Da", creamyFlavors == "Ne")
+		$s: Sauce(name == "Paradajz")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Indijska kuhinja -> NIJE alergican  na neku hranu"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", foodAllergy == "Ne")
+		$s: Sauce(name == "Indijski orah")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+
+rule "Indijska kuhinja -> voli da jela imaju izrazene ukuse i arome"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", savoryFood == "Da")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Kari");
+		$f.getFoundSpices().add("Limeta");
+		$f.getFoundSpices().add("Nana");
+		System.out.println("Lista zacina kada voli zacinjenu hranu: " + $f.getFoundSpices());
+end
+
+rule "Indijska kuhinja ->  NE VOLI da jela imaju izrazene ukuse i arome"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", savoryFood == "Ne")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Kurkuma");
+		$f.getFoundSpices().add("Zvezdasti anis");
+		System.out.println("Lista zacina kada NE VOLI zacinjenu hranu: " + $f.getFoundSpices());
+end
+
+rule "Indijska kuhinja -> NE ide na dejt "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", onDate =="Ne" )
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Beli luk u prahu");
+		System.out.println("Lista zacina kad ne ide na dejt: " + $f.getFoundSpices());	
+end
+
+
+rule "Indijska kuhinja -> zasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Indijska kuhinja -> nezasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Indijska", sweetenedIcedTea =="Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+
+
+//Pravila za Americku kuhinju
+
+rule " Americka kuhinja -> narucuje desert"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a:Answers(ethnicity == "Americka", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+rule "Americka kuhinja -> trenira"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Americka", healthConscious == "Da")
+		$m: Meat(name == "Curetina")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Americka kuhinja -> NE trenira -> preferira jela poznata po bogatom ukusu i socnosti"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Americka", healthConscious == "Ne", juicyDishes == "Da")
+		$m: Meat(name == "Govedina")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Americka kuhinja -> NE trenira -> NE preferira jela poznata po bogatom ukusu i socnosti"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Americka", healthConscious == "Ne", juicyDishes == "Ne")
+		$m: Meat(name == "Svinjetina")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Americka kuhinja -> voli pizzu sa ananasom "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", pizzaWithPineapple == "Da")
+		$s: Sauce(name == "Med")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Americka kuhinja -> NE voli pizzu sa ananasom "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", pizzaWithPineapple == "Ne")
+		$s: Sauce(name == "BBQ sos")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Americka kuhinja -> voli jela koja imaju pikantan ukus"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", spicyFood == "Da")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Paprika");
+		System.out.println("Lista zacina kada voli zaljucenu hranu: " + $f.getFoundSpices());
+end
+
+rule "Americka kuhinja -> NE VOLI jela koja imaju pikantan ukus"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", spicyFood== "Ne")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Cimet");
+		System.out.println("Lista zacina kada NE VOLI zaljucenu hranu: " + $f.getFoundSpices());
+end
+
+rule "Americka kuhinja -> NE ide na dejt "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", onDate =="Ne" )
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Crni luk");
+		System.out.println("Lista zacina kad ne ide na dejt: " + $f.getFoundSpices());	
+end
+
+rule "Americka kuhinja -> zasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Americka kuhinja -> nezasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Americka", sweetenedIcedTea == "Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+
+
+
+//Pravila za Kinesku kuhinju
+
+rule "Kineska kuhinja -> narucuje desert"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a:Answers(ethnicity == "Kineska", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+rule "Kineska kuhinja -> trenira -> preferira osvezavajuce ukuse koji podsecaju na more"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Kineska", healthConscious == "Da", refreshingFlavors == "Da")
+		$m: Meat(name == "Riba")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Kineska kuhinja -> trenira -> NE preferira osvezavajuce ukuse koji podsecaju na more"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Kineska", healthConscious == "Da", refreshingFlavors == "Ne")
+		$m: Meat(name == "Belo meso")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end
+
+rule "Kineska kuhinja -> NE trenira"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Kineska", healthConscious == "Ne")
+		$m: Meat(name == "Patka")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+end		
+
+rule "Kineska kuhinja -> voli pizzu sa ananasom "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Kineska", pizzaWithPineapple == "Da")
+		$s: Sauce(name == "Slatko-kiseli sos")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Kineska kuhinja -> NE voli pizzu sa ananasom "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Kineska", pizzaWithPineapple == "Ne")
+		$s: Sauce(name == "Terijaki sos")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+
+rule "Kineska kuhinja -> voli  jela koja imaju pikantan ukus"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Kineska", spicyFood == "Da")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Cili paprike");
+		$f.getFoundSpices().add("Prah 5 zacina");
+		System.out.println("Lista zacina kada voli zaljucenu hranu: " + $f.getFoundSpices());
+end
+
+rule "Kineska kuhinja -> NE VOLI  jela koja imaju pikantan ukus"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Kineska", spicyFood== "Ne")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Korijander");
+		$f.getFoundSpices().add("Ulje od susama");
+		$f.getFoundSpices().add("Koren djumbira");
+		System.out.println("Lista zacina kada NE VOLI zaljucenu hranu: " + $f.getFoundSpices());
+end
+
+
+rule "Kineska kuhinja -> zasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Kineska", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Kineska kuhinja -> nezasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Kineska", sweetenedIcedTea == "Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+
+
+
+//Pravila za Meksicku kuhinju
+
+rule "Meksicka kuhinja -> narucuje desert"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a:Answers(ethnicity == "Meksicka", haveDessert == "Da")
+		$w: Wine(name == "Riesling" )
+	then	
+		System.out.println("Korisnik narucuje desert "+ $w.getName());
+		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
+end
+
+rule "Meksicka kuhinja -> NE trenira -> preferira bogate, dimljene ukuse"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Meksicka", healthConscious == "Ne", smokyFlavors == "Da")
+		$m: Meat(name == "Jelen")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end	
+
+rule "Meksicka kuhinja -> NE trenira -> NE preferira bogate dimljene ukuse"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Meksicka", healthConscious == "Ne", smokyFlavors == "Ne")
+		$m: Meat(name == "Svinjska kobasica")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+
+end
+
+rule "Meksicka kuhinja -> trenira"
+	agenda-group "druga_grupa_pravila"
+	salience 100
+	when
+		$a:Answers(ethnicity == "Meksicka", healthConscious == "Da")
+		$m: Meat(name == "Pavo")
+		
+	then
+		Found found = new Found();
+		found.setFoundMeat($m.getName());
+		insert(found);
+		System.out.println("Meso je: "+ found.getFoundMeat());
+end		
+
+rule "Meksicka kuhinja -> voli kremaste ukuse -> intolerantan je na laktozu "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", creamyFlavors == "Da", lactoseIntolerant == "Da")
+		$s: Sauce(name == "Avokado")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Meksicka kuhinja -> preferira kremaste ukuse -> NIJE intolerantan  na laktozu "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", creamyFlavors == "Da", lactoseIntolerant == "Ne")
+		$s: Sauce(name == "Crema Mexicana")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Meksicka kuhinja -> NE preferira kremaste ukuse"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", creamyFlavors == "Ne")
+		$s: Sauce(name == "Tomatillo")
+		$f: Found()
+		
+	then
+		$f.setFoundSauce($s.getName());
+		System.out.println("Sosic  je: " +$f.getFoundSauce());
+end
+
+rule "Meksicka kuhinja -> preferira ljutu hranu"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", spicyFood == "Da")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Ljute papricice");
+		$f.getFoundSpices().add("Kumin");
+		$f.getFoundSpices().add("Persun");
+		System.out.println("Lista zacina kada voli zaljucenu hranu: " + $f.getFoundSpices());
+end
+
+rule "Meksicka kuhinja -> NE preferira ljutu hranu"
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", spicyFood== "Ne")
+		$f: Found()
+		
+	then
+		$f.getFoundSpices().add("Slatka paprika");
+		$f.getFoundSpices().add("Suseni paradajz");
+		System.out.println("Lista zacina kada NE VOLI zaljucenu hranu: " + $f.getFoundSpices());
+end
+
+
+rule "Meksicka kuhinja -> zasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", sweetenedIcedTea =="Da" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SLATKO);
+		System.out.println("Vino je SLATKOOOO: " + $f.getFoundSugar());	
+end
+
+rule "Meksicka kuhinja -> nezasladjeni IceTea "
+	agenda-group "druga_grupa_pravila"
+	when
+		$a: Answers(ethnicity == "Meksicka", sweetenedIcedTea == "Ne" )
+		$f: Found()
+		
+	then
+		$f.setFoundSugar(WineSugar.SUVO);
+		System.out.println("Vino je sad SUVOOOO: " + $f.getFoundSugar());	
+end
+
+
