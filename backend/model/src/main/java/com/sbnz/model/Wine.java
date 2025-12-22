@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Wine {
@@ -35,6 +36,10 @@ public class Wine {
 	@Enumerated(EnumType.STRING)
 	private WineSugar wineSugar;
 	
+	@Transient
+	private int score;
+
+
 	@ManyToMany
 	@JoinTable(name = "wine_meat",
 			   joinColumns = @JoinColumn(name = "wine_id"),
@@ -84,13 +89,16 @@ public class Wine {
         	}
         	
         }
-        System.out.println("Sum je: " + sum);
-        System.out.println("Duzina liste je: "+ spices.size());
         if(sum == spices.size()) {
         	return true;
         }
         return false;
     }
+	
+	public void addScore(int value) {
+		this.score += value;
+		
+	}
 
 	public Long getId() {
 		return id;
@@ -155,6 +163,16 @@ public class Wine {
 	public void setSpiceList(Set<Spice> spiceList) {
 		this.spiceList = spiceList;
 	}
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	
 	
 	
 	
