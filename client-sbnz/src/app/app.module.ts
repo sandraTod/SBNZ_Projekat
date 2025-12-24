@@ -30,6 +30,7 @@ import { MeatDetailsComponent } from './components/meat-details/meat-details.com
 import { SauceDetailsComponent } from './components/sauce-details/sauce-details.component';
 import { SpiceDetailsComponent } from './components/spice-details/spice-details.component';
 import { FindPerfectWineComponent } from './components/find-perfect-wine/find-perfect-wine.component';
+import { FindWineListComponent } from './components/find-wine-list/find-wine-list.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { FindPerfectWineComponent } from './components/find-perfect-wine/find-pe
     MeatDetailsComponent,
     SauceDetailsComponent,
     SpiceDetailsComponent,
-    FindPerfectWineComponent
+    FindPerfectWineComponent,
+    FindWineListComponent
   ],
   imports: [
     BrowserModule,

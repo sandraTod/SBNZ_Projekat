@@ -66,5 +66,15 @@ export class UserService {
     });
 
   }
+  wineRanking(answers: Answers){
+    let answersBack = JSON.stringify(answers);
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post<Wine[]>("http://localhost:8080/api/drools/findWineList",answersBack,
+    {
+      headers: headers
+    });
+
+
+  }
 
 }

@@ -1,0 +1,37 @@
+<div class="form-container">
+
+    <!-- Trenutno pitanje -->
+    <div *ngIf="!currentQuestion?.done">
+      <h2 >{{ currentQuestion?.text }}</h2>
+  
+      <div class="options">
+        <button 
+          *ngFor="let opt of currentQuestion?.options"
+          (click)="chooseOption(opt)">
+          {{ opt }}
+        </button>
+      </div>
+    </div>
+  
+    <!-- Zavrsetak -->
+    <div *ngIf= "currentQuestion?.done && wineList == null">
+      <h2>Hvala!:D </h2>
+      <p>Analiziram odgovore i pronalazim savrseno vino za vas…</p>
+  
+      <button (click)="sendToBackend()">Posalji podatke</button>
+      <button (click) = "resetAnswers()"> Nova porudzbina</button>
+    </div>
+
+    <div *ngIf = "wineList">
+        <h2>Preporucujem vina rangirana po kompatibilnosti: </h2>
+        <div *ngFor="let wine of wineList">    
+            <p><b> Naziv: </b>{{wine.name}}</p>
+            <p><b> Godina:  </b>{{wine.year}}</p>
+            <p><b> Boja: </b>{{wine.wineColor}}</p>
+            <p><b> Slatko/Suvo:  </b>{{wine.wineSugar}}</p>
+        </div>
+   
+
+    </div>
+  
+  </div>
