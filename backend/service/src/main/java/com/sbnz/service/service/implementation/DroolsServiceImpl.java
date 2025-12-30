@@ -8,15 +8,19 @@ import java.util.List;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.QueryResults;
+import org.kie.api.runtime.rule.QueryResultsRow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sbnz.model.Answers;
 import com.sbnz.model.Meat;
+import com.sbnz.model.Recipe;
 import com.sbnz.model.Sauce;
 import com.sbnz.model.Spice;
 import com.sbnz.model.Wine;
 import com.sbnz.service.repository.MeatRepository;
+import com.sbnz.service.repository.RecipeRepository;
 import com.sbnz.service.repository.SauceRepository;
 import com.sbnz.service.repository.SpiceRepository;
 import com.sbnz.service.repository.WineRepository;
@@ -36,6 +40,9 @@ public class DroolsServiceImpl implements DroolsService{
 	
 	@Autowired
 	SpiceRepository spiceRepository;
+	
+	@Autowired
+	RecipeRepository recipeRepository;
 	
 	
 	@Override
@@ -129,6 +136,42 @@ public class DroolsServiceImpl implements DroolsService{
 	     
 		kieSession.dispose();
 		return result;
+	}
+
+
+	@Override
+	public Collection<Recipe> findRecipes(Wine wine) {
+		
+		KieServices ks = KieServices.Factory.get();
+		KieContainer kieContainer = ks.getKieClasspathContainer();
+    	KieSession kieSession = kieContainer.newKieSession("ksession-rules");
+    	
+    	
+    	Collection<Recipe> recipeList = recipeRepository.findAll();
+    	
+    	for(Recipe r : recipeList) {
+    		System.out.println(r.getSpices().size());
+    		kieSession.insert(r);
+    		
+    	}
+    	kieSession.insert(wine);
+    	int fired = kieSession.fireAllRules();
+    	System.out.println("Broj aktiviranih pravila "+ fired);
+    	
+    	QueryResults results = kieSession.getQueryResults("receptiZaVino", wine);
+    	
+    	List<Recipe> matchedRecipes = new ArrayList<>();
+    	
+    	for(QueryResultsRow row : results ) {
+    		
+    		Recipe r = (Recipe) row.get("$recipe");
+    		matchedRecipes.add(r);
+    		
+    	}
+    	
+    	kieSession.dispose();
+    	
+		return matchedRecipes;
 	}
 
 }

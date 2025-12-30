@@ -160,6 +160,24 @@ insert into wine_spice(wine_id,spice_id) values (6,15)
 insert into wine_spice(wine_id,spice_id) values (6,16)
 insert into wine_spice(wine_id,spice_id) values (6,20)
 
+--RECEPTI
+insert into recipe(id, meat_id, sauce_id, description, name) values(1,3,3,"Junece meso u sosu od sampinjona","Specijalitet sa junetinom")
+insert into recipe_spice(recipe_id, spice_id) values(1,4)
+insert into recipe_spice(recipe_id, spice_id) values(1,13)
+insert into recipe_spice(recipe_id, spice_id) values(1,15)
+
+insert into recipe(id, meat_id, sauce_id, description, name) values(2,4,5,"Teletina ispod saca sa prstom i sirom", "Socna teletina")
+
+insert into recipe(id, meat_id, sauce_id, description, name) values(3,6,NULL, "Jastog", "Morski plodovi")
+
+insert into recipe(id, meat_id, sauce_id, description, name) values(4,12,9, "Specijalijalitet sa patkom", "Patka na kineski nacin")
+insert into recipe_spice(recipe_id, spice_id) values(4,11)
+insert into recipe_spice(recipe_id, spice_id) values(4,12)
+
+insert into recipe(id, meat_id, sauce_id, description, name) values(5,2,12, "Skoljke", "Skoljkicee")
+
+
+
 
 
 

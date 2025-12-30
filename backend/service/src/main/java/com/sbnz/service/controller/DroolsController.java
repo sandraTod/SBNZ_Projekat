@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sbnz.model.Answers;
+import com.sbnz.model.Recipe;
 import com.sbnz.model.Wine;
 import com.sbnz.service.service.DroolsService;
 
@@ -47,9 +48,24 @@ public class DroolsController {
 			
 	)
 	@PreAuthorize("hasAuthority('USER')")
-	ResponseEntity<Collection<Wine>> findWineLiest(@RequestBody Answers answers ){
+	ResponseEntity<Collection<Wine>> findWineList(@RequestBody Answers answers ){
 		
 		Collection<Wine> result = droolsService.findWineList(answers);
+		return new ResponseEntity<>(result,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(
+			path = "/findRecipeList",
+			method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			
+	)
+	@PreAuthorize("hasAuthority('USER')")
+	ResponseEntity<Collection<Recipe>> findRecipeList(@RequestBody Wine wine ){
+		
+		Collection<Recipe> result = droolsService.findRecipes(wine);
 		return new ResponseEntity<>(result,HttpStatus.OK);
 		
 	}
