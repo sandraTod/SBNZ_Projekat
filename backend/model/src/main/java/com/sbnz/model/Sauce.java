@@ -49,6 +49,19 @@ public class Sauce {
 	}
 	
 	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (!(o instanceof Sauce)) return false;
+	    Sauce sauce = (Sauce) o;
+	    return id != null && id.equals(sauce.id);
+	}
+
+	@Override
+	public int hashCode() {
+	    return id != null ? id.hashCode() : 0;
+	}
+	
 	
 	
 	

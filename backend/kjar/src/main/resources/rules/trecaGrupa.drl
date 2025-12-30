@@ -1,0 +1,50 @@
+package rules;
+
+import com.sbnz.model.*;
+
+
+
+query "receptiZaVino"(Wine $wine)
+	$recipe : Recipe(
+		meat memberOf $wine.meatList
+		|| sauce memberOf $wine.sauceList
+		|| eval(containsSpice($wine.spiceList))
+	)
+end	
+
+
+rule "Recept sadrzi meso"
+
+when
+	$wine : Wine($meats : meatList)
+	$rec: Recipe( meat memberOf $meats )
+then
+	$rec.addScore(50);
+	System.out.println("Dodali smo "+ $rec.getName()+ " score 50");
+
+end
+
+rule "Recept sadrzi sos"
+
+when
+	$wine : Wine($sauces : sauceList)
+	$r: Recipe( sauce memberOf $sauces )
+then
+	$r.addScore(30);
+	System.out.println("Dodali smo "+ $r.getName()+ " score 30");
+	
+end
+
+
+rule "Recept sadrzi bar jedan zacin "
+	no-loop true 
+	salience -10
+	when
+		$wine: Wine($spices : spiceList)
+		$r: Recipe()
+		eval($r.containsSpice($spices))
+		
+	then
+		$r.addScore(20);
+		System.out.println("Dodali smo "+ $r.getName()+ " score 20");
+end

@@ -49,6 +49,20 @@ public class Meat {
 	}
 	
 	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (!(o instanceof Meat)) return false;
+	    Meat meat = (Meat) o;
+	    return id != null && id.equals(meat.id);
+	}
+
+	@Override
+	public int hashCode() {
+	    return id != null ? id.hashCode() : 0;
+	}
+	
+	
 	
 	
 }
