@@ -150,7 +150,6 @@ public class DroolsServiceImpl implements DroolsService{
     	Collection<Recipe> recipeList = recipeRepository.findAll();
     	
     	for(Recipe r : recipeList) {
-    		System.out.println(r.getSpices().size());
     		kieSession.insert(r);
     		
     	}
@@ -168,7 +167,7 @@ public class DroolsServiceImpl implements DroolsService{
     		matchedRecipes.add(r);
     		
     	}
-    	
+    	matchedRecipes.sort(Comparator.comparingInt(Recipe:: getScore).reversed());
     	kieSession.dispose();
     	
 		return matchedRecipes;

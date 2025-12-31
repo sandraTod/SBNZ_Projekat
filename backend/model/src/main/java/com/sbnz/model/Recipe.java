@@ -33,7 +33,7 @@ public class Recipe {
 	@JoinColumn(name = "sauce_id", nullable = true)
 	private Sauce sauce;
 	
-	@ManyToMany
+	@ManyToMany()
 	@JoinTable(name = "recipe_spice",
 	   joinColumns = @JoinColumn(name = "recipe_id"),
 	   inverseJoinColumns = @JoinColumn(name = "spice_id"))
