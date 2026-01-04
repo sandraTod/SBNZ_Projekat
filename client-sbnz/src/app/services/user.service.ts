@@ -1,3 +1,4 @@
+import { Recipe } from './../model/recipe';
 import { Answers } from './../model/answers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -70,6 +71,15 @@ export class UserService {
     let answersBack = JSON.stringify(answers);
     let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
     return this.http.post<Wine[]>("http://localhost:8080/api/drools/findWineList",answersBack,
+    {
+      headers: headers
+    });
+
+
+  }
+  findReciperByWine(wineName: String){
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post<Recipe[]>("http://localhost:8080/api/drools/findRecipeList",wineName,
     {
       headers: headers
     });

@@ -4,6 +4,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Answers} from './../../model/answers';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 
 @Component({
@@ -17,19 +19,14 @@ export class FindPerfectWineComponent implements OnInit {
   answersBack! : Answers
   currentQuestion: any = null;
   selectedKitchen: string = '';
-  perfectWine! : Wine;
-
+  perfectWine : Wine | null = null;
   
-  
-
-
 
   
 
   constructor( private userService: UserService) { }
 
   ngOnInit(): void {
-
     this.resetAnswers();
     
   }
@@ -73,6 +70,7 @@ export class FindPerfectWineComponent implements OnInit {
     this.currentQuestion = this.getNextQuestion(this.selectedKitchen,this.answers);
 
   }
+  
 
   getNextQuestion(kitchen: string, answers:any){
     if(!answers.Q1){
@@ -143,14 +141,14 @@ export class FindPerfectWineComponent implements OnInit {
       this.answersBack.sweetenedIcedTea = "Ne";
     }
     
-
     console.log(this.answersBack);
 
     this.userService.sendAnswers(this.answersBack).subscribe(data => {
       this.perfectWine = data;
       console.log(this.perfectWine);
-
+  
     });
+    
     
   }
 
