@@ -1,7 +1,27 @@
-<div class = "wine-search-container">
+<div class = "wine-search-container" *ngIf="recipes.length == 0">
     <h2>Unesite vino </h2>
 
     <input type="text" placeholder="Naziv vina" [(ngModel)]="wineName")]/>
 
     <button (click) = "findRecipes()"> Pronadji recepte</button>
 </div>
+
+<div  class ="recipes" *ngIf="recipes.length > 0">
+    <h2>Preporučeni recepti</h2>
+  
+    <div *ngFor="let r of recipes">
+      <h5>{{ r.name }}</h5>
+      <p>Score: {{ r.score }}</p>
+      <p>Meso: {{ r.meat?.name }}</p>
+      <p>Sos: {{ r.sauce?.name }}</p>
+  
+      <p *ngIf="r.spices?.length">
+        Začini:
+        <span *ngFor="let s of r.spices">
+          {{ s.name }}
+        </span>
+      </p>
+  
+      <hr />
+    </div>
+  </div>
