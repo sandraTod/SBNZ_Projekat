@@ -63,9 +63,9 @@ public class DroolsController {
 			
 	)
 	@PreAuthorize("hasAuthority('USER')")
-	ResponseEntity<Collection<Recipe>> findRecipeList(@RequestBody Wine wine ){
+	ResponseEntity<Collection<Recipe>> findRecipeList(@RequestBody String wineName ){
 		
-		Collection<Recipe> result = droolsService.findRecipes(wine);
+		Collection<Recipe> result = droolsService.findRecipes(wineName);
 		return new ResponseEntity<>(result,HttpStatus.OK);
 		
 	}

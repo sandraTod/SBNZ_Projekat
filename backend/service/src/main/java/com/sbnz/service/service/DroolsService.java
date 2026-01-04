@@ -10,5 +10,5 @@ public interface DroolsService {
 	
 	Wine findWine(Answers answers);
 	Collection<Wine> findWineList(Answers answers);
-	Collection<Recipe> findRecipes(Wine wine);
+	Collection<Recipe> findRecipes(String wineName);
 }

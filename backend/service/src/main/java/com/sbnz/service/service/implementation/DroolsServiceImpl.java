@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+
+import javax.management.RuntimeErrorException;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -140,7 +143,7 @@ public class DroolsServiceImpl implements DroolsService{
 
 
 	@Override
-	public Collection<Recipe> findRecipes(Wine wine) {
+	public Collection<Recipe> findRecipes(String wineName) {
 		
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kieContainer = ks.getKieClasspathContainer();
@@ -149,11 +152,21 @@ public class DroolsServiceImpl implements DroolsService{
     	
     	Collection<Recipe> recipeList = recipeRepository.findAll();
     	
+    	
     	for(Recipe r : recipeList) {
     		kieSession.insert(r);
     		
     	}
+    	
+    	
+    	Wine wine = wineRepository.findByNameIgnoreCase(wineName);
+    	 if(wine == null) {
+    		 throw new RuntimeException("Vino nije pronadjeno"); 
+    		 
+    	 }
+    	
     	kieSession.insert(wine);
+    	
     	int fired = kieSession.fireAllRules();
     	System.out.println("Broj aktiviranih pravila "+ fired);
     	
