@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sbnz.model.Answers;
 import com.sbnz.model.Recipe;
 import com.sbnz.model.Wine;
+import com.sbnz.service.dto.FilterDTO;
 import com.sbnz.service.service.DroolsService;
 
 
@@ -66,6 +67,21 @@ public class DroolsController {
 	ResponseEntity<Collection<Recipe>> findRecipeList(@RequestBody String wineName ){
 		
 		Collection<Recipe> result = droolsService.findRecipes(wineName);
+		return new ResponseEntity<>(result,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(
+			path = "/filterWines",
+			method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			
+	)
+	@PreAuthorize("hasAuthority('USER')")
+	ResponseEntity<Collection<Wine>> filterWines(@RequestBody FilterDTO criteria ){
+		
+		Collection<Wine> result = droolsService.wineFilter(criteria);
 		return new ResponseEntity<>(result,HttpStatus.OK);
 		
 	}

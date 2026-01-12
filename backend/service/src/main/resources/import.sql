@@ -9,7 +9,7 @@ insert into wine(id, name, year, wine_color, wine_sugar ) value (3,"Chardonnay",
 insert into wine(id, name, year, wine_color, wine_sugar ) value (4,"Suvignon blanc","2022","BELO","SUVO")
 insert into wine(id, name, year, wine_color, wine_sugar ) value (5,"Cabernet","2019","CRVENO","SUVO")
 insert into wine(id, name, year, wine_color, wine_sugar ) value (6,"Zinfandel","2016","CRVENO","SLATKO")
-insert into wine(id, name, year, wine_color, wine_sugar ) value (7,"Riesling","2023","BELO","SLATKO")
+insert into wine(id, name, year, wine_color, wine_sugar ) value (7,"Riesling","2021","BELO","SLATKO")
 
 --MESO
 insert into meat(id,name,national_cuisine) values(1,"Piletina","ITALIJANSKA")

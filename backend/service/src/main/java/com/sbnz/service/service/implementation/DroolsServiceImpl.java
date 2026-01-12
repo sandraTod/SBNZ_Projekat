@@ -22,6 +22,7 @@ import com.sbnz.model.Recipe;
 import com.sbnz.model.Sauce;
 import com.sbnz.model.Spice;
 import com.sbnz.model.Wine;
+import com.sbnz.service.dto.FilterDTO;
 import com.sbnz.service.repository.MeatRepository;
 import com.sbnz.service.repository.RecipeRepository;
 import com.sbnz.service.repository.SauceRepository;
@@ -184,6 +185,32 @@ public class DroolsServiceImpl implements DroolsService{
     	kieSession.dispose();
     	
 		return matchedRecipes;
+	}
+
+
+	@Override
+	public Collection<Wine> wineFilter(FilterDTO criteria) {
+		
+		KieServices ks = KieServices.Factory.get();
+		KieContainer kieContainer = ks.getKieClasspathContainer();
+    	KieSession kieSession = kieContainer.newKieSession("ksession-rules");
+    	
+    	List<Wine> filteredWines = new ArrayList<>();
+    	Collection<Wine> wineList = wineRepository.findAll();
+    	
+    	
+    	wineList.forEach(kieSession :: insert);
+    	
+    	kieSession.insert(criteria);
+    	
+    	kieSession.setGlobal("filteredWines", filteredWines);
+    	
+		int fired = kieSession.fireAllRules();
+		System.out.println("Broj aktiviranih pravila "+ fired);
+    	
+    	kieSession.dispose();
+		
+		return filteredWines;
 	}
 
 }
