@@ -1,0 +1,19 @@
+package rules;
+
+import com.sbnz.model.Wine;
+import com.sbnz.service.dto.FilterDTO;
+global java.util.List filteredWines;
+
+rule "Filtriranje vina po zeljenim kriterijumima"
+
+when
+	$criteria : FilterDTO();
+	$wine: Wine(
+		($criteria.year == 0 || year == $criteria.year ) &&
+		(wineColor.equals($criteria.wineColor) || $criteria.wineColor == null) &&
+		(wineSugar.equals($criteria.wineSugar) || $criteria.wineSugar == null)
+	)
+
+then
+	filteredWines.add($wine);
+end	
