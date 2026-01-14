@@ -1,0 +1,26 @@
+<div class="filter-container">
+    <form [formGroup]="filterForm" (ngSubmit)="filterWines()" class="filter-bar">
+
+        <h4>Filtriranje vina </h4>
+
+        <input type="number" min="1900" formControlName="year" placeholder="Godina" />
+    
+        <select formControlName="wineSugar">
+        <option [ngValue]="null">Slatkoća</option>
+        <option *ngFor="let sugar of wineSugars"
+                [ngValue]="sugar">
+            {{ sugar }}
+        </option>
+        </select>
+    
+        <select formControlName="wineColor">
+        <option [ngValue]="null">Boja</option>
+        <option *ngFor="let color of wineColors"
+                [ngValue]="color">
+            {{ color }}
+        </option>
+        </select>
+    
+        <button type="submit">Filtriraj</button>
+    </form>
+</div>    

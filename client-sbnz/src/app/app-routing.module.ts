@@ -1,3 +1,4 @@
+import { FilterWinesComponent } from './components/filter-wines/filter-wines.component';
 import { RecipesByWineComponent } from './components/recipes-by-wine/recipes-by-wine.component';
 import { FindWineListComponent } from './components/find-wine-list/find-wine-list.component';
 import { FindPerfectWineComponent } from './components/find-perfect-wine/find-perfect-wine.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'perfectWine', component: FindPerfectWineComponent},
   {path: 'wineRanking', component: FindWineListComponent},
   {path: 'recipesByWine', component: RecipesByWineComponent},
+  {path: 'filter', component: FilterWinesComponent},
   {path: '', component: LoginComponent}
 ];
 

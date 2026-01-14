@@ -1,3 +1,4 @@
+import { Filter } from './../model/filter';
 import { Recipe } from './../model/recipe';
 import { Answers } from './../model/answers';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -85,6 +86,13 @@ export class UserService {
     });
 
 
+  }
+  filterWines(criteria: Filter){
+    let headers = new HttpHeaders().set('Content-Type','application/json; charset=utf-8');
+    return this.http.post<Wine[]>("http://localhost:8080/api/drools/filterWines",criteria,
+    {
+      headers: headers
+    });
   }
 
 }
