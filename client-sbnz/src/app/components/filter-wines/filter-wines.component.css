@@ -38,3 +38,20 @@
   .filter-bar button:hover {
     background-color: #8b2c2c;
   }
+
+  table.mytable {
+    border-collapse: separate;
+    border-spacing: 0 35px;
+  }
+  
+  th,
+  td {
+    vertical-align: middle;
+    padding: 15px;
+    padding-left: 35px;
+  }
+  
+  tr {
+    border-radius: 0.25rem;
+    
+  } 
