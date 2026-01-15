@@ -33,6 +33,7 @@ import { FindPerfectWineComponent } from './components/find-perfect-wine/find-pe
 import { FindWineListComponent } from './components/find-wine-list/find-wine-list.component';
 import { RecipesByWineComponent } from './components/recipes-by-wine/recipes-by-wine.component';
 import { FilterWinesComponent } from './components/filter-wines/filter-wines.component';
+import { WineMoreDetailsComponent } from './components/wine-more-details/wine-more-details.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { FilterWinesComponent } from './components/filter-wines/filter-wines.com
     FindPerfectWineComponent,
     FindWineListComponent,
     RecipesByWineComponent,
-    FilterWinesComponent
+    FilterWinesComponent,
+    WineMoreDetailsComponent
   ],
   imports: [
     BrowserModule,

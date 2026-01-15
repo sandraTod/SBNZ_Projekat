@@ -1,3 +1,5 @@
+import { WineMoreDetailsComponent } from './../wine-more-details/wine-more-details.component';
+import { MatDialog } from '@angular/material/dialog';
 import { WineSugar } from './../../model/wineSugar';
 import { WineColor } from './../../model/wineColor';
 import { UserService } from './../../services/user.service';
@@ -12,7 +14,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class FilterWinesComponent implements OnInit {
 
-  constructor(private userServie: UserService,private  fb: FormBuilder) { }
+  constructor(private userServie: UserService,private  fb: FormBuilder, private dialog: MatDialog) { }
 
   filterForm!: FormGroup; 
 
@@ -37,6 +39,21 @@ export class FilterWinesComponent implements OnInit {
       console.log(this.wineList);
     })
   }
+
+  moreDetails(wine: Wine){
+
+    var popup = this.dialog.open(WineMoreDetailsComponent,{
+
+      width: '50%',
+      height: '600px',
+      data:{
+        wine: wine
+      } 
+
+    });
+
+  }
+
 
 }
 
