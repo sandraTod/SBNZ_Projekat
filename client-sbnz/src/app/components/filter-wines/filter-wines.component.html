@@ -25,6 +25,13 @@
     </form>
 </div>    
 
+<div class="empty-state-card" *ngIf="searched && wineList.length === 0">
+    <h4>Nema rezultata 🍷</h4>
+    <p>
+      Za izabrano vino trenutno nemamo recepte koji se slažu uz njega.
+    </p>
+  </div>
+
 <div class="container p-0 m-0" >
         
     <table class="table table-dark table-hover vw-100 vh-50 mytable ">   

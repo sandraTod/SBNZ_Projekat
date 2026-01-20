@@ -17,6 +17,7 @@ export class FilterWinesComponent implements OnInit {
   constructor(private userServie: UserService,private  fb: FormBuilder, private dialog: MatDialog) { }
 
   filterForm!: FormGroup; 
+  searched = false;
 
   wineSugars = Object.values(WineSugar);
   wineColors = Object.values(WineColor);
@@ -30,6 +31,10 @@ export class FilterWinesComponent implements OnInit {
       wineColor: [null]
     });
 
+    this.filterForm.valueChanges.subscribe(() =>{
+      this.searched = false;
+    })
+
   }
 
  
@@ -41,6 +46,9 @@ export class FilterWinesComponent implements OnInit {
     const criteria = this.filterForm.value;
     this.userServie.filterWines(criteria).subscribe(data => { 
       this.wineList = data;
+      if(this.wineList.length === 0 ){
+        this.searched = true;
+      }
       console.log(this.wineList);
     })
   }
