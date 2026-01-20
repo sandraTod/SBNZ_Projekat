@@ -1,5 +1,5 @@
 <div class="filter-container">
-    <form [formGroup]="filterForm" (ngSubmit)="filterWines()" class="filter-bar">
+    <form  [formGroup]="filterForm" (ngSubmit)="filterWines()" class="filter-bar">
 
         <h4>Filtriranje vina </h4>
 
@@ -21,7 +21,7 @@
         </option>
         </select>
     
-        <button type="submit">Filtriraj</button>
+        <button type="submit" [disabled] = "!hasAnyFilter()">Filtriraj</button>
     </form>
 </div>    
 

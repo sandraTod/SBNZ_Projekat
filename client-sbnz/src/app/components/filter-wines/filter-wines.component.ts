@@ -32,6 +32,11 @@ export class FilterWinesComponent implements OnInit {
 
   }
 
+ 
+ hasAnyFilter(): boolean {
+    return !!(this.filterForm.value.year || this.filterForm.value.wineSugar || this.filterForm.value.wineColor);
+  }
+
   filterWines(){
     const criteria = this.filterForm.value;
     this.userServie.filterWines(criteria).subscribe(data => { 

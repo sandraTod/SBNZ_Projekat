@@ -34,6 +34,12 @@
     font-size: 14px;
     cursor: pointer;
   }
+
+  .filter-bar button:disabled {
+    background-color: #6b1d1d;
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
   
   .filter-bar button:hover {
     background-color: #8b2c2c;
