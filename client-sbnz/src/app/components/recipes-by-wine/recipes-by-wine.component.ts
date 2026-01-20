@@ -12,6 +12,7 @@ export class RecipesByWineComponent implements OnInit {
 
   wineName!: String;
   recipes: Recipe[] = [];
+  searched = false;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class RecipesByWineComponent implements OnInit {
   findRecipes(){
     this.userService.findReciperByWine(this.wineName).subscribe(data => {
       this.recipes = data;
+      this.searched = true;
       console.log(this.recipes);
     });
 

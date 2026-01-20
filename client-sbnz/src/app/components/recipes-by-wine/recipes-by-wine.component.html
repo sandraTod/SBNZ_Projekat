@@ -1,11 +1,18 @@
 <div class="filter-container">
   <div class="filter-bar">
 
-    <input type="text" placeholder="Naziv vina" [(ngModel)]="wineName"/>
+    <input type="text" placeholder="Naziv vina" [(ngModel)]="wineName" (input) = "searched = false"/>
     <button (click)="findRecipes()" [disabled]="!wineName">
       Pronađi recepte
     </button>
   </div>
+</div>
+
+<div class="empty-state-card" *ngIf="searched && recipes.length === 0">
+  <h4>Nema rezultata 🍷</h4>
+  <p>
+    Za izabrano vino trenutno nemamo recepte koji se slažu uz njega.
+  </p>
 </div>
 
 <div  class ="recipes" *ngIf="recipes.length > 0">
