@@ -1,11 +1,11 @@
 <div class="form-container">
 
     <!-- Trenutno pitanje -->
-    <div *ngIf="!currentQuestion?.done">
-      <h2 >{{ currentQuestion?.text }}</h2>
+    <div *ngIf="!currentQuestion?.done" class ="quiz-card">
+      <h2 class = "quiz-title">{{ currentQuestion?.text }}</h2>
   
-      <div class="options">
-        <button 
+      <div class="quiz-options">
+        <button class = "quiz-options"
           *ngFor="let opt of currentQuestion?.options"
           (click)="chooseOption(opt)">
           {{ opt }}
@@ -14,24 +14,29 @@
     </div>
   
     <!-- Zavrsetak -->
-    <div *ngIf= "currentQuestion?.done && wineList == null">
-      <h2>Hvala!:D </h2>
-      <p>Analiziram odgovore i pronalazim savrseno vino za vas…</p>
-  
-      <button (click)="sendToBackend()">Posalji podatke</button>
-      <button (click) = "resetAnswers()"> Nova porudzbina</button>
+    <div class = "quiz-card" *ngIf= "currentQuestion?.done && wineList == null">
+      <h2 class="quiz-title">Hvala!:D </h2>
+      <p class="quiz-text">Analiziram odgovore i pronalazim savrseno vino za vas…</p>
+      <div class="quiz-actions">
+        <button class= "primary-btn"  (click)="sendToBackend()">Posalji podatke</button>
+        <button class = "secondary-btn" (click) = "resetAnswers()"> Nova porudzbina</button>
+      </div> 
+
     </div>
 
-    <div *ngIf = "wineList">
-        <h2>Preporucujem vina rangirana po kompatibilnosti: </h2>
-        <div *ngFor="let wine of wineList">    
-            <p><b> Naziv: </b>{{wine.name}}</p>
-            <p><b> Godina:  </b>{{wine.year}}</p>
-            <p><b> Boja: </b>{{wine.wineColor}}</p>
-            <p><b> Slatko/Suvo:  </b>{{wine.wineSugar}}</p>
-        </div>
-   
-
+    <div class="wine-cards-container">
+      <div class="wine-card" *ngFor="let wine of wineList">
+        
+        <h3>{{ wine.name }}</h3>
+    
+        <p><b>Godina:</b> {{ wine.year }}</p>
+        <p><b>Boja:</b> {{ wine.wineColor }}</p>
+        <p><b>Tip:</b> {{ wine.wineSugar }}</p>
+    
+        <button (click)="moreDetails(wine)">
+          Detalji
+        </button>
+      </div>
     </div>
   
   </div>

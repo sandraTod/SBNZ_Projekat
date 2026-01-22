@@ -65,6 +65,9 @@ export class FindWineListComponent implements OnInit {
     this.currentQuestion = this.getNextQuestion(this.selectedKitchen,this.answers);
 
   }
+  moreDetails(wine: Wine){
+
+  }
   
 
   getNextQuestion(kitchen: string, answers:any){
