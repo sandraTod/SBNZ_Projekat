@@ -34,6 +34,7 @@ import { FindWineListComponent } from './components/find-wine-list/find-wine-lis
 import { RecipesByWineComponent } from './components/recipes-by-wine/recipes-by-wine.component';
 import { FilterWinesComponent } from './components/filter-wines/filter-wines.component';
 import { WineMoreDetailsComponent } from './components/wine-more-details/wine-more-details.component';
+import { RecipeModalComponent } from './components/recipe-modal/recipe-modal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { WineMoreDetailsComponent } from './components/wine-more-details/wine-mo
     FindWineListComponent,
     RecipesByWineComponent,
     FilterWinesComponent,
-    WineMoreDetailsComponent
+    WineMoreDetailsComponent,
+    RecipeModalComponent
   ],
   imports: [
     BrowserModule,

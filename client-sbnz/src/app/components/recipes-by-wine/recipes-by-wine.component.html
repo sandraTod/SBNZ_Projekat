@@ -15,22 +15,20 @@
   </p>
 </div>
 
-<div  class ="recipes" *ngIf="recipes.length > 0">
-    <h2>Preporučeni recepti</h2>
-  
-    <div *ngFor="let r of recipes">
-      <h5>{{ r.name }}</h5>
-      <p>Score: {{ r.score }}</p>
-      <p>Meso: {{ r.meat?.name }}</p>
-      <p>Sos: {{ r.sauce?.name }}</p>
-  
-      <p *ngIf="r.spices?.length">
-        Začini:
-        <span *ngFor="let s of r.spices">
-          {{ s.name }}
-        </span>
-      </p>
-  
-      <hr />
-    </div>
+<div class="recipes-container" *ngIf="recipes?.length">
+
+  <div class="recipe-card" *ngFor="let recipe of recipes">
+
+    <h3>{{ recipe.name }}</h3>
+
+    <p class="recipe-desc">
+      {{ recipe.description }}
+    </p>
+
+    <button (click)="openRecipeDetails(recipe)">
+      Detalji
+    </button>
+
   </div>
+
+</div>
