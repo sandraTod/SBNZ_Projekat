@@ -1,0 +1,36 @@
+<div class="recipe-modal">
+
+
+    <h2 class="title">{{ recipe.name }}</h2>
+
+    <div class="score">
+      <span *ngFor="let star of [1,2,3,4,5]; let i = index">
+        {{ i < getStars(recipe.score) ? '⭐' : '☆' }}
+      </span>
+      <div class="score-label">
+        Nivo kompatibilnosti sa vinom
+      </div>
+    </div>
+  
+    <div class="section">
+      <h3>🥩 Meso</h3>
+      <p>{{ recipe.meat.name }}</p>
+    </div>
+
+  
+    <div class="section">
+      <h3>🥣 Sos</h3>
+      <p>{{ recipe.sauce.name }}</p>
+    </div>
+
+    <div class="section">
+        <h3>🧂 Zacini</h3>
+        <li class = "spice-list" *ngFor="let spice of recipe.spices">
+            <ul>
+                {{ spice.name}}
+            </ul>
+        </li>
+    </div>
+  
+  </div>
+  

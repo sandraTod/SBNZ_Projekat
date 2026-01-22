@@ -8,5 +8,5 @@ export interface Recipe {
     sauce:Sauce;
     spices: Spice[];
     description: string;
-    score: string; 
+    score: number; 
 }
