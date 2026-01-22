@@ -105,6 +105,8 @@ public class DroolsServiceImpl implements DroolsService{
 		KieContainer kieContainer = ks.getKieClasspathContainer();
     	KieSession kieSession = kieContainer.newKieSession("ksession-rules");
     	
+    	List<Wine> result = new ArrayList<>();
+    	
 		
     	
 		Collection<Wine> wineList = wineRepository.findAll();
@@ -134,10 +136,11 @@ public class DroolsServiceImpl implements DroolsService{
 		System.out.println("Broj aktiviranih pravila "+ fired);
 		
 		
-		
-		List<Wine> result = wineList.stream()
-				.filter(w-> w.getScore() > 0 )
-				.sorted(Comparator.comparingInt(Wine::getScore).reversed()).toList();
+			 
+		result = wineList.stream()
+					.filter(w-> w.getScore() > 0 )
+					.sorted(Comparator.comparingInt(Wine::getScore).reversed()).toList();
+		 
 	     
 		kieSession.dispose();
 		return result;

@@ -10,8 +10,8 @@ rule "Italijanska kuhinja -> narucuje desert"
 		$a:Answers(ethnicity == "Italijanska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.addScore(100);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
-		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
 
@@ -147,8 +147,8 @@ rule "Francuska kuhinja -> narucuje desert"
 		$a:Answers(ethnicity == "Francuska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.addScore(100);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
-		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
 rule "Francuska kuhinja -> trenira"
@@ -284,8 +284,8 @@ rule "Indijska kuhinja -> narucuje desert"
 		$a:Answers(ethnicity == "Indijska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.addScore(100);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
-		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
 rule "Indijska kuhinja -> trenira ->  preferira obroke bogate proteinima iz mesa"
@@ -424,9 +424,9 @@ rule " Americka kuhinja -> narucuje desert"
 	when
 		$a:Answers(ethnicity == "Americka", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
-	then	
+	then
+		$w.addScore(100);	
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
-		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
 rule "Americka kuhinja -> trenira"
@@ -563,9 +563,9 @@ rule "Kineska kuhinja -> narucuje desert"
 	when
 		$a:Answers(ethnicity == "Kineska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
-	then	
+	then
+		$w.addScore(100);	
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
-		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
 rule "Kineska kuhinja -> trenira -> preferira osvezavajuce ukuse koji podsecaju na more"
@@ -696,8 +696,8 @@ rule "Meksicka kuhinja -> narucuje desert"
 		$a:Answers(ethnicity == "Meksicka", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.addScore(100);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
-		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
 
 rule "Meksicka kuhinja -> NE trenira -> preferira bogate, dimljene ukuse"
