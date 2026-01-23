@@ -1,16 +1,152 @@
 .form-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 50px auto;
-  text-align: center;
-  margin-top: 150px;
-  
-}
-h2{
-  color: white;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.options button {
-  margin: 10px;
-  padding: 10px 20px;
+.quiz-card {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 40px 50px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  width: 500px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.quiz-title {
+  font-size: 26px;
+  color: #6b1d1d;
+  margin-bottom: 30px;
+}
+
+.quiz-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.quiz-option {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover {
+  background-color: #6b1d1d;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Dugmad na kraju */
+.quiz-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.primary-btn {
+  background-color: #6b1d1d;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background-color: #8b2c2c;
+}
+
+.secondary-btn {
+  background-color: #ddd;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background-color: #bbb;
+}
+
+.wine-card-single {
+  max-width: 800px;
+  min-width: 480px;
+  min-height: 500px;
+  margin: 60px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* NASLOV */
+.wine-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6b1d1d;
+}
+
+/* OSNOVNI PODACI */
+.wine-basic-info {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+/* SEKCIJE */
+.wine-section {
+  margin-bottom: 20px;
+}
+
+.wine-section h4 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* TAG LISTE */
+.pretty-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pretty-list li {
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  color: #444;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* BOJE */
+.meat .pretty-list li {
+  background-color: #ffe5e5;
+}
+
+.sauce .pretty-list li {
+  background-color: #fff0d9;
+}
+
+.spice .pretty-list li {
+  background-color: #e6ffe6;
 }
