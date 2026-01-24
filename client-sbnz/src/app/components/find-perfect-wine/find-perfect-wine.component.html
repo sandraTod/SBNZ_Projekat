@@ -23,7 +23,7 @@
       </div> 
 
     </div>
-    <div class="wine-card-single" *ngIf="perfectWine">
+    <div class="wine-card-single" *ngIf="perfectWine && !perfectWine.isDessert">
 
       <h2 class="wine-title">{{ perfectWine?.name }}</h2>
     
@@ -54,6 +54,20 @@
         </ul>
       </div>
     
+    </div>
+
+    <div class = "wine-card-single" *ngIf="perfectWine?.isDessert">
+      <h4>🍰 Desert preporuka</h4>
+      <p>
+        Ovo vino je idealno za desert i ne kombinuje se sa slanim jelima.
+      </p>
+      <p>Preporuceni deserti uz ovo vino:</p>
+      <div class="dessert-grid">
+        <div class="dessert-item">🍫 Čokoladni kolači</div>
+        <div class="dessert-item">🍓 Voćne torte</div>
+        <div class="dessert-item">🍰 Cheesecake</div>
+        <div class="dessert-item">🍦 Sladoled</div>
+      </div>
     </div>
     
   

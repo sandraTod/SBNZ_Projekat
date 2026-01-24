@@ -9,4 +9,5 @@ export interface Wine{
     meatList: Meat[];
     sauceList: any[];
     spiceList: any[];
+    isDessert?: boolean;
 }

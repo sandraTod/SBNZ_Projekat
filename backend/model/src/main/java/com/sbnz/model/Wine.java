@@ -3,6 +3,8 @@ package com.sbnz.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -38,6 +40,10 @@ public class Wine {
 	
 	@Transient
 	private int score;
+	
+	@Transient
+	@JsonProperty("isDessert")
+	private boolean isDessert = false;
 
 
 	@ManyToMany
@@ -171,6 +177,16 @@ public class Wine {
 	public void setScore(int score) {
 		this.score = score;
 	}
+	
+	public boolean getIsDessert() {
+		return isDessert;
+	}
+
+	public void setDessert(boolean isDessert) {
+		this.isDessert = isDessert;
+	}
+	
+	
 	
 	
 	

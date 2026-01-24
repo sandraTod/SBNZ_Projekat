@@ -11,6 +11,7 @@ rule "Korisnik je izabrao Italijansku kuhinju i narucuje desert"
 		$a:Answers(ethnicity == "Italijanska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
@@ -166,7 +167,8 @@ rule "Korisnik je izabrao Francusku kuhinju i narucuje desert"
 	when
 		$a:Answers(ethnicity == "Francuska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
-	then	
+	then
+		$w.setDessert(true);	
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
@@ -304,6 +306,7 @@ rule "Korisnik je izabrao Indijsku kuhinju i narucuje desert"
 		$a:Answers(ethnicity == "Indijska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
@@ -444,7 +447,8 @@ rule "Korisnik je izabrao Americku kuhinju i narucuje desert"
 	when
 		$a:Answers(ethnicity == "Americka", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
-	then	
+	then
+		$w.setDessert(true);	
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
@@ -583,7 +587,8 @@ rule "Korisnik je izabrao Kinesku kuhinju i narucuje desert"
 	when
 		$a:Answers(ethnicity == "Kineska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
-	then	
+	then
+		$w.setDessert(true);	
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end
@@ -716,6 +721,7 @@ rule "Korisnik je izabrao Meksicku kuhinju i narucuje desert"
 		$a:Answers(ethnicity == "Meksicka", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then	
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 		drools.getKnowledgeRuntime().setGlobal("foundWine", $w);
 end

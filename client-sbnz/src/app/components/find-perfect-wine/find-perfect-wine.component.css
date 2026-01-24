@@ -150,3 +150,34 @@
 .spice .pretty-list li {
   background-color: #e6ffe6;
 }
+
+.dessert-card {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.dessert-grid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 15px;
+}
+
+.dessert-item {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.dessert-item:hover {
+  transform: scale(1.03);
+  background: #ffe6e6;
+}
+
