@@ -23,20 +23,37 @@
       </div> 
 
     </div>
-
-    <div class="wine-cards-container">
-      <div class="wine-card" *ngFor="let wine of wineList">
-        
-        <h3>{{ wine.name }}</h3>
-    
-        <p><b>Godina:</b> {{ wine.year }}</p>
-        <p><b>Boja:</b> {{ wine.wineColor }}</p>
-        <p><b>Tip:</b> {{ wine.wineSugar }}</p>
-    
-        <button (click)="moreDetails(wine)">
-          Detalji
-        </button>
+    <div *ngIf="wineList">
+      <div class="wine-cards-container" *ngIf=" !wineList[0]?.isDessert">
+        <div class="wine-card" *ngFor="let wine of wineList">
+          
+          <h3>{{ wine.name }}</h3>
+      
+          <p><b>Godina:</b> {{ wine.year }}</p>
+          <p><b>Boja:</b> {{ wine.wineColor }}</p>
+          <p><b>Tip:</b> {{ wine.wineSugar }}</p>
+      
+          <button (click)="moreDetails(wine)">
+            Detalji
+          </button>
+        </div>
       </div>
-    </div>
+    </div> 
+    
+    <div *ngIf="wineList">
+      <div class = "wine-card-single" *ngIf="wineList[0]?.isDessert">
+        <h4>🍰 Desert preporuka</h4>
+        <p>
+          Ovo vino je idealno za desert i ne kombinuje se sa slanim jelima.
+        </p>
+        <p>Preporuceni deserti uz ovo vino:</p>
+        <div class="dessert-grid">
+          <div class="dessert-item">🍫 Čokoladni kolači</div>
+          <div class="dessert-item">🍓 Voćne torte</div>
+          <div class="dessert-item">🍰 Cheesecake</div>
+          <div class="dessert-item">🍦 Sladoled</div>
+        </div>
+      </div>
+    </div>  
   
   </div>

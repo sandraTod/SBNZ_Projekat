@@ -11,6 +11,7 @@ rule "Italijanska kuhinja -> narucuje desert"
 		$w: Wine(name == "Riesling" )
 	then	
 		$w.addScore(100);
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 end
 
@@ -285,6 +286,7 @@ rule "Indijska kuhinja -> narucuje desert"
 		$w: Wine(name == "Riesling" )
 	then	
 		$w.addScore(100);
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 end
 
@@ -426,6 +428,7 @@ rule " Americka kuhinja -> narucuje desert"
 		$w: Wine(name == "Riesling" )
 	then
 		$w.addScore(100);	
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 end
 
@@ -564,7 +567,8 @@ rule "Kineska kuhinja -> narucuje desert"
 		$a:Answers(ethnicity == "Kineska", haveDessert == "Da")
 		$w: Wine(name == "Riesling" )
 	then
-		$w.addScore(100);	
+		$w.addScore(100);
+		$w.setDessert(true);	
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 end
 
@@ -697,6 +701,7 @@ rule "Meksicka kuhinja -> narucuje desert"
 		$w: Wine(name == "Riesling" )
 	then	
 		$w.addScore(100);
+		$w.setDessert(true);
 		System.out.println("Korisnik narucuje desert "+ $w.getName());
 end
 
