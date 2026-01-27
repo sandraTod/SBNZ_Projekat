@@ -13,10 +13,17 @@ export class WineMoreDetailsComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) private data: any) { }
 
   selectedWine!: Wine;
+  showStars!: boolean
 
   ngOnInit(): void {
     this.selectedWine = this.data.wine;
+    this.showStars = this.data.showStars;
     console.log(this.selectedWine);
   }
+
+  getStars(score: number): number {
+    return Math.round(score / 20) ?? 0;
+  }
+
 
 }

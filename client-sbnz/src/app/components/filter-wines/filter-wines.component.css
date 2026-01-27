@@ -204,3 +204,10 @@
   .wine-card button:hover {
     background-color: #8b2c2c;
   }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  

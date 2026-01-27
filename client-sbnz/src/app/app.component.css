@@ -2,3 +2,10 @@
     
     margin-right: 28px; 
 }
+
+.router-link-active{
+    color: #8b0000;
+    font-weight: bold;
+    border-bottom: 2px solid #8b0000;
+  }
+  

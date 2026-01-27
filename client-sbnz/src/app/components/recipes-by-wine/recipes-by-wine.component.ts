@@ -33,7 +33,7 @@ export class RecipesByWineComponent implements OnInit {
     var popup = this.dialog.open(RecipeModalComponent,{
 
       width: '50%',
-      height: '600px',
+      height: '500px',
       data:{
         recipe: recipe
       } 

@@ -16,7 +16,9 @@ export class FindWineListComponent implements OnInit {
   answersBack! : Answers
   currentQuestion: any = null;
   selectedKitchen: string = '';
+  showStars: boolean = true;
   wineList : Wine[] | null = null;
+
 
   
 
@@ -75,12 +77,15 @@ export class FindWineListComponent implements OnInit {
         width: '40%',
         //height: '400px',
         data:{
-          wine: wine
+          wine: wine,
+          showStars: this.showStars
+          
         } 
   
       });
 
   }
+  
   
 
   getNextQuestion(kitchen: string, answers:any){

@@ -42,7 +42,7 @@
         <p><b>Boja:</b> {{ wine.wineColor }}</p>
         <p><b>Tip:</b> {{ wine.wineSugar }}</p>
     
-        <button (click)="moreDetails(wine)">
+        <button [disabled]="isWineDisabled(wine)" (click)="moreDetails(wine)">
           Detalji
         </button>
       </div>

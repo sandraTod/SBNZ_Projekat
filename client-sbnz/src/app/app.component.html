@@ -14,10 +14,10 @@
 
   <nav class="navbar  navbar-expand-sm navbar-dark bg-dark " *ngIf ="getRole() == 'USER'" style="height: 50px;" >
     <ul class="navbar-nav">
-      <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/perfectWine']" routerLinkActive="router-link-active" >Pronadji Vino</a> </li> 
-      <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/wineRanking']" routerLinkActive="router-link-active" >Kompatibilna Vina </a></li>
-      <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/recipesByWine']" routerLinkActive="router-link-active" >Unesi Vino </a></li>
-      <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/filter']" routerLinkActive="router-link-active" > Filter </a></li>
+      <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/perfectWine']" routerLinkActive="router-link-active"  (click)="reloadRoute('/perfectWine')">Pronadji Vino</a> </li> 
+      <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/wineRanking']" routerLinkActive="router-link-active"  (click)="reloadRoute('/wineRanking')">Kompatibilna Vina </a></li>
+      <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/recipesByWine']" routerLinkActive="router-link-active" (click)="reloadRoute('/recipesByWine')">Unesi Vino </a></li>
+      <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/filter']" routerLinkActive="router-link-active" (click)="reloadRoute('/filter')" > Filter </a></li>
       <li calss = "nav-item"> <a class="nav-link " href="#" style=" color: white;font-size: small ; margin-left: 800px;" (click)="logout()">LOGOUT</a> </li>
     </ul>
      

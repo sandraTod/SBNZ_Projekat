@@ -27,6 +27,12 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
+  reloadRoute(route: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([route]);
+    });
+  }
+
 
 
 }

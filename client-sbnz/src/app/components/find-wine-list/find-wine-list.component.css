@@ -84,9 +84,10 @@
 .wine-cards-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 25px;
   margin-top: 40px;
+  width: 100vw;
 }
 
 .wine-card {

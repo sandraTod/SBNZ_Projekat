@@ -18,6 +18,7 @@ export class FilterWinesComponent implements OnInit {
 
   filterForm!: FormGroup; 
   searched = false;
+  showStars: boolean = false;
 
   wineSugars = Object.values(WineSugar);
   wineColors = Object.values(WineColor);
@@ -60,11 +61,18 @@ export class FilterWinesComponent implements OnInit {
       width: '40%',
       //height: '400px',
       data:{
-        wine: wine
+        wine: wine,
+        showStars: this.showStars
       } 
 
     });
 
+  }
+
+  isWineDisabled(wine : Wine) {
+    return !wine.meatList?.length 
+    && !wine.sauceList?.length 
+    && !wine.spiceList?.length;
   }
 
 

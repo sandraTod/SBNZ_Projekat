@@ -1,4 +1,12 @@
 <div>
+  <div class="score" *ngIf="showStars">
+    <span *ngFor="let star of [1,2,3,4,5]; let i = index">
+      {{ i < getStars(selectedWine.score || 0) ? '⭐' : '☆' }}
+    </span>
+    <div class="score-label">
+      Nivo kompatibilnosti 
+    </div>
+  </div>
     <div class="wine-section meat">
         <h4>🥩 Meso</h4>
         <ul class="pretty-list">

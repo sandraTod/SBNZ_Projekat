@@ -10,4 +10,5 @@ export interface Wine{
     sauceList: any[];
     spiceList: any[];
     isDessert?: boolean;
+    score?: number;
 }
