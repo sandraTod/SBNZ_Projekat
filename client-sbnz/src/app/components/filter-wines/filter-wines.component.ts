@@ -57,8 +57,8 @@ export class FilterWinesComponent implements OnInit {
 
     var popup = this.dialog.open(WineMoreDetailsComponent,{
 
-      width: '50%',
-      height: '600px',
+      width: '40%',
+      //height: '400px',
       data:{
         wine: wine
       } 

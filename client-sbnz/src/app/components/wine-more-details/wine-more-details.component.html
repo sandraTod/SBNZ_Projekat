@@ -1,28 +1,23 @@
-<div >
-    <div class = "pairing-section" *ngIf="selectedWine.meatList?.length">
-        <h5> Lista mesa koja se najbolje slaze uz ovo vino: </h5>
-        <ul>
-            <li *ngFor="let meat of selectedWine.meatList">
-                {{meat.name}}
-            </li>
+<div>
+    <div class="wine-section meat">
+        <h4>🥩 Meso</h4>
+        <ul class="pretty-list">
+          <li *ngFor="let meat of selectedWine.meatList">{{ meat.name }}</li>
         </ul>
-    </div>
-
-    <div class = "pairing-section" *ngIf="selectedWine.sauceList?.length">
-        <h5> Lista soseva koja se najbolje slaze uz ovo vino: </h5>
-        <ul>
-            <li *ngFor="let sauce of selectedWine.sauceList">
-                {{sauce.name}}
-            </li>
+      </div>
+    
+      <div class="wine-section sauce">
+        <h4>🍯 Sosevi</h4>
+        <ul class="pretty-list">
+          <li *ngFor="let sauce of selectedWine.sauceList">{{ sauce.name }}</li>
         </ul>
-    </div>
-
-    <div class = "pairing-section" *ngIf="selectedWine.spiceList?.length">
-        <h5> Lista zacina koja se najbolje slaze uz ovo vino: </h5>
-        <ul>
-            <li *ngFor="let spice of selectedWine.spiceList">
-                {{spice.name}}
-            </li>
+      </div>
+    
+      <div class="wine-section spice">
+        <h4>🌶 Zacini</h4>
+        <ul class="pretty-list">
+          <li *ngFor="let spice of selectedWine.spiceList">{{ spice.name }}</li>
         </ul>
-    </div>
+      </div>
 </div>
+  

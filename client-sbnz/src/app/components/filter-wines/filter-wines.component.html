@@ -32,17 +32,19 @@
     </p>
   </div>
 
-<div class="container p-0 m-0" >
+  <div *ngIf="wineList">
+    <div class="wine-cards-container" *ngIf=" !wineList[0]?.isDessert">
+      <div class="wine-card" *ngFor="let wine of wineList">
         
-    <table class="table table-dark table-hover vw-100 vh-50 mytable ">   
-        <tbody>
-        <tr *ngFor= "let w of wineList">
-            <td>{{w.name}}</td>
-            <td>{{w.year}}</td>
-            <td >{{w.wineColor}}</td>
-            <td>{{w.wineSugar}}</td>
-            <td class="text-end " ><button class="btn btn-warning btn-sm " (click) ="moreDetails(w)" >Detalji</button></td>
-        </tr>
-        </tbody>
-    </table>  
-</div>
+        <h3>{{ wine.name }}</h3>
+    
+        <p><b>Godina:</b> {{ wine.year }}</p>
+        <p><b>Boja:</b> {{ wine.wineColor }}</p>
+        <p><b>Tip:</b> {{ wine.wineSugar }}</p>
+    
+        <button (click)="moreDetails(wine)">
+          Detalji
+        </button>
+      </div>
+    </div>
+  </div> 

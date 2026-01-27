@@ -1,0 +1,60 @@
+
+  
+  /* NASLOV */
+  .wine-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6b1d1d;
+  }
+  
+  /* OSNOVNI PODACI */
+  .wine-basic-info {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 15px;
+  }
+  
+  /* SEKCIJE */
+  .wine-section {
+    margin-bottom: 20px;
+  }
+  
+  .wine-section h4 {
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  /* TAG LISTE */
+  .pretty-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .pretty-list li {
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    color: #444;
+  
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* BOJE */
+  .meat .pretty-list li {
+    background-color: #ffe5e5;
+  }
+  
+  .sauce .pretty-list li {
+    background-color: #fff0d9;
+  }
+  
+  .spice .pretty-list li {
+    background-color: #e6ffe6;
+  }
