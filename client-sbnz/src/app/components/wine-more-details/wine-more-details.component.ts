@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class WineMoreDetailsComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any,  private ref: MatDialogRef<FilterWinesComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any) { }
 
   selectedWine!: Wine;
 

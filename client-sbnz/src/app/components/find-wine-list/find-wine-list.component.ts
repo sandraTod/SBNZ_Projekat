@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Answers } from 'src/app/model/answers';
 import { Wine } from 'src/app/model/wine';
 import { UserService } from 'src/app/services/user.service';
+import { WineMoreDetailsComponent } from '../wine-more-details/wine-more-details.component';
 
 @Component({
   selector: 'app-find-wine-list',
@@ -15,11 +17,12 @@ export class FindWineListComponent implements OnInit {
   currentQuestion: any = null;
   selectedKitchen: string = '';
   wineList : Wine[] | null = null;
-  
 
   
 
-  constructor( private userService: UserService) { }
+  
+
+  constructor( private userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.resetAnswers();
@@ -66,6 +69,16 @@ export class FindWineListComponent implements OnInit {
 
   }
   moreDetails(wine: Wine){
+
+      var popup = this.dialog.open(WineMoreDetailsComponent,{
+  
+        width: '40%',
+        //height: '400px',
+        data:{
+          wine: wine
+        } 
+  
+      });
 
   }
   
