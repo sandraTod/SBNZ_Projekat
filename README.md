@@ -11,11 +11,9 @@ Instead of requiring the user to manually enter ingredients, the system asks a s
 
 It also allows users to:
 
-  -Filter wines by different criteria
-  
-  -Enter a wine and receive compatible recipes
-
-  -View detailed compatibility rankings
+  - Filter wines by different criteria
+  - Enter a wine and receive compatible recipes
+  - View detailed compatibility rankings
 
 The ADMIN has full control over the system and can manage:
   - Wines
@@ -63,10 +61,7 @@ Displayed as a large feature card with full details.
     Clicking a card opens a modal with:
 
      - Matching meat, sauces, spices
-     - Compatibility explanation
      - Star ranking
-
-This allows users to compare different wines for the same meal.
 
 This simulate a SMART SOMMELIER ASSISTANT
 
@@ -87,10 +82,14 @@ Inside the modal:
 
 TECHNOLOGIES USED
 
-  Backend: 	Java, Spring Boot
+  Backend: Java, Spring Boot
+  
   Rules Engine:	Drools
+  
   Frontend: Angular, TypeScript, HTML
+  
   Database:	MySQL
+  
   Styling: CSS
 
 
@@ -107,7 +106,9 @@ FEATURES SUMMARY
 
 AUTHOR
   Developed by Sandra
+  
   Full-stack student developer
+  
   Java | Spring | Angular | Drools
 
   
